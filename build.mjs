@@ -39,7 +39,11 @@ function makeConfig(ext, name) {
 const exts = fs.readdirSync("./src");
 
 const config = exts
-  .map((x) => [makeConfig(x, "index"), makeConfig(x, "node")])
+  .map((x) => [
+    makeConfig(x, "index"),
+    makeConfig(x, "node"),
+    makeConfig(x, "host")
+  ])
   .flat()
   .filter((c) => c !== null);
 

@@ -1,5 +1,5 @@
 {
-  "name": "sample-extension",
+  "name": "@cynosphere/moonlight-extensions",
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {

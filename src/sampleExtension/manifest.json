@@ -1,8 +1,0 @@
-{
-  "id": "sampleExtension",
-  "meta": {
-    "name": "Sample extension",
-    "description": "Sample Moonlight extension",
-    "authors": ["You!"]
-  }
-}
