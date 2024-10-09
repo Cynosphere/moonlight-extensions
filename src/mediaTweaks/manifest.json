@@ -1,0 +1,41 @@
+{
+  "id": "mediaTweaks",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Media Tweaks",
+    "tagline": "Various tweaks to images and videos. Every feature togglable.",
+    "authors": [
+      "Cynosphere"
+    ],
+    "tags": [
+      "qol",
+      "chat"
+    ],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "settings": {
+    "imageUrls": {
+      "displayName": "Image URLs",
+      "type": "boolean",
+      "default": true
+    },
+    "noGifAutosend": {
+      "displayName": "No GIF Autosend",
+      "description": "Puts the URL in the textbox when clicking a GIF instead of automatically sending it",
+      "type": "boolean",
+      "default": true
+    },
+    "videoFilenames": {
+      "displayName": "Video Filenames",
+      "type": "boolean",
+      "default": true
+    },
+    "inlineMosaicPlayback": {
+      "displayName": "Inline Mosaic Playback",
+      "description": "Allows videos in a media mosaic to be played inline instead of playing in a modal",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "apiLevel": 2
+}
