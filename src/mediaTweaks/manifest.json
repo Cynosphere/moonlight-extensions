@@ -1,4 +1,5 @@
 {
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "mediaTweaks",
   "version": "1.0.0",
   "meta": {
@@ -13,6 +14,9 @@
     ],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
+  "dependencies": [
+    "spacepack"
+  ],
   "settings": {
     "imageUrls": {
       "displayName": "Image URLs",
@@ -25,14 +29,21 @@
       "type": "boolean",
       "default": true
     },
-    "videoFilenames": {
-      "displayName": "Video Filenames",
+    "videoMetadata": {
+      "displayName": "Video Metadata",
+      "description": "Restores filename and filesize on video attachments",
       "type": "boolean",
       "default": true
     },
     "inlineMosaicPlayback": {
       "displayName": "Inline Mosaic Playback",
       "description": "Allows videos in a media mosaic to be played inline instead of playing in a modal",
+      "type": "boolean",
+      "default": true
+    },
+    "enlargeVideoButton": {
+      "displayName": "Enlarge Video Button",
+      "description": "Adds a button to open videos in the image preview modal",
       "type": "boolean",
       "default": true
     }

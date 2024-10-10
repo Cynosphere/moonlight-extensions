@@ -1,4 +1,5 @@
 {
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "platformStyles",
   "meta": {
     "name": "Platform Styles",
