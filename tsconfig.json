@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2022",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -9,5 +9,8 @@
     "moduleResolution": "node",
     "jsx": "react"
   },
-  "include": ["./src/**/*", "./env.d.ts"]
+  "include": [
+    "./src/**/*",
+    "./env.d.ts"
+  ]
 }
