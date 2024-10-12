@@ -6,8 +6,7 @@ export const patches: Patch[] = [
     find: "allowLinks:!!",
     replace: {
       match: /,(\(null!=.\?.:.\)\.embeds\)\),)/,
-      replacement: (_, orig) =>
-        `,moonlight.getConfigOption("mediaTweaks","imageUrls")??true?{}:${orig}`
+      replacement: (_, orig) => `,moonlight.getConfigOption("mediaTweaks","imageUrls")??true?{}:${orig}`
     }
   },
 
@@ -16,8 +15,7 @@ export const patches: Patch[] = [
     find: ".TOGGLE_GIF_PICKER,handler:",
     replace: {
       match: /.{1,2}===.\..\.CREATE_FORUM_POST/,
-      replacement: (orig: string) =>
-        `(moonlight.getConfigOption("mediaTweaks","noGifAutosend")??true?true:${orig})`
+      replacement: (orig: string) => `(moonlight.getConfigOption("mediaTweaks","noGifAutosend")??true?true:${orig})`
     }
   },
 
@@ -55,8 +53,7 @@ export const patches: Patch[] = [
 
       // Add button
       {
-        match:
-          /(?<=isVisualMediaType:.,channelId:.+?}=(.);.+?(\(0,.\.jsx\)).+?\.forceShowHover]:.}\),children:\[)/,
+        match: /(?<=isVisualMediaType:.,channelId:.+?}=(.);.+?(\(0,.\.jsx\)).+?\.forceShowHover]:.}\),children:\[)/,
         replacement: (_, props, createElement) =>
           `${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props}),`
       }
@@ -70,11 +67,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
   },
 
   enlargeVideoButton: {
-    dependencies: [
-      { id: "react" },
-      { ext: "spacepack", id: "spacepack" },
-      { id: "discord/components/common/index" }
-    ]
+    dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/components/common/index" }]
   }
 };
 

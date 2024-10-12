@@ -1,6 +1,7 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "platformStyles",
+  "version": "1.0.1",
   "meta": {
     "name": "Platform Styles",
     "tagline": "Change the window border apperance to another operating system's style.",

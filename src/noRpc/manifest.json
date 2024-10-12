@@ -5,12 +5,8 @@
   "meta": {
     "name": "No RPC",
     "tagline": "Disable RPC and game detection",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "development"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["development"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
   "settings": {

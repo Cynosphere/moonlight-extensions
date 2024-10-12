@@ -21,8 +21,7 @@ export const patches: Patch[] = [
   {
     find: ".ensureIsInPosition=",
     replace: {
-      match:
-        /(.{1,2})=.{1,2}!==(.{1,2})\.PlatformTypes\.WEB&&this\.inPopout\?22:0;/,
+      match: /(.{1,2})=.{1,2}!==(.{1,2})\.PlatformTypes\.WEB&&this\.inPopout\?22:0;/,
       replacement: (_, pipOffset, platformUtil) =>
         `${pipOffset}=require("platformStyles_helper").platformBorders(${platformUtil})!==${platformUtil}.PlatformTypes.WEB&&this.inPopout?22:0;`
     }
@@ -32,9 +31,7 @@ export const patches: Patch[] = [
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   helper: {
     run: function (module, exports, require) {
-      const style =
-        moonlight.getConfigOption<PlatformStyle>("platformStyles", "style") ??
-        "default";
+      const style = moonlight.getConfigOption<PlatformStyle>("platformStyles", "style") ?? "default";
 
       function platformBorders(platformUtils: PlatformUtils) {
         switch (style) {
@@ -70,5 +67,10 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
         platformClass
       };
     }
+  },
+
+  popoutFix: {
+    dependencies: [{ id: "discord/Dispatcher" }],
+    entrypoint: true
   }
 };

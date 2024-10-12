@@ -19,8 +19,7 @@ export const patches: Patch[] = [
     find: '"RunningGameStore"',
     replace: [
       {
-        match:
-          /.\.[a-zA-Z]+\.dispatch(\({type:"RUNNING_GAMES_CHANGE",games:.,added:.,removed:.}\))/,
+        match: /.\.[a-zA-Z]+\.dispatch(\({type:"RUNNING_GAMES_CHANGE",games:.,added:.,removed:.}\))/,
         // this isn't just a removal because haha removing breaks quietLoggers
         // and i dont feel like fixing (nor should i even have to fix, if you
         // pretend that im just a standard extension dev in this scenario)

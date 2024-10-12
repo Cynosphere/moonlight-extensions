@@ -5,18 +5,11 @@
   "meta": {
     "name": "Media Tweaks",
     "tagline": "Various tweaks to images and videos. Every feature togglable.",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "qol",
-      "chat"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
-  "dependencies": [
-    "spacepack"
-  ],
+  "dependencies": ["spacepack"],
   "settings": {
     "imageUrls": {
       "displayName": "Image URLs",
