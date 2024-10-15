@@ -59,6 +59,14 @@ export const patches: Patch[] = [
       }
     ]
   },
+  {
+    find: ".VIDEO_EMBED_PLAYBACK_STARTED,",
+    replace: {
+      match: ".proxyURL,placeholder:",
+      replacement:
+        '.proxyURL,renderAdjacentContent:require("mediaTweaks_enlargeVideoButton").createButtonGroup(arguments[0]),placeholder:'
+    }
+  },
 
   // No WebP and No Thumbnail Size
   {
@@ -93,5 +101,9 @@ export const styles = [
   background: linear-gradient(to bottom, hsl(var(--black-500-hsl)/.6), transparent);
   width: 100%;
   pointer-events: none;
+}
+
+[class^="inlineMediaEmbed_"] {
+  max-width: max-content !important;
 }`
 ];

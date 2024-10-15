@@ -7,7 +7,7 @@ type ImageProps = {
   targetWidth: number;
   targetHeight: number;
   format?: string;
-  quality?: number;
+  quality?: string;
   animated?: boolean;
   srcIsAnimated?: boolean;
 };
