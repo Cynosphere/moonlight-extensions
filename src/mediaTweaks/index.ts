@@ -1,5 +1,4 @@
 import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
-import { createElement } from "@moonlight-mod/wp/react";
 
 export const patches: Patch[] = [
   // Image URLs
