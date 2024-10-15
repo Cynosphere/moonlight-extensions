@@ -1,4 +1,5 @@
 import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
+import { createElement } from "@moonlight-mod/wp/react";
 
 export const patches: Patch[] = [
   // Image URLs
@@ -58,6 +59,15 @@ export const patches: Patch[] = [
           `${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props}),`
       }
     ]
+  },
+
+  // No WebP and No Thumbnail Size
+  {
+    find: /\(.{1,2}\+="\?"\+.{1,2}\.stringify\(.{1,2}\)\)/,
+    replace: {
+      match: /if\((.)\.sourceWidth<.\.targetWidth\){/,
+      replacement: (orig, props) => `require("mediaTweaks_imagePropsProcessor").default(${props});${orig}`
+    }
   }
 ];
 
@@ -68,6 +78,10 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
 
   enlargeVideoButton: {
     dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/components/common/index" }]
+  },
+
+  imagePropsProcessor: {
+    dependencies: []
   }
 };
 

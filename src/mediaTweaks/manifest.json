@@ -1,15 +1,22 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "mediaTweaks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "meta": {
     "name": "Media Tweaks",
     "tagline": "Various tweaks to images and videos. Every feature togglable.",
-    "authors": ["Cynosphere"],
-    "tags": ["qol", "chat"],
+    "authors": [
+      "Cynosphere"
+    ],
+    "tags": [
+      "qol",
+      "chat"
+    ],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
-  "dependencies": ["spacepack"],
+  "dependencies": [
+    "spacepack"
+  ],
   "settings": {
     "imageUrls": {
       "displayName": "Image URLs",
@@ -39,6 +46,18 @@
       "description": "Adds a button to open videos in the image preview modal",
       "type": "boolean",
       "default": true
+    },
+    "noWebp": {
+      "displayName": "No WebP",
+      "description": "Disables fetching WebP versions of images for better clarity",
+      "type": "boolean",
+      "default": true
+    },
+    "noThumbnailSize": {
+      "displayName": "No Thumbnail Size",
+      "description": "Removes size parameters from thumbnails. **This will cause your client to freeze in channels with lots of high resolution images in them**",
+      "type": "boolean",
+      "default": false
     }
   },
   "apiLevel": 2
