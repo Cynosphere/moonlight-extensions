@@ -1,0 +1,12 @@
+.theme-dark .greentext {
+	color: #afc960;
+}
+
+.theme-light .greentext {
+	color: #789922;
+}
+
+.greentext-ban {
+	font-weight: bold;
+	color: var(--red-400);
+}

@@ -1,9 +1,11 @@
+/* eslint-disable no-console */
 import * as esbuild from "esbuild";
 import copyStaticFiles from "esbuild-copy-static-files";
 import fs from "fs";
 
 const prod = process.env.NODE_ENV === "production";
 const watch = process.argv.includes("--watch");
+const clean = process.argv.includes("--clean");
 
 function makeConfig(ext, name) {
   const entryPoints = [];
@@ -46,20 +48,20 @@ function makeConfig(ext, name) {
     name: "buildLog",
     setup(build) {
       build.onEnd(() => {
-        console.log(
-          `[${timeFormatter.format(
-            new Date()
-          )}] [${ext}/${name}] build finished`
-        );
+        console.log(`[${timeFormatter.format(new Date())}] [${ext}/${name}] build finished`);
       });
     }
   };
+
+  const styleInput = `./src/${ext}/style.css`;
+  const styleOutput = `./dist/${ext}/style.css`;
 
   return {
     entryPoints,
     outdir: `./dist/${ext}`,
 
-    format: "cjs",
+    format: "iife",
+    globalName: "module.exports",
     platform: "node",
 
     treeShaking: true,
@@ -74,6 +76,14 @@ function makeConfig(ext, name) {
         src: `./src/${ext}/manifest.json`,
         dest: `./dist/${ext}/manifest.json`
       }),
+      ...(fs.existsSync(styleInput)
+        ? [
+            copyStaticFiles({
+              src: styleInput,
+              dest: styleOutput
+            })
+          ]
+        : []),
       wpImportPlugin,
       buildLogPlugin
     ]
@@ -83,15 +93,13 @@ function makeConfig(ext, name) {
 const exts = fs.readdirSync("./src");
 
 const config = exts
-  .map((x) => [
-    makeConfig(x, "index"),
-    makeConfig(x, "node"),
-    makeConfig(x, "host")
-  ])
+  .map((x) => [makeConfig(x, "index"), makeConfig(x, "node"), makeConfig(x, "host")])
   .flat()
   .filter((c) => c !== null);
 
-if (watch) {
+if (clean) {
+  fs.rmSync("./dist", { recursive: true, force: true });
+} else if (watch) {
   await Promise.all(
     config.map(async (c) => {
       const ctx = await esbuild.context(c);
