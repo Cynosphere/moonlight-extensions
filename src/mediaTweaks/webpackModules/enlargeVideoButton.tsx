@@ -26,14 +26,8 @@ type MimeType = {
   compressible?: boolean;
 };
 
-const createMediaModal = spacepack.findFunctionByStrings(
-  spacepack.findByCode(".zoomedCarouselModalRoot,items:")[0].exports,
-  '.searchParams.append("format","webp")'
-);
-
-const MediaModalClasses = spacepack.findByExports("modal", "image")[0].exports;
-
-const noop = () => null;
+const MediaModal = spacepack.findByCode(".Messages.MEDIA_VIEWER_MODAL_ALT_TEXT,")[0]?.exports?.default;
+const MediaModalClasses = spacepack.findByCode(/\.exports={modal:"modal_[a-z0-9]+"}/)[0].exports;
 
 const MimeTypes = Object.entries(
   spacepack.findByCode(`JSON.parse('{"application/1d-interleaved-parityfec":`)[0].exports
@@ -49,28 +43,25 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
           focusProps={{ offset: 2 }}
           aria-label="Enlarge Video"
           onClick={() => {
-            if (createMediaModal != null) {
-              console.log(mimeType, item);
-              const modal = createMediaModal(
-                {
-                  contentType: item.contentType,
-                  proxyUrl: item.originalItem.proxy_url,
-                  url: item.originalItem.proxy_url,
-                  width: item.originalItem.width,
-                  height: item.originalItem.height
-                },
-                noop,
-                true,
-                false
-              );
-              if (modal != null)
-                openModal((modalProps: any) => {
-                  return (
-                    <ModalRoot {...modalProps} className={MediaModalClasses.modal} size={ModalSize.DYNAMIC}>
-                      {modal.component}
-                    </ModalRoot>
-                  );
-                });
+            if (MediaModal != null) {
+              openModal((modalProps: any) => {
+                return (
+                  <MediaModal
+                    {...modalProps}
+                    className={MediaModalClasses.modal}
+                    items={[
+                      {
+                        url: item.originalItem.proxy_url,
+                        proxyUrl: item.originalItem.proxy_url,
+                        width: item.originalItem.width,
+                        height: item.originalItem.height,
+                        type: "VIDEO",
+                        origina: item.originalItem.proxy_url
+                      }
+                    ]}
+                  />
+                );
+              });
             }
           }}
         >
