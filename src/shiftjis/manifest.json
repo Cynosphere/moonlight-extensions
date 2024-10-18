@@ -13,5 +13,8 @@
     ],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
+  "dependencies": [
+    "markdown"
+  ],
   "apiLevel": 2
 }
