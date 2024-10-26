@@ -34,9 +34,9 @@ export const patches: Patch[] = [
   {
     find: 'location:"MessageAccessories"',
     replace: {
-      match: /=.\.length>1\?(\(0,.\..{1,2}\))\((.),(.)\):{}/,
-      replacement: (_, createCarousel, attachments, analytics) =>
-        `=${attachments}.length>1?${createCarousel}((moonlight.getConfigOption("mediaTweaks","inlineMosaicPlayback")??true)?${attachments}.filter(x=>!x.component.props.poster):${attachments},${analytics}):{}`
+      match: /=.\.length>1\?(\(0,.\..{1,2}\))\((.),({shouldRedactExplicitContent:.,shouldHideMediaOptions:.}),(.)\):{}/,
+      replacement: (_, createCarousel, attachments, props, analytics) =>
+        `=${attachments}.length>1?${createCarousel}((moonlight.getConfigOption("mediaTweaks","inlineMosaicPlayback")??true)?${attachments}.filter(x=>x.type!="VIDEO"):${attachments},${props},${analytics}):{}`
     }
   },
 

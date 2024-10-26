@@ -2,7 +2,7 @@ import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import * as Components from "@moonlight-mod/wp/discord/components/common/index";
 
-const { Clickable, Tooltip, MaximizeIcon, openModal, ModalRoot, ModalSize } = Components;
+const { Clickable, Tooltip, MaximizeIcon, openModal } = Components;
 
 const HoverButtonClasses = spacepack.findByExports("hoverButton")[0].exports;
 
@@ -26,7 +26,7 @@ type MimeType = {
   compressible?: boolean;
 };
 
-const MediaModal = spacepack.findByCode(".Messages.MEDIA_VIEWER_MODAL_ALT_TEXT,")[0]?.exports?.default;
+const LazyMediaModal = spacepack.findFunctionByStrings(spacepack.findByCode(/let{location:.,contextKey:/, "openModalLazy")[0]?.exports ?? {}, "openModalLazy");
 const MediaModalClasses = spacepack.findByCode(/\.exports={modal:"modal_[a-z0-9]+"}/)[0].exports;
 
 const MimeTypes = Object.entries(
@@ -43,24 +43,19 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
           focusProps={{ offset: 2 }}
           aria-label="Enlarge Video"
           onClick={() => {
-            if (MediaModal != null) {
-              openModal((modalProps: any) => {
-                return (
-                  <MediaModal
-                    {...modalProps}
-                    className={MediaModalClasses.modal}
-                    items={[
-                      {
-                        url: item.originalItem.proxy_url,
-                        proxyUrl: item.originalItem.proxy_url,
-                        width: item.originalItem.width,
-                        height: item.originalItem.height,
-                        type: "VIDEO",
-                        origina: item.originalItem.proxy_url
-                      }
-                    ]}
-                  />
-                );
+            if (LazyMediaModal != null) {
+              LazyMediaModal({
+                className: MediaModalClasses.modal,
+                items: [
+                  {
+                    url: item.originalItem.proxy_url,
+                    proxyUrl: item.originalItem.proxy_url,
+                    width: item.originalItem.width,
+                    height: item.originalItem.height,
+                    type: "VIDEO",
+                    origina: item.originalItem.proxy_url
+                  }
+                ]
               });
             }
           }}
