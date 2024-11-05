@@ -1,0 +1,28 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "allActivities",
+  "version": "1.0.0",
+  "meta": {
+    "name": "All Activities",
+    "tagline": "Shows all activities in user popouts, and optionally icons in the member list",
+    "authors": [
+      "Cynosphere"
+    ],
+    "tags": [
+      "profiles"
+    ],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "settings": {
+    "icons": {
+      "displayName": "Enable activity icons in member list",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "dependencies": [
+    "spacepack",
+    "common"
+  ],
+  "apiLevel": 2
+}

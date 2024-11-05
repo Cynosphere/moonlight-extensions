@@ -1,0 +1,13 @@
+.allActivities-icons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 4px;
+}
+
+.allActivities-iconCard {
+  width: 250px;
+}
+
+.allActivities-iconTooltip {
+  max-width: unset !important;
+}
