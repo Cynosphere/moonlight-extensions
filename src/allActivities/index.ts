@@ -3,7 +3,7 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 export const patches: Patch[] = [
   // Replace the existing activity/stream wrapper component with one we can add to easier
   {
-    find: /user:.,currentUser:.,stream:.,className:.+?user:.,currentUser:.,activity:.,className:/,
+    find: '"UserProfileFeaturedActivity"',
     replace: {
       match: /:function\(\){return (.)}/,
       replacement: ':function(){return require("allActivities_activities").default}'
