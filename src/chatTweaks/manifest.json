@@ -24,6 +24,12 @@
       "description": "When replying to messages, automatically turn off mentioning the original poster.",
       "type": "boolean",
       "default": true
+    },
+    "noReplyChainNag": {
+      "displayName": "Disable reply chain nag",
+      "description": "Removes the extra bar of text when replying to a chain of replies over 4 messages.",
+      "type": "boolean",
+      "default": true
     }
   },
   "apiLevel": 2
