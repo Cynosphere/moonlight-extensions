@@ -1,10 +1,15 @@
 .platform-icons-wrapper {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   object-fit: contain;
   margin-left: 0.25rem;
-  vertical-align: top;
+  vertical-align: text-top;
   position: relative;
-  top: 1px;
+  gap: 2px;
+}
+
+.platform-icons-message {
+  height: 20px;
 }
 
 .platform-icons-profile {
@@ -13,8 +18,6 @@
   align-items: center;
   box-sizing: border-box;
   width: fit-content;
-  gap: 2px;
   margin: 1px 0;
   padding: 0 2px;
-  top: 0;
 }
