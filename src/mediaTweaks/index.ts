@@ -34,13 +34,14 @@ export const patches: Patch[] = [
   {
     find: 'location:"MessageAccessories"',
     replace: {
-      match: /=(\(0,.\..{1,2}\))\((.),({shouldRedactExplicitContent:.,shouldHideMediaOptions:.}),(.)\),/,
+      match: /=(\(0,.\..{1,2}\))\((.),({shouldRedactExplicitContent:.,shouldHideMediaOptions:.}),("Media Mosaic")\),/,
       replacement: (_, createCarousel, attachments, props, analytics) =>
         `=${createCarousel}((moonlight.getConfigOption("mediaTweaks","inlineMosaicPlayback")??true)?${attachments}.filter(x=>x.type!="VIDEO"):${attachments},${props},${analytics}),`
     }
   },
 
   // Enlarge Video Button
+  // This is technically a Discord feature now but it doesn't support videos (yet?)
   // TODO: Move this patch to a library
   {
     find: ".spoilerRemoveMosaicItemButton:",
@@ -53,9 +54,10 @@ export const patches: Patch[] = [
 
       // Add button
       {
-        match: /(?<=isVisualMediaType:.,channelId:.+?}=(.);.+?(\(0,.\.jsx\)).+?\.forceShowHover]:.}\),children:\[)/,
-        replacement: (_, props, createElement) =>
-          `${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props}),`
+        match:
+          /(?<=isVisualMediaType:.,channelId:.+?}=(.);.+?"MosaicItemHoverButtons"\);)(?=.&&null!=.&&(.)\.push\((\(0,.\.jsx\)))/,
+        replacement: (_, props, buttons, createElement) =>
+          `${buttons}.push(${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props},"mediaTweaks_enlargeVideoButton"));`
       }
     ]
   },
