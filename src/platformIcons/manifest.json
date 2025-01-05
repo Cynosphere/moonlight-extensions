@@ -1,0 +1,39 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "platformIcons",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Platform Icons",
+    "tagline": "Shows what platform(s) a user is on",
+    "authors": [
+      "Cynosphere"
+    ],
+    "tags": [
+      "qol",
+      "chat"
+    ],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "dependencies": [
+    "spacepack"
+  ],
+  "settings": {
+    "self": {
+      "displayName": "Show own platforms",
+      "type": "boolean",
+      "default": true
+    },
+    "bots": {
+      "displayName": "Show bot platforms",
+      "type": "boolean",
+      "default": false
+    },
+    "voice": {
+      "displayName": "Show non-desktop platforms for voice users in channel list",
+      "description": "Only shows when connected to voice, as the data is only sent through voice",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "apiLevel": 2
+}

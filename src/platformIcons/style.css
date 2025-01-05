@@ -1,0 +1,20 @@
+.platform-icons-wrapper {
+  display: inline-block;
+  object-fit: contain;
+  margin-left: 0.25rem;
+  vertical-align: top;
+  position: relative;
+  top: 1px;
+}
+
+.platform-icons-profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  box-sizing: border-box;
+  width: fit-content;
+  gap: 2px;
+  margin: 1px 0;
+  padding: 0 2px;
+  top: 0;
+}

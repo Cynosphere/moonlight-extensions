@@ -1,0 +1,17 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "unminifyReactErrors",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Unminify React Errors",
+    "tagline": "Unminifies React errors",
+    "authors": [
+      "Cynosphere"
+    ],
+    "tags": [
+      "development"
+    ],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "apiLevel": 2
+}
