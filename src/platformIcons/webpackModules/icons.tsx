@@ -86,7 +86,7 @@ export default function PlatformIcons({ user, extraClasses, size = "xs", width, 
     return elements;
   }, [platforms]);
 
-  return (!bots && user.bot) || elements.length == 0 ? null : (
+  return (!bots && user?.bot) || elements.length == 0 ? null : (
     <div className={["platform-icons-wrapper", ...extraClasses].join(" ")}>{elements}</div>
   );
 }
