@@ -50,5 +50,25 @@ export const patches: Patch[] = [
         `${orig}(arguments[0].user?.bot&&arguments[0].message?.webhookId&&arguments[0].user?.isNonUserBot?.()&&(${type}=99)),`
     },
     prerequisite: webhookTag
+  },
+
+  // jump to blocked/ignored
+  {
+    find: '("interactionAvatarProfile",',
+    replace: {
+      match: /&&\(.\?.\.Z.show\({.+?:(.)\.Z.jumpToMessage/,
+      replacement: (_, mod) => `&&(${mod}.Z.jumpToMessage`
+    },
+    prerequisite: () => moonlight.getConfigOption<boolean>("chatTweaks", "jumpToBlocked") ?? true
+  },
+
+  // hide blocked/ignored
+  {
+    find: 'key:"pending-upload-".concat(',
+    replace: {
+      match: /if\((.)\.type===(.\..{1,3})\.MESSAGE_GROUP_BLOCKED\|\|/,
+      replacement: (orig, message, types) =>
+        `if(${message}.type===${types}.MESSAGE_GROUP_BLOCKED&&(moonlight.getConfigOption("chatTweaks","hideBlocked")??false))return;if(${message}.type===${types}.MESSAGE_GROUP_IGNORED&&(moonlight.getConfigOption("chatTweaks","hideIgnored")??false))return;${orig}`
+    }
   }
 ];
