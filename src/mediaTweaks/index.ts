@@ -77,6 +77,15 @@ export const patches: Patch[] = [
       match: /if\((.)\.sourceWidth<.\.targetWidth\){/,
       replacement: (orig, props) => `require("mediaTweaks_imagePropsProcessor").default(${props});${orig}`
     }
+  },
+
+  // No Sticker Autosend
+  {
+    find: ',"chat input type must be set");',
+    replace: {
+      match: /(?<=!.&&\()(\(0,.\..{1,2}\)\(.+?\.drafts\.type\))\?/,
+      replacement: (_, orig) => `((moonlight.getConfigOption("mediaTweaks","noStickerAutosend")??true)?true:${orig})?`
+    }
   }
 ];
 
