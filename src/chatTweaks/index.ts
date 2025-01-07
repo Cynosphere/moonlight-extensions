@@ -80,6 +80,16 @@ export const patches: Patch[] = [
       replacement: (_, isOwner) =>
         `=>null!=(${isOwner}=require("chatTweaks_ownerCrown").default(arguments[0]))&&${isOwner}&&null==`
     }
+  },
+
+  // no masked link paste
+  {
+    find: '.insertText("](".concat',
+    replace: {
+      match: /if\((null!=.&&null==.)\){/,
+      replacement: (_, linkCheck) =>
+        `if((moonlight.getConfigOption("chatTweaks","noMaskedLinkPaste")??true)?false:${linkCheck}){`
+    }
   }
 ];
 
