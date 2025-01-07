@@ -1,6 +1,6 @@
-import { Patch } from "@moonlight-mod/types";
+import { Patch, ExtensionWebpackModule } from "@moonlight-mod/types";
 
-let webhookTag = () => moonlight.getConfigOption<boolean>("chatTweaks", "webhookTag") ?? true;
+const webhookTag = () => moonlight.getConfigOption<boolean>("chatTweaks", "webhookTag") ?? true;
 
 export const patches: Patch[] = [
   // no reply mention
@@ -70,5 +70,21 @@ export const patches: Patch[] = [
       replacement: (orig, message, types) =>
         `if(${message}.type===${types}.MESSAGE_GROUP_BLOCKED&&(moonlight.getConfigOption("chatTweaks","hideBlocked")??false))return;if(${message}.type===${types}.MESSAGE_GROUP_IGNORED&&(moonlight.getConfigOption("chatTweaks","hideIgnored")??false))return;${orig}`
     }
+  },
+
+  // always show owner crown
+  {
+    find: ".lostPermission",
+    replace: {
+      match: /=>null!=(.)&&.&&null==/,
+      replacement: (_, isOwner) =>
+        `=>null!=(${isOwner}=require("chatTweaks_ownerCrown").default(arguments[0]))&&${isOwner}&&null==`
+    }
   }
 ];
+
+export const webpackModules: Record<string, ExtensionWebpackModule> = {
+  ownerCrown: {
+    dependencies: [{ ext: "common", id: "stores" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/Constants" }]
+  }
+};

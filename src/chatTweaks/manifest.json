@@ -16,7 +16,8 @@
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
   "dependencies": [
-    "spacepack"
+    "spacepack",
+    "common"
   ],
   "settings": {
     "noReplyPing": {
@@ -56,6 +57,11 @@
       "displayName": "Hide ignored messages completely",
       "type": "boolean",
       "default": false
+    },
+    "alwaysShowOwnerCrown": {
+      "displayName": "Always show owner crown",
+      "type": "boolean",
+      "default": true
     }
   },
   "apiLevel": 2
