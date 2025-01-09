@@ -1,7 +1,7 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "chatTweaks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "meta": {
     "name": "Chat Tweaks",
     "tagline": "Various tweaks to chatting. Every feature togglable.",
@@ -25,6 +25,17 @@
       "description": "When replying to messages, automatically turn off mentioning the original poster.",
       "type": "boolean",
       "default": true
+    },
+    "noReplyPingInvert": {
+      "displayName": "Disable Reply Mention -> Invert List Functionality",
+      "description": "Pings will be disabled except for people in the list when enabled",
+      "type": "boolean",
+      "default": false
+    },
+    "noReplyPingList": {
+      "displayName": "Disable Reply Mention -> Disabled Ping List",
+      "description": "When not empty, the user IDs in this list will have pings disabled, but pings will be enabled otherwise.",
+      "type": "list"
     },
     "noReplyChainNag": {
       "displayName": "Disable reply chain nag",

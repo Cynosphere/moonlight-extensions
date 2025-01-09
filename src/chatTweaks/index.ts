@@ -3,13 +3,13 @@ import { Patch, ExtensionWebpackModule } from "@moonlight-mod/types";
 const webhookTag = () => moonlight.getConfigOption<boolean>("chatTweaks", "webhookTag") ?? true;
 
 export const patches: Patch[] = [
-  // no reply mention
+  // no reply ping
   {
     find: ',source:"message-actions"})',
     replace: {
-      match: /,message:(.),shouldMention:!(.)\.shiftKey&&/,
-      replacement: (_, message, keyEvent) =>
-        `,message:${message},shouldMention:moonlight.getConfigOption("chatTweaks","noReplyPing")??true?${keyEvent}.shiftKey:!${keyEvent}.shiftKey&&`
+      match: /,message:(.),shouldMention:(!(.)\.shiftKey&&!(.)),/,
+      replacement: (_, message, shouldMention, keyEvent, self) =>
+        `,message:${message},shouldMention:require("chatTweaks_noReplyPing")?.default?.(${message},${keyEvent},${self})??(${shouldMention}),`
     }
   },
 
@@ -96,5 +96,6 @@ export const patches: Patch[] = [
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   ownerCrown: {
     dependencies: [{ ext: "common", id: "stores" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/Constants" }]
-  }
+  },
+  noReplyPing: {}
 };
