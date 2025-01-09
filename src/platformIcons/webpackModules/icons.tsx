@@ -7,7 +7,8 @@ import * as Components from "@moonlight-mod/wp/discord/components/common/index";
 
 const { Tooltip, ScreenIcon, MobilePhoneIcon, GlobeEarthIcon, GameControllerIcon } = Components;
 
-const IconsForPlatform = {
+type Platforms = "desktop" | "mobile" | "web" | "embedded" | "unknown";
+const IconsForPlatform: Record<Exclude<Platforms, "unknown">, React.ComponentType<IconsProps>> = {
   desktop: ScreenIcon,
   mobile: MobilePhoneIcon,
   web: GlobeEarthIcon,
@@ -16,7 +17,8 @@ const IconsForPlatform = {
 
 const { humanizeStatus } = spacepack.findByExports("humanizeStatus")[0].exports.ZP;
 
-const StatusColors = {
+type Statuses = "online" | "idle" | "dnd" | "offline" | "invisible";
+const StatusColors: Record<Exclude<Statuses, "offline" | "invisible">, string> = {
   online: "var(--green-360, var(--status-green-600))",
   idle: "var(--yellow-300, var(--status-yellow-500))",
   dnd: "var(--red-400, var(--status-red-500))"
@@ -25,6 +27,7 @@ const StatusColors = {
 type IconsProps = {
   user: any;
   extraClasses: string[];
+  configKey: string;
   size: "xxs" | "xs" | "sm" | "md" | "lg" | "custom" | "refresh_sm";
   width?: number;
   height?: number;
@@ -32,14 +35,15 @@ type IconsProps = {
 
 type Session = {
   clientInfo: {
-    client: "desktop" | "mobile" | "web" | "embedded" | "unknown";
+    client: Platforms;
   };
-  status: "online" | "idle" | "dnd" | "offline" | "invisible";
+  status: Statuses;
 };
 
-export default function PlatformIcons({ user, extraClasses, size = "xs", width, height }: IconsProps) {
-  const bots = moonlight.getConfigOption<Boolean>("platformIcons", "bots") ?? false;
-  const self = moonlight.getConfigOption<Boolean>("platformIcons", "self") ?? true;
+export default function PlatformIcons({ user, extraClasses, configKey, size = "xs", width, height }: IconsProps) {
+  const bots = moonlight.getConfigOption<boolean>("platformIcons", "bots") ?? false;
+  const self = moonlight.getConfigOption<boolean>("platformIcons", "self") ?? true;
+  const enabled = moonlight.getConfigOption<boolean>("platformIcons", configKey) ?? true;
 
   const platforms = useStateFromStores(
     [AuthenticationStore, PresenceStore, SessionsStore],
@@ -63,16 +67,15 @@ export default function PlatformIcons({ user, extraClasses, size = "xs", width, 
         text: `${humanizeStatus(status, false)} on ${platform.charAt(0).toUpperCase()}${platform.slice(1)}`,
         key: `platform-icons-tooltip-${platform}`
       };
-      // @ts-expect-error
-      const Icon = IconsForPlatform[platform];
+      const Icon = IconsForPlatform[platform as Exclude<Platforms, "unknown">];
+      const color = StatusColors[status as Exclude<Statuses, "offline" | "invisible">];
 
       elements.push(
         <Tooltip {...props}>
           {(tooltipProps: any) => (
             <Icon
               {...tooltipProps}
-              /* @ts-expect-error */
-              color={StatusColors[status]}
+              color={color}
               size={size}
               width={width}
               height={height}
@@ -86,7 +89,7 @@ export default function PlatformIcons({ user, extraClasses, size = "xs", width, 
     return elements;
   }, [platforms]);
 
-  return (!bots && user?.bot) || elements.length == 0 ? null : (
+  return !enabled || (!bots && user?.bot) || elements.length === 0 ? null : (
     <div className={["platform-icons-wrapper", ...extraClasses].join(" ")}>{elements}</div>
   );
 }

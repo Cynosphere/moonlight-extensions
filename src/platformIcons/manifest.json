@@ -33,6 +33,32 @@
       "description": "Only shows when connected to voice, as the data is only sent through voice",
       "type": "boolean",
       "default": true
+    },
+    "alwaysShowMobile": {
+      "displayName": "Always show mobile on avatar",
+      "description": "Normally only shows mobile if its online, this makes it show for all statuses",
+      "type": "boolean",
+      "default": true
+    },
+    "messages": {
+      "displayName": "Show icons in messages",
+      "type": "boolean",
+      "default": true
+    },
+    "memberList": {
+      "displayName": "Show icons in member list",
+      "type": "boolean",
+      "default": true
+    },
+    "directMessages": {
+      "displayName": "Show icons in Direct Messages list",
+      "type": "boolean",
+      "default": true
+    },
+    "profile": {
+      "displayName": "Show icons in profile",
+      "type": "boolean",
+      "default": true
     }
   },
   "apiLevel": 2
