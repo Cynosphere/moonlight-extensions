@@ -5,7 +5,7 @@ export const patches: Patch[] = [
   {
     find: "allowLinks:!!",
     replace: {
-      match: /,(\(null!=.\?.:.\)\.embeds\)\),)/,
+      match: /,(\(null!=\i\?\i:\i\)\.embeds\)\),)/,
       replacement: (_, orig) => `,moonlight.getConfigOption("mediaTweaks","imageUrls")??true?{}:${orig}`
     }
   },
@@ -14,7 +14,7 @@ export const patches: Patch[] = [
   {
     find: ".TOGGLE_GIF_PICKER,handler:",
     replace: {
-      match: /[A-Za-z_$][\w$]*===[A-Za-z_$][\w$]*\.[A-Za-z_$][\w$]*\.CREATE_FORUM_POST/,
+      match: /\i===\i\.\i\.CREATE_FORUM_POST/,
       replacement: (orig: string) => `(moonlight.getConfigOption("mediaTweaks","noGifAutosend")??true?true:${orig})`
     }
   },
@@ -24,7 +24,7 @@ export const patches: Patch[] = [
     find: "renderMetadata()",
     replace: {
       match:
-        /(?<=(.===.\.VIDEO)\?.+?(\(0,.\.jsx\))\("div",{className:(.+?\.overlayContentHidden]:).\|\|.\}\),children:.\(\)}\):null)]/,
+        /(?<=(\i===\i\.VIDEO)\?.+?(\(0,\i\.jsx\))\("div",{className:(.+?\.overlayContentHidden]:)\i\|\|\i\}\),children:\i\(\)}\):null)]/,
       replacement: (_, videoCheck, createElement, className) =>
         `,${videoCheck}&&(moonlight.getConfigOption("mediaTweaks","videoMetadata")??true)?${createElement}("div",{className:${className}this.state.playing&&!this.state.hovering}),children:${createElement}(require("mediaTweaks_videoMetadata").default,this.props)}):null]`
     }
@@ -34,7 +34,7 @@ export const patches: Patch[] = [
   {
     find: 'location:"MessageAccessories"',
     replace: {
-      match: /=(\(0,.\..{1,2}\))\((.),({shouldRedactExplicitContent:.,shouldHideMediaOptions:.}),("Media Mosaic")\),/,
+      match: /=(\(0,\i\.\i\))\((\i),({shouldRedactExplicitContent:\i,shouldHideMediaOptions:\i}),("Media Mosaic")\),/,
       replacement: (_, createCarousel, attachments, props, analytics) =>
         `=${createCarousel}((moonlight.getConfigOption("mediaTweaks","inlineMosaicPlayback")??true)?${attachments}.filter(x=>x.type!="VIDEO"):${attachments},${props},${analytics}),`
     }
@@ -48,14 +48,14 @@ export const patches: Patch[] = [
     replace: [
       // Send the full item over
       {
-        match: /,downloadURL:(.)\.downloadUrl,/,
+        match: /,downloadURL:(\i)\.downloadUrl,/,
         replacement: (orig, item) => `,item:${item}${orig}`
       },
 
       // Add button
       {
         match:
-          /(?<=isVisualMediaType:.,channelId:.+?}=(.);.+?"MosaicItemHoverButtons"\);)(?=.&&null!=.&&(.)\.push\((\(0,.\.jsx\)))/,
+          /(?<=isVisualMediaType:\i,channelId:.+?}=(\i);.+?"MosaicItemHoverButtons"\);)(?=\i&&null!=\i&&(\i)\.push\((\(0,\i\.jsx\)))/,
         replacement: (_, props, buttons, createElement) =>
           `${buttons}.push(${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props},"mediaTweaks_enlargeVideoButton"));`
       }
@@ -72,9 +72,9 @@ export const patches: Patch[] = [
 
   // No WebP and No Thumbnail Size
   {
-    find: /\(.{1,2}\+="\?"\+.{1,2}\.stringify\(.{1,2}\)\)/,
+    find: /\(\i\+="\?"\+\i\.stringify\(\i\)\)/,
     replace: {
-      match: /if\((.)\.sourceWidth<.\.targetWidth\){/,
+      match: /if\((\i)\.sourceWidth<.\.targetWidth\){/,
       replacement: (orig, props) => `require("mediaTweaks_imagePropsProcessor").default(${props});${orig}`
     }
   },
@@ -83,7 +83,7 @@ export const patches: Patch[] = [
   {
     find: ',"chat input type must be set");',
     replace: {
-      match: /(?<=!.&&\()(\(0,.\..{1,2}\)\(.+?\.drafts\.type\))\?/,
+      match: /(?<=!\i&&\()(\(0,\i\.\i\)\(.+?\.drafts\.type\))\?/,
       replacement: (_, orig) => `((moonlight.getConfigOption("mediaTweaks","noStickerAutosend")??true)?true:${orig})?`
     }
   }

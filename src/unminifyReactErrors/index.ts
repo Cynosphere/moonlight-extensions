@@ -1,10 +1,9 @@
 import { Patch, ExtensionWebpackModule } from "@moonlight-mod/types";
 
-// @ts-expect-error
 import ERROR_CODES from "./codes.json";
 
 const ERROR_MATCH =
-  /function (.)\(.\){for\(var .="https:\/\/reactjs\.org\/docs\/error-decoder\.html\?invariant="\+.,.=1;.<arguments\.length;.\+\+\).\+="&args\[\]="\+encodeURIComponent\(arguments\[.\]\);return"Minified React error #"\+.\+"; visit "\+.\+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings\."}/;
+  /function (\i)\(\i\){for\(var \i="https:\/\/reactjs\.org\/docs\/error-decoder\.html\?invariant="\+\i,\i=1;\i<arguments\.length;\i\+\+\)\i\+="&args\[\]="\+encodeURIComponent\(arguments\[\i\]\);return"Minified React error #"\+\i\+"; visit "\+\i\+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings\."}/;
 
 export const patches: Patch[] = [
   {
@@ -22,11 +21,13 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     run: function (module, exports, require) {
       module.exports = function unminify(code: string, ...args: any[]) {
         let index = 0;
-        return ERROR_CODES[code].replace(/%s/g, () => {
-          const arg = args[index];
-          index++;
-          return arg;
-        });
+        return (
+          (ERROR_CODES as Record<string, string>)[code]?.replace(/%s/g, () => {
+            const arg = args[index];
+            index++;
+            return arg;
+          }) ?? `<unknown code ${code}, React probably updated>`
+        );
       };
     }
   }

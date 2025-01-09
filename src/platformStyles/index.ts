@@ -3,9 +3,9 @@ import { PlatformStyle, PlatformUtils } from "./types";
 
 export const patches: Patch[] = [
   {
-    find: /switch\((.{1,2})\){case (.{1,2})\.PlatformTypes\.WINDOWS:/g,
+    find: ".window.USE_OSX_NATIVE_TRAFFIC_LIGHTS",
     replace: {
-      match: /switch\((.{1,2})\){case (.{1,2})\.PlatformTypes\.WINDOWS:/,
+      match: /switch\((\i)\){case (\i)\.PlatformTypes\.WINDOWS:/,
       replacement: (_, platformType, platformUtils) =>
         `${platformType}=require("platformStyles_helper").platformBorders(${platformUtils});switch(${platformType}){case ${platformUtils}.PlatformTypes.WINDOWS:`
     }
@@ -13,7 +13,7 @@ export const patches: Patch[] = [
   {
     find: '" platform-overlay"',
     replace: {
-      match: /(.)="platform-web"\),/,
+      match: /(\i)="platform-web"\),/,
       replacement: (orig, className) =>
         `${orig}(${className}=require("platformStyles_helper").platformClass()??${className}),`
     }
@@ -21,7 +21,7 @@ export const patches: Patch[] = [
   {
     find: ".ensureIsInPosition=",
     replace: {
-      match: /(.{1,2})=.{1,2}!==(.{1,2})\.PlatformTypes\.WEB&&this\.inPopout\?22:0;/,
+      match: /(\i)=\i!==(\i)\.PlatformTypes\.WEB&&this\.inPopout\?22:0;/,
       replacement: (_, pipOffset, platformUtil) =>
         `${pipOffset}=require("platformStyles_helper").platformBorders(${platformUtil})!==${platformUtil}.PlatformTypes.WEB&&this.inPopout?22:0;`
     }

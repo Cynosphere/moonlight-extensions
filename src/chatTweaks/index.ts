@@ -7,7 +7,7 @@ export const patches: Patch[] = [
   {
     find: ',source:"message-actions"})',
     replace: {
-      match: /,message:(.),shouldMention:(!(.)\.shiftKey&&!(.)),/,
+      match: /,message:(\i),shouldMention:(!(\i)\.shiftKey&&!(\i)),/,
       replacement: (_, message, shouldMention, keyEvent, self) =>
         `,message:${message},shouldMention:require("chatTweaks_noReplyPing")?.default?.(${message},${keyEvent},${self})??(${shouldMention}),`
     }
@@ -17,7 +17,7 @@ export const patches: Patch[] = [
   {
     find: ",replyChainLength:",
     replace: {
-      match: /=(.\.showThreadPromptOnReply)&&/,
+      match: /=(\i\.showThreadPromptOnReply)&&/,
       replacement: (_, showThreadPromptOnReply) =>
         `=(moonlight.getConfigOption("chatTweaks","noReplyChainNag")??true?false:${showThreadPromptOnReply})&&`
     }
@@ -37,7 +37,7 @@ export const patches: Patch[] = [
   {
     find: ".BOT:default:",
     replace: {
-      match: /case .\..{1,3}\.BOT:default:(.)=/,
+      match: /case \i\.\i\.BOT:default:(\i)=/,
       replacement: (orig, tag) => `case 99:${tag}="WEBHOOK";break;${orig}`
     },
     prerequisite: webhookTag
@@ -45,7 +45,7 @@ export const patches: Patch[] = [
   {
     find: ".Types.ORIGINAL_POSTER",
     replace: {
-      match: /(.)=.\.Z\.Types\.ORIGINAL_POSTER\),/,
+      match: /(\i)=\i\.\i\.Types\.ORIGINAL_POSTER\),/,
       replacement: (orig, type) =>
         `${orig}(arguments[0].user?.bot&&arguments[0].message?.webhookId&&arguments[0].user?.isNonUserBot?.()&&(${type}=99)),`
     },
@@ -56,8 +56,8 @@ export const patches: Patch[] = [
   {
     find: '("interactionAvatarProfile",',
     replace: {
-      match: /&&\(.\?.\.Z.show\({.+?:(.)\.Z.jumpToMessage/,
-      replacement: (_, mod) => `&&(${mod}.Z.jumpToMessage`
+      match: /&&\(\i\?\i\.\i.show\({.+?:(\i\.\i).jumpToMessage/,
+      replacement: (_, mod) => `&&(${mod}.jumpToMessage`
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("chatTweaks", "jumpToBlocked") ?? true
   },
@@ -66,7 +66,7 @@ export const patches: Patch[] = [
   {
     find: 'key:"pending-upload-".concat(',
     replace: {
-      match: /if\((.)\.type===(.\..{1,3})\.MESSAGE_GROUP_BLOCKED\|\|/,
+      match: /if\((\i)\.type===(\i\.\i)\.MESSAGE_GROUP_BLOCKED\|\|/,
       replacement: (orig, message, types) =>
         `if(${message}.type===${types}.MESSAGE_GROUP_BLOCKED&&(moonlight.getConfigOption("chatTweaks","hideBlocked")??false))return;if(${message}.type===${types}.MESSAGE_GROUP_IGNORED&&(moonlight.getConfigOption("chatTweaks","hideIgnored")??false))return;${orig}`
     }
@@ -76,7 +76,7 @@ export const patches: Patch[] = [
   {
     find: ".lostPermission",
     replace: {
-      match: /=>null!=(.)&&.&&null==/,
+      match: /=>null!=(\i)&&\i&&null==/,
       replacement: (_, isOwner) =>
         `=>null!=(${isOwner}=require("chatTweaks_ownerCrown").default(arguments[0]))&&${isOwner}&&null==`
     }
@@ -86,7 +86,7 @@ export const patches: Patch[] = [
   {
     find: '.insertText("](".concat',
     replace: {
-      match: /if\((null!=.&&null==.)\){/,
+      match: /if\((null!=\i&&null==\i)\){/,
       replacement: (_, linkCheck) =>
         `if((moonlight.getConfigOption("chatTweaks","noMaskedLinkPaste")??true)?false:${linkCheck}){`
     }
