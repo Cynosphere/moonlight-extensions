@@ -1,0 +1,46 @@
+.inAppNotification-content {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.inAppNotification-card {
+  padding: 8px 4px;
+  border-radius: 8px;
+  background-color: var(--background-secondary);
+  max-width: 65vw;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@keyframes inAppNotification-timer {
+  from {
+    width: calc(100% + 8px);
+  }
+  to {
+    width: 0;
+  }
+}
+
+.inAppNotification-timer {
+  width: 0;
+  height: 4px;
+  position: relative;
+  bottom: -8px;
+  left: -4px;
+  background: var(--text-normal);
+  animation: 10s ease-in 0s inAppNotification-timer;
+}
+
+.inAppNotification-nameContainer {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+}

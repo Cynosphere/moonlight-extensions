@@ -1,0 +1,22 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "inAppNotifications",
+  "version": "1.0.0",
+  "meta": {
+    "name": "In App Notifications",
+    "tagline": "In app notifications akin to mobile",
+    "authors": [
+      "Cynosphere"
+    ],
+    "tags": [
+      "qol",
+      "chat"
+    ],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "dependencies": [
+    "spacepack",
+    "common"
+  ],
+  "apiLevel": 2
+}
