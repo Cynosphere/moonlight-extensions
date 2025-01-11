@@ -1,0 +1,51 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "whoJoined",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Who Joined?",
+    "tagline": "Reads out who joined or left voice with TTS",
+    "description": "Linux users will need to enable speech-dispatcher support via Native Fixes",
+    "authors": [
+      "Cynosphere"
+    ],
+    "tags": [
+      "voice",
+      "qol"
+    ],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "settings": {
+    "allowStage": {
+      "displayName": "Allow in stage channels",
+      "type": "boolean",
+      "default": false
+    },
+    "username": {
+      "displayName": "Use username instead of display name",
+      "description": "Also overrides friend nicknames and server nicknames",
+      "type": "boolean",
+      "default": false
+    },
+    "friendNicknames": {
+      "displayName": "Use friend nicknames if available",
+      "type": "boolean",
+      "default": true
+    },
+    "serverNicknames": {
+      "displayName": "Use server nicknames if available",
+      "type": "boolean",
+      "default": true
+    },
+    "aliases": {
+      "displayName": "Aliases",
+      "description": "User ID | Name to read out",
+      "type": "dictionary"
+    }
+  },
+  "dependencies": [
+    "common",
+    "spacepack"
+  ],
+  "apiLevel": 2
+}
