@@ -21,48 +21,56 @@
     "imageUrls": {
       "displayName": "Image URLs",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "noGifAutosend": {
       "displayName": "No GIF Autosend",
       "description": "Puts the URL in the textbox when clicking a GIF instead of automatically sending it",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "videoMetadata": {
       "displayName": "Video Metadata",
       "description": "Restores filename and filesize on video attachments",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "inlineMosaicPlayback": {
       "displayName": "Inline Mosaic Playback",
       "description": "Allows videos in a media mosaic to be played inline instead of playing in a modal",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "enlargeVideoButton": {
       "displayName": "Enlarge Video Button",
       "description": "Adds a button to open videos in the image preview modal",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "noWebp": {
       "displayName": "No WebP",
       "description": "Disables fetching WebP versions of images for better clarity",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "noThumbnailSize": {
       "displayName": "No Thumbnail Size",
       "description": "Removes size parameters from thumbnails. **This will cause your client to freeze in channels with lots of high resolution images in them**",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "advice": "none"
     },
     "noStickerAutosend": {
       "displayName": "No Sticker Autosend",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     }
   },
   "apiLevel": 2

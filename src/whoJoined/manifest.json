@@ -19,28 +19,33 @@
     "allowStage": {
       "displayName": "Allow in stage channels",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "advice": "none"
     },
     "username": {
       "displayName": "Use username instead of display name",
       "description": "Also overrides friend nicknames and server nicknames",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "advice": "none"
     },
     "friendNicknames": {
       "displayName": "Use friend nicknames if available",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "serverNicknames": {
       "displayName": "Use server nicknames if available",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "aliases": {
       "displayName": "Aliases",
       "description": "User ID | Name to read out",
-      "type": "dictionary"
+      "type": "dictionary",
+      "advice": "none"
     }
   },
   "dependencies": [

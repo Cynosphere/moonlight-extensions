@@ -17,7 +17,8 @@
     "icons": {
       "displayName": "Enable activity icons in member list",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "reload"
     }
   },
   "dependencies": [

@@ -21,7 +21,8 @@
         "osx",
         "linux",
         "web"
-      ]
+      ],
+      "advice": "restart"
     }
   },
   "apiLevel": 2

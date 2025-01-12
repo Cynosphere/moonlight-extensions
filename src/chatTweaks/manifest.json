@@ -24,61 +24,72 @@
       "displayName": "Disable Reply Mention",
       "description": "When replying to messages, automatically turn off mentioning the original poster.",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "noReplyPingInvert": {
       "displayName": "Disable Reply Mention -> Invert List Functionality",
       "description": "Pings will be disabled except for people in the list when enabled",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "advice": "none"
     },
     "noReplyPingList": {
       "displayName": "Disable Reply Mention -> Disabled Ping List",
       "description": "When not empty, the user IDs in this list will have pings disabled, but pings will be enabled otherwise.",
-      "type": "list"
+      "type": "list",
+      "advice": "none"
     },
     "noReplyChainNag": {
       "displayName": "Disable reply chain nag",
       "description": "Removes the extra bar of text when replying to a chain of replies over 4 messages.",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "appToBot": {
       "displayName": "App to Bot",
       "description": "Revert bot tags back to saying bot",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "reload"
     },
     "webhookTag": {
       "displayName": "Webhook Tag",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "reload"
     },
     "jumpToBlocked": {
       "displayName": "Allow jumping to blocked/ignored messages",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "reload"
     },
     "hideBlocked": {
       "displayName": "Hide blocked messages completely",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "advice": "none"
     },
     "hideIgnored": {
       "displayName": "Hide ignored messages completely",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "advice": "none"
     },
     "alwaysShowOwnerCrown": {
       "displayName": "Always show owner crown",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "noMaskedLinkPaste": {
       "displayName": "No Masked Link Paste",
       "description": "Prevents highlighted text from becoming a masked link when pasting a link",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     }
   },
   "apiLevel": 2

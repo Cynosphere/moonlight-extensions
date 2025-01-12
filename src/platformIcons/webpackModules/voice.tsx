@@ -35,7 +35,7 @@ export default function PlatformIconVoice({ channelId, user }: PlatformIconVoice
   );
 
   const Icon = React.useMemo(
-    () => (platform == VoicePlatforms.MOBILE ? MobilePhoneIcon : GameControllerIcon),
+    () => (platform === VoicePlatforms.MOBILE ? MobilePhoneIcon : GameControllerIcon),
     [platform]
   );
   const tooltipText = React.useMemo(() => `Connected via ${PlatformNames[platform]}`, [platform]);

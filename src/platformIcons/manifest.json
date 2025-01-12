@@ -21,44 +21,52 @@
     "self": {
       "displayName": "Show own platforms",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "bots": {
       "displayName": "Show bot platforms",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "advice": "none"
     },
     "voice": {
       "displayName": "Show non-desktop platforms for voice users in channel list",
       "description": "Only shows when connected to voice, as the data is only sent through voice",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "alwaysShowMobile": {
       "displayName": "Always show mobile on avatar",
       "description": "Normally only shows mobile if its online, this makes it show for all statuses",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "reload"
     },
     "messages": {
       "displayName": "Show icons in messages",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "memberList": {
       "displayName": "Show icons in member list",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "directMessages": {
       "displayName": "Show icons in Direct Messages list",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     },
     "profile": {
       "displayName": "Show icons in profile",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "advice": "none"
     }
   },
   "apiLevel": 2
