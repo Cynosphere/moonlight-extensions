@@ -5,20 +5,11 @@
   "meta": {
     "name": "Chat Tweaks",
     "tagline": "Various tweaks to chatting. Every feature togglable.",
-    "authors": [
-      "Cynosphere",
-      "Jane Shimmer"
-    ],
-    "tags": [
-      "qol",
-      "chat"
-    ],
+    "authors": ["Cynosphere", "Jane Shimmer"],
+    "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
-  "dependencies": [
-    "spacepack",
-    "common"
-  ],
+  "dependencies": ["spacepack", "common"],
   "settings": {
     "noReplyPing": {
       "displayName": "Disable Reply Mention",

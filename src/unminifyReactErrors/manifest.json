@@ -5,12 +5,8 @@
   "meta": {
     "name": "Unminify React Errors",
     "tagline": "Unminifies React errors",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "development"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["development"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
   "apiLevel": 2

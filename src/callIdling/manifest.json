@@ -5,13 +5,8 @@
   "meta": {
     "name": "Call Idling",
     "tagline": "Disables auto-disconnect in empty calls",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "voice",
-      "qol"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["voice", "qol"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
   "apiLevel": 2

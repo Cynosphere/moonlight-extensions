@@ -5,16 +5,10 @@
   "meta": {
     "name": "Greentext",
     "tagline": ">has to explain what it does",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "chat"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
-  "dependencies": [
-    "markdown"
-  ],
+  "dependencies": ["markdown"],
   "apiLevel": 2
 }

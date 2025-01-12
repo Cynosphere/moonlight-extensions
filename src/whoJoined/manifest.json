@@ -6,13 +6,8 @@
     "name": "Who Joined?",
     "tagline": "Reads out who joined or left voice with TTS",
     "description": "Linux users will need to enable speech-dispatcher support via Native Fixes",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "voice",
-      "qol"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["voice", "qol"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
   "settings": {
@@ -48,9 +43,6 @@
       "advice": "none"
     }
   },
-  "dependencies": [
-    "common",
-    "spacepack"
-  ],
+  "dependencies": ["common", "spacepack"],
   "apiLevel": 2
 }

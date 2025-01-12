@@ -5,16 +5,10 @@
   "meta": {
     "name": "ShiftJIS Codeblocks",
     "tagline": "Renders codeblocks with the `sjis` language as normal text in a ShiftJIS supported font",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "chat"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
-  "dependencies": [
-    "markdown"
-  ],
+  "dependencies": ["markdown"],
   "apiLevel": 2
 }

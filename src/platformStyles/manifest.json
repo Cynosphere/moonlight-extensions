@@ -5,23 +5,14 @@
   "meta": {
     "name": "Platform Styles",
     "tagline": "Change the window border appearance to another operating system's style.",
-    "authors": [
-      "Cynosphere",
-      "adryd"
-    ]
+    "authors": ["Cynosphere", "adryd"]
   },
   "settings": {
     "style": {
       "displayName": "Style (linux for system border)",
       "type": "select",
       "default": "default",
-      "options": [
-        "default",
-        "win",
-        "osx",
-        "linux",
-        "web"
-      ],
+      "options": ["default", "win", "osx", "linux", "web"],
       "advice": "restart"
     }
   },

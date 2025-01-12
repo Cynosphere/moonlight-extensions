@@ -5,18 +5,11 @@
   "meta": {
     "name": "Platform Icons",
     "tagline": "Shows what platform(s) a user is on",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "qol",
-      "chat"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
-  "dependencies": [
-    "spacepack"
-  ],
+  "dependencies": ["spacepack"],
   "settings": {
     "self": {
       "displayName": "Show own platforms",

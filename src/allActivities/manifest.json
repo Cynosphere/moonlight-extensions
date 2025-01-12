@@ -5,12 +5,8 @@
   "meta": {
     "name": "All Activities",
     "tagline": "Shows all activities in user popouts, and optionally icons in the member list",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "profiles"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["profiles"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
   "settings": {
@@ -21,9 +17,6 @@
       "advice": "reload"
     }
   },
-  "dependencies": [
-    "spacepack",
-    "common"
-  ],
+  "dependencies": ["spacepack", "common"],
   "apiLevel": 2
 }
