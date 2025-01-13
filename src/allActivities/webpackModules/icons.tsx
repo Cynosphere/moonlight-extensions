@@ -7,12 +7,10 @@ import { ApplicationStore, GameStore, UserStore } from "@moonlight-mod/wp/common
 // FIXME: mappings
 const { ActivityTypes, PlatformTypes } = spacepack.require("discord/Constants");
 
-const useUserProfileActivity = spacepack.findByCode('("use-user-' + 'profile-activity")')[0].exports.Z;
-const ConnectionPlatforms = spacepack.findByExports("getByUrl", "get", "isSupported")[0].exports.Z;
-const UserProfileActivityCard = spacepack.findByCode('location:"' + 'UserProfileActivityCard",')[0].exports.Z;
+const useUserProfileActivity = spacepack.findByCode(`${'("use-user-profile-activity")'}`)[0].exports.Z;
+const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get(", `${"isSupported:"}`)[0].exports.Z;
+const UserProfileActivityCard = spacepack.findByCode(`${'location:"UserProfileActivityCard",'}`)[0].exports.Z;
 
-// findByExports is unreliable for whatever reason and causes every other reload of the client to fail????????????
-//const ActivityClasses = spacepack.findByExports("multipleIconWrapper", "headerIcon")[0].exports;
 const ActivityClasses = spacepack.findByCode(
   "applicationStreamingPreviewWrapper:" + '"applicationStreamingPreviewWrapper_'
 )[0].exports;

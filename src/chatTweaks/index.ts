@@ -78,7 +78,7 @@ export const patches: Patch[] = [
     replace: {
       match: /=>null!=(\i)&&\i&&null==/,
       replacement: (_, isOwner) =>
-        `=>null!=(${isOwner}=require("chatTweaks_ownerCrown").default(arguments[0]))&&${isOwner}&&null==`
+        `=>null!=(${isOwner}=require("chatTweaks_ownerCrown")?.default?.(arguments[0]))&&${isOwner}&&null==`
     }
   },
 
@@ -90,6 +90,16 @@ export const patches: Patch[] = [
       replacement: (_, linkCheck) =>
         `if((moonlight.getConfigOption("chatTweaks","noMaskedLinkPaste")??true)?false:${linkCheck}){`
     }
+  },
+
+  // double click edit/reply
+  {
+    find: ',role:"article",children:[',
+    replace: {
+      match: "}),ref:",
+      replacement:
+        '}),onDoubleClick:(event)=>require("chatTweaks_doubleClick")?.default?.(arguments[0].childrenMessageContent.props,event),ref:'
+    }
   }
 ];
 
@@ -97,5 +107,8 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
   ownerCrown: {
     dependencies: [{ ext: "common", id: "stores" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/Constants" }]
   },
-  noReplyPing: {}
+  noReplyPing: {},
+  doubleClick: {
+    dependencies: [{ ext: "common", id: "stores" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/Dispatcher" }]
+  }
 };
