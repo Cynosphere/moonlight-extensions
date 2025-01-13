@@ -5,11 +5,14 @@
   "meta": {
     "name": "Platform Styles",
     "tagline": "Change the window border appearance to another operating system's style.",
-    "authors": ["Cynosphere", "adryd"]
+    "authors": ["Cynosphere", "adryd"],
+    "tags": ["appearance"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
   "settings": {
     "style": {
-      "displayName": "Style (linux for system border)",
+      "displayName": "Style",
+      "description": "Use `linux` for system window border",
       "type": "select",
       "default": "default",
       "options": ["default", "win", "osx", "linux", "web"],
