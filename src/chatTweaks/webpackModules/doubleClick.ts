@@ -28,7 +28,7 @@ Dispatcher.subscribe("MESSAGE_END_EDIT", (event) => {
   editData = {};
 });
 
-export default function onDobuleClick({ message }: { message: any }, event: MouseEvent) {
+export default function onDoubleClick({ message }: { message: any }, event: MouseEvent) {
   const allowEdit = moonlight.getConfigOption<boolean>("chatTweaks", "doubleClickEdit") ?? true;
   const allowReply = moonlight.getConfigOption<boolean>("chatTweaks", "doubleClickReply") ?? true;
   const swapSelf = moonlight.getConfigOption<boolean>("chatTweaks", "doubleClickSwapSelf") ?? false;
