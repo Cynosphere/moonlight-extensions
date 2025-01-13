@@ -168,7 +168,12 @@ function InAppNotification({ message, channel, author }: { message: any; channel
   }, [newMessage, channel, guild]);
 
   return (
-    <Clickable className="inAppNotification-card" onClick={jump}>
+    <Clickable
+      className="inAppNotification-card"
+      onClick={jump}
+      // @ts-expect-error fix type
+      onContextMenu={() => popToast()}
+    >
       {guild != null || channel.type === Constants.ChannelTypes.GROUP_DM ? (
         <div className="inAppNotification-nameContainer">
           {guildIcon || dmIcon ? <img className={EmbedClasses.embedAuthorIcon} src={guildIcon ?? dmIcon} /> : null}
@@ -212,6 +217,8 @@ Dispatcher.subscribe("MESSAGE_CREATE", (event: any) => {
 
     if (!notify) return;
     if (channelId === SelectedChannelStore.getChannelId()) return;
+
+    if (moonlight.getConfigOption<boolean>("inAppNotifications", "replace") ?? false) popToast();
 
     showToast(
       createToast(null, ToastType.CUSTOM, {

@@ -1,14 +1,24 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "inAppNotifications",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "meta": {
     "name": "In App Notifications",
     "tagline": "In app notifications akin to mobile",
     "authors": ["Cynosphere"],
     "tags": ["qol", "chat"],
-    "source": "https://github.com/Cynosphere/moonlight-extensions"
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "changelog": "- Setting to make new notifications replace old instead of stacking\n- Right click to clear notification without jumping"
   },
   "dependencies": ["spacepack", "common"],
+  "settings": {
+    "replace": {
+      "displayName": "New notifications replace existing",
+      "description": "Instead of stacking and having to wait for each notification",
+      "type": "boolean",
+      "default": false,
+      "advice": "none"
+    }
+  },
   "apiLevel": 2
 }
