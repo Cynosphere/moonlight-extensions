@@ -49,7 +49,7 @@ export default function onDoubleClick({ message }: { message: any }, event: Mous
     } else if (!event.shiftKey) {
       if (swapSelf && allowReply) {
         reply = true;
-      } else {
+      } else if (allowEdit) {
         edit = true;
       }
     }

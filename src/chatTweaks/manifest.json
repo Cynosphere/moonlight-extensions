@@ -1,13 +1,14 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "chatTweaks",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "meta": {
     "name": "Chat Tweaks",
     "tagline": "Various tweaks to chatting. Every feature togglable.",
     "authors": ["Cynosphere", "Jane Shimmer"],
     "tags": ["qol", "chat"],
-    "source": "https://github.com/Cynosphere/moonlight-extensions"
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "changelog": "Fixed double click edit not actually being disableable"
   },
   "dependencies": ["spacepack", "common"],
   "settings": {
