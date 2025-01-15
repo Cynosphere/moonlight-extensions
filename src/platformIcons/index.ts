@@ -3,39 +3,6 @@ import { Patch, ExtensionWebpackModule } from "@moonlight-mod/types";
 const alwaysShowMobile = () => moonlight.getConfigOption<boolean>("platformIcons", "alwaysShowMobile") ?? true;
 
 export const patches: Patch[] = [
-  // Messages
-  // TODO: probably api-ify this
-  {
-    find: '},"new-member")),',
-    replace: {
-      match: /(?<=(\(0,\i\.jsx\)).+?)\.BADGES]=(.);/,
-      replacement: (_, createElement, badges) =>
-        `.BADGES]=[${createElement}(require("platformIcons_icons").default,{user:arguments[0].message.author,configKey:"messages",extraClasses:["platform-icons-message"],size:"sm"}),...${badges}];`
-    }
-  },
-
-  // Member list
-  // TODO: api-ify
-  {
-    find: ".lostPermission",
-    replace: {
-      match: /(\(0,\i\.jsxs\))\(\i\.Fragment,{children:\[\i\(\),/,
-      replacement: (orig: string, createElement) =>
-        `${orig}${createElement}(require("platformIcons_icons").default,{user:arguments[0].user,configKey:"memberList",extraClasses:["platform-icons-member-list"]}),`
-    }
-  },
-
-  // DM list
-  // TODO: api-ify
-  {
-    find: ".interactiveSystemDM]:",
-    replace: {
-      match: /decorators:(\i\.isSystemDM\(\)\?(\(0,\i\.jsx\))\(.+?verified:!0}\):null)/,
-      replacement: (_, orig, createElement) =>
-        `decorators:[${orig},${createElement}(require("platformIcons_icons").default,{user:arguments[0].user,configKey:"directMessages",extraClasses:["platform-icons-private-message"]})]`
-    }
-  },
-
   // Profile
   // TODO: api-ify
   {
@@ -103,12 +70,16 @@ export const patches: Patch[] = [
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   icons: {
+    entrypoint: true,
     dependencies: [
       { ext: "spacepack", id: "spacepack" },
       { id: "react" },
       { id: "discord/packages/flux" },
       { id: "discord/components/common/index" },
       { ext: "common", id: "stores" },
+      { ext: "componentEditor", id: "dmList" },
+      { ext: "componentEditor", id: "memberList" },
+      { ext: "componentEditor", id: "messages" },
       "humanizeStatus:"
     ]
   },

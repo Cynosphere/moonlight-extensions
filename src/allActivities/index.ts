@@ -26,17 +26,6 @@ export const patches: Patch[] = [
       match: /\(0,\i\.uniqWith\)/,
       replacement: "((inp)=>inp)"
     }
-  },
-
-  // Icons
-  {
-    find: ".lostPermission",
-    replace: {
-      match: /name:null==\i\?(\(0,\i\.jsx\))\("span"/,
-      replacement: (orig, createElement) =>
-        `children:${createElement}(require("allActivities_icons").default,{user:arguments[0].user}),${orig}`
-    },
-    prerequisite: () => moonlight.getConfigOption<boolean>("allActivities", "icons") ?? true
   }
 ];
 
@@ -45,12 +34,14 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }]
   },
   icons: {
+    entrypoint: true,
     dependencies: [
       { ext: "spacepack", id: "spacepack" },
       { id: "react" },
       { ext: "common", id: "stores" },
       { id: "discord/Constants" },
       { id: "discord/components/common/index" },
+      { ext: "componentEditor", id: "memberList" },
       'applicationStreamingPreviewWrapper:"applicationStreamingPreviewWrapper_'
     ]
   }

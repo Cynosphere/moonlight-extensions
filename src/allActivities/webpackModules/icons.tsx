@@ -3,6 +3,7 @@ import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import { ApplicationStore, GameStore, UserStore } from "@moonlight-mod/wp/common_stores";
+import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
 
 // FIXME: mappings
 const { ActivityTypes, PlatformTypes } = spacepack.require("discord/Constants");
@@ -33,7 +34,12 @@ type ActivityIconIconProps = {
 
 function ActivityIconIcon({ card, icon }: ActivityIconIconProps) {
   return (
-    <Tooltip text={card} position="left" tooltipClassName="allActivities-iconTooltip">
+    <Tooltip
+      // @ts-expect-error needs mappings update
+      text={card}
+      position="left"
+      tooltipClassName="allActivities-iconTooltip"
+    >
       {(tooltipProps: any) => <img {...tooltipProps} className={ActivityClasses.headerIcon} src={icon} />}
     </Tooltip>
   );
@@ -78,7 +84,7 @@ function ActivityIcon({ user, currentUser, activity }: ActivityIconProps) {
   return null;
 }
 
-export default function ActivityIcons({ user }: ActivityIconsProps) {
+function ActivityIcons({ user }: ActivityIconsProps) {
   const currentUser = useStateFromStores([UserStore], () => UserStore.getCurrentUser());
   const { live } = useUserProfileActivity(user.id);
 
@@ -90,3 +96,6 @@ export default function ActivityIcons({ user }: ActivityIconsProps) {
     </div>
   );
 }
+
+if (moonlight.getConfigOption<boolean>("allActivities", "icons") ?? true)
+  MemberList.addItem("activityIcons", ActivityIcons);

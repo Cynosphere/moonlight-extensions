@@ -1,6 +1,9 @@
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
+import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
+import DMList from "@moonlight-mod/wp/componentEditor_dmList";
+import Messages from "@moonlight-mod/wp/componentEditor_messages";
 
 import { AuthenticationStore, PresenceStore, SessionsStore } from "@moonlight-mod/wp/common_stores";
 import * as Components from "@moonlight-mod/wp/discord/components/common/index";
@@ -28,7 +31,7 @@ type IconsProps = {
   user: any;
   extraClasses: string[];
   configKey: string;
-  size: "xxs" | "xs" | "sm" | "md" | "lg" | "custom" | "refresh_sm";
+  size?: "xxs" | "xs" | "sm" | "md" | "lg" | "custom" | "refresh_sm";
   width?: number;
   height?: number;
 };
@@ -93,3 +96,26 @@ export default function PlatformIcons({ user, extraClasses, configKey, size = "x
     <div className={["platform-icons-wrapper", ...extraClasses].join(" ")}>{elements}</div>
   );
 }
+
+DMList.addDecorator("platformIcons", (props: any) => (
+  <PlatformIcons user={props.user} configKey="directMessages" extraClasses={["platform-icons-private-message"]} />
+));
+MemberList.addDecorator(
+  "platformIcons",
+  (props: any) => (
+    <PlatformIcons user={props.user} configKey="memberList" extraClasses={["platform-icons-member-list"]} />
+  ),
+  "bot-tag"
+);
+Messages.addUsernameBadge(
+  "platformIcons",
+  (props: any) => (
+    <PlatformIcons
+      user={props.message.author}
+      configKey="messages"
+      extraClasses={["platform-icons-message"]}
+      size="sm"
+    />
+  ),
+  "role-icon"
+);

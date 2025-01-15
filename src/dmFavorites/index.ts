@@ -8,16 +8,6 @@ export const patches: Patch[] = [
       match: "isFavorite:!1,",
       replacement: `isFavorite:((require("common_stores").UserGuildSettingsStore.getChannelOverrides("null")[arguments[0].id]??{}).flags&2048)!==0,`
     }
-  },
-
-  // icon indicator
-  {
-    find: ".interactiveSystemDM]:",
-    replace: {
-      match: /:null,((\(0,(\i)\.jsx\))\(\i,{"aria-label":)/,
-      replacement: (_, orig, createElement, ReactJSX) =>
-        `:null,${createElement}(require("dmFavorites_icon")?.default??${ReactJSX}.Fragment,arguments[0]),${orig}`
-    }
   }
 ];
 
@@ -34,11 +24,13 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     ]
   },
   icon: {
+    entrypoint: true,
     dependencies: [
       { id: "react" },
       { ext: "spacepack", id: "spacepack" },
       { ext: "common", id: "stores" },
-      { id: "discord/components/common/index" }
+      { id: "discord/components/common/index" },
+      { ext: "componentEditor", id: "dmList" }
     ]
   }
 };
