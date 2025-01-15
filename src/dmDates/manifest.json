@@ -1,14 +1,14 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
-  "id": "dmFavorites",
-  "version": "1.0.2",
+  "id": "dmDates",
+  "version": "1.0.0",
   "meta": {
-    "name": "DM Favorites",
-    "tagline": "Implements favorited direct messages from mobile",
+    "name": "DM Dates",
+    "tagline": "Implements dates next to direct messages like mobile",
     "authors": ["Cynosphere"],
     "tags": ["chat", "qol"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
-  "dependencies": ["common", "spacepack", "contextMenu", "componentEditor"],
+  "dependencies": ["spacepack", "componentEditor"],
   "apiLevel": 2
 }
