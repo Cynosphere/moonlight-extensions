@@ -1,3 +1,4 @@
 .dmDates-date {
   margin-right: 4px;
+  pointer-events: none;
 }

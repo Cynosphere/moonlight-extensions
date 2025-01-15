@@ -1,3 +1,4 @@
 .dmFavorites-icon {
   margin-right: 4px;
+  pointer-events: none;
 }
