@@ -7,7 +7,8 @@
     "tagline": "Unminifies React errors",
     "authors": ["Cynosphere"],
     "tags": ["development"],
-    "source": "https://github.com/Cynosphere/moonlight-extensions"
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
   },
   "apiLevel": 2
 }

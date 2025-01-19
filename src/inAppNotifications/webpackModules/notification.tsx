@@ -2,6 +2,15 @@ import React from "@moonlight-mod/wp/react";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
+import { ChannelTypes, Routes } from "@moonlight-mod/wp/discord/Constants";
+import {
+  Text,
+  Clickable,
+  showToast,
+  createToast,
+  popToast,
+  ToastType
+} from "@moonlight-mod/wp/discord/components/common/index";
 
 import {
   ChannelStore,
@@ -11,10 +20,6 @@ import {
   SelectedChannelStore
 } from "@moonlight-mod/wp/common_stores";
 
-const { Text, Clickable, showToast, createToast, popToast, ToastType } = spacepack.require(
-  "discord/components/common/index"
-);
-const Constants = spacepack.require("discord/Constants");
 const AvatarUtils = spacepack.require("discord/utils/AvatarUtils").default;
 
 const Message = spacepack.findByCode(',role:"article",children:[')[0].exports.Z;
@@ -79,7 +84,7 @@ function lazyLoad() {
 
     SystemMessage = spacepack.findByCode('("SystemMessage")')[0].exports.Z;
 
-    EmbedClasses = spacepack.findByExports("embedAuthorIcon")[0].exports;
+    EmbedClasses = spacepack.findByCode("embedAuthorIcon:")[0].exports;
   }
 }
 
@@ -154,7 +159,7 @@ function InAppNotification({ message, channel, author }: { message: any; channel
       })
     : null;
   const dmIcon =
-    channel.type === Constants.ChannelTypes.GROUP_DM
+    channel.type === ChannelTypes.GROUP_DM
       ? AvatarUtils.getChannelIconURL({
           id: channel.id,
           icon: channel.icon,
@@ -163,7 +168,7 @@ function InAppNotification({ message, channel, author }: { message: any; channel
       : null;
 
   const jump = React.useCallback(() => {
-    jumpToMessage(Constants.Routes.CHANNEL(guild ? guild.id : "@me", channel.id, newMessage.id));
+    jumpToMessage(Routes.CHANNEL(guild ? guild.id : "@me", channel.id, newMessage.id));
     popToast();
   }, [newMessage, channel, guild]);
 
@@ -174,7 +179,7 @@ function InAppNotification({ message, channel, author }: { message: any; channel
       // @ts-expect-error fix type
       onContextMenu={() => popToast()}
     >
-      {guild != null || channel.type === Constants.ChannelTypes.GROUP_DM ? (
+      {guild != null || channel.type === ChannelTypes.GROUP_DM ? (
         <div className="inAppNotification-nameContainer">
           {guildIcon || dmIcon ? <img className={EmbedClasses.embedAuthorIcon} src={guildIcon ?? dmIcon} /> : null}
 

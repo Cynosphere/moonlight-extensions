@@ -1,0 +1,28 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "noReplyPing",
+  "version": "1.0.0",
+  "meta": {
+    "name": "No Reply Ping",
+    "tagline": "Sets reply ping to off by default. Has configurability for specific user overrides if desired.",
+    "authors": ["Cynosphere", "Jane Shimmer"],
+    "tags": ["qol", "chat"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "settings": {
+    "invertList": {
+      "displayName": "Invert List Functionality",
+      "description": "Pings will be disabled except for people in the list when enabled",
+      "type": "boolean",
+      "default": false,
+      "advice": "none"
+    },
+    "disabledPingList": {
+      "displayName": "Disabled Ping List",
+      "description": "When not empty, the user IDs in this list will have pings disabled, but pings will be enabled otherwise.",
+      "type": "list",
+      "advice": "none"
+    }
+  },
+  "apiLevel": 2
+}

@@ -1,20 +1,24 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
-  "id": "inAppNotifications",
-  "version": "1.0.1",
+  "id": "hideBlocked",
+  "version": "1.0.0",
   "meta": {
-    "name": "In App Notifications",
-    "tagline": "In app notifications akin to mobile",
+    "name": "Hide Blocked/Ignored Messages",
+    "tagline": "Hide messages from blocked and/or ignored users",
     "authors": ["Cynosphere"],
     "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere"
   },
-  "dependencies": ["spacepack", "common"],
   "settings": {
-    "replace": {
-      "displayName": "New notifications replace existing",
-      "description": "Instead of stacking and having to wait for each notification",
+    "blocked": {
+      "displayName": "Hide blocked",
+      "type": "boolean",
+      "default": true,
+      "advice": "none"
+    },
+    "ignored": {
+      "displayName": "Hide ignored",
       "type": "boolean",
       "default": false,
       "advice": "none"

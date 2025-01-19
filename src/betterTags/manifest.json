@@ -1,0 +1,29 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "betterTags",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Better Tags",
+    "tagline": "Reverts App back to Bot and adds webhook tags",
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "chat"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
+  },
+  "settings": {
+    "appToBot": {
+      "displayName": "App to Bot",
+      "description": "Revert bot tags back to saying bot",
+      "type": "boolean",
+      "default": true,
+      "advice": "reload"
+    },
+    "webhookTag": {
+      "displayName": "Webhook Tag",
+      "type": "boolean",
+      "default": true,
+      "advice": "reload"
+    }
+  },
+  "apiLevel": 2
+}

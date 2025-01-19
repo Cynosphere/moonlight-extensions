@@ -4,9 +4,7 @@ import { Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import { ApplicationStore, GameStore, UserStore } from "@moonlight-mod/wp/common_stores";
 import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
-
-// FIXME: mappings
-const { ActivityTypes, PlatformTypes } = spacepack.require("discord/Constants");
+import { ActivityTypes, PlatformTypes } from "@moonlight-mod/wp/discord/Constants";
 
 const useUserProfileActivity = spacepack.findByCode(`${'("use-user-profile-activity")'}`)[0].exports.Z;
 const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get(", `${"isSupported:"}`)[0].exports.Z;
@@ -34,12 +32,7 @@ type ActivityIconIconProps = {
 
 function ActivityIconIcon({ card, icon }: ActivityIconIconProps) {
   return (
-    <Tooltip
-      // @ts-expect-error needs mappings update
-      text={card}
-      position="left"
-      tooltipClassName="allActivities-iconTooltip"
-    >
+    <Tooltip text={card} position="left" tooltipClassName="allActivities-iconTooltip">
       {(tooltipProps: any) => <img {...tooltipProps} className={ActivityClasses.headerIcon} src={icon} />}
     </Tooltip>
   );

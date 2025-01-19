@@ -1,15 +1,13 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
-  "id": "dmFavorites",
-  "version": "1.0.2",
+  "id": "ownerCrown",
+  "version": "1.0.0",
   "meta": {
-    "name": "DM Favorites",
-    "tagline": "Implements favorited direct messages from mobile",
+    "name": "Always Show Owner Crown",
     "authors": ["Cynosphere"],
-    "tags": ["chat", "qol"],
+    "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere"
   },
-  "dependencies": ["common", "spacepack", "contextMenu", "componentEditor"],
   "apiLevel": 2
 }

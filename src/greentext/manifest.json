@@ -7,7 +7,8 @@
     "tagline": ">has to explain what it does",
     "authors": ["Cynosphere"],
     "tags": ["chat"],
-    "source": "https://github.com/Cynosphere/moonlight-extensions"
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
   },
   "dependencies": ["markdown"],
   "apiLevel": 2

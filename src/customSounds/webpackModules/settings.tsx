@@ -2,9 +2,9 @@ import React from "@moonlight-mod/wp/react";
 import Moonbase from "@moonlight-mod/wp/moonbase_moonbase";
 import type { CustomComponentProps } from "@moonlight-mod/types/coreExtensions/moonbase";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
+import { FormDivider, Text, TextInput } from "@moonlight-mod/wp/discord/components/common/index";
 
 const i18n = spacepack.findByCode("intl:")[0].exports;
-const { FormDivider, Text, TextInput } = spacepack.require("discord/components/common/index");
 
 const soundNames = spacepack
   .findByCode('"./discodo.mp3":')[0]

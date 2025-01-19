@@ -29,9 +29,9 @@ Dispatcher.subscribe("MESSAGE_END_EDIT", (event) => {
 });
 
 export default function onDoubleClick({ message }: { message: any }, event: MouseEvent) {
-  const allowEdit = moonlight.getConfigOption<boolean>("chatTweaks", "doubleClickEdit") ?? true;
-  const allowReply = moonlight.getConfigOption<boolean>("chatTweaks", "doubleClickReply") ?? true;
-  const swapSelf = moonlight.getConfigOption<boolean>("chatTweaks", "doubleClickSwapSelf") ?? false;
+  const allowEdit = moonlight.getConfigOption<boolean>("doubleClickActions", "allowEdit") ?? true;
+  const allowReply = moonlight.getConfigOption<boolean>("doubleClickActions", "allowReply") ?? true;
+  const swapSelf = moonlight.getConfigOption<boolean>("doubleClickActions", "swapSelf") ?? false;
 
   const self = UserStore.getCurrentUser();
   const channel = ChannelStore.getChannel(message.channel_id);

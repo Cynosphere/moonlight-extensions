@@ -1,10 +1,8 @@
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import * as Components from "@moonlight-mod/wp/discord/components/common/index";
+import { Clickable, Tooltip, MaximizeIcon } from "@moonlight-mod/wp/discord/components/common/index";
 
-const { Clickable, Tooltip, MaximizeIcon, openModal } = Components;
-
-const HoverButtonClasses = spacepack.findByExports("hoverButton")[0].exports;
+const HoverButtonClasses = spacepack.findByCode("nonMediaMosaicItem:")[0].exports;
 
 type HoverButtonsProps = {
   mimeType: string[];
@@ -26,7 +24,10 @@ type MimeType = {
   compressible?: boolean;
 };
 
-const LazyMediaModal = spacepack.findFunctionByStrings(spacepack.findByCode(/let{location:.,contextKey:/, "openModalLazy")[0]?.exports ?? {}, "openModalLazy");
+const LazyMediaModal = spacepack.findFunctionByStrings(
+  spacepack.findByCode(/let{location:.,contextKey:/, "openModalLazy")[0]?.exports ?? {},
+  "openModalLazy"
+);
 const MediaModalClasses = spacepack.findByCode(/\.exports={modal:"modal_[a-z0-9]+"}/)[0].exports;
 
 const MimeTypes = Object.entries(

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "doubleClickActions",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Double Click Actions",
+    "tagline": "Allows double clicking messages to reply or edit",
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "chat"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
+  },
+  "settings": {
+    "allowEdit": {
+      "displayName": "Double click own messages to edit",
+      "type": "boolean",
+      "default": true,
+      "advice": "none"
+    },
+    "allowReply": {
+      "displayName": "Double click messages to reply",
+      "description": "If edit is enabled, hold shift to reply to your own messages",
+      "type": "boolean",
+      "default": true,
+      "advice": "none"
+    },
+    "swapSelf": {
+      "displayName": "Double Click Edit/Reply -> Swap Self",
+      "description": "Hold shift to edit instead of reply",
+      "type": "boolean",
+      "default": false,
+      "advice": "none"
+    }
+  },
+  "apiLevel": 2
+}

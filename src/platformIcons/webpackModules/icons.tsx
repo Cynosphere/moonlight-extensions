@@ -1,14 +1,19 @@
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
+import {
+  Tooltip,
+  ScreenIcon,
+  MobilePhoneIcon,
+  GlobeEarthIcon,
+  GameControllerIcon
+} from "@moonlight-mod/wp/discord/components/common/index";
+
 import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
 import DMList from "@moonlight-mod/wp/componentEditor_dmList";
 import Messages from "@moonlight-mod/wp/componentEditor_messages";
 
 import { AuthenticationStore, PresenceStore, SessionsStore } from "@moonlight-mod/wp/common_stores";
-import * as Components from "@moonlight-mod/wp/discord/components/common/index";
-
-const { Tooltip, ScreenIcon, MobilePhoneIcon, GlobeEarthIcon, GameControllerIcon } = Components;
 
 type Platforms = "desktop" | "mobile" | "web" | "embedded" | "unknown";
 const IconsForPlatform: Record<Exclude<Platforms, "unknown">, React.ComponentType<IconsProps>> = {

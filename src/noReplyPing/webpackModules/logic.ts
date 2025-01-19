@@ -1,10 +1,7 @@
 export default function shouldMention(message: any, event: KeyboardEvent, isSelf: boolean): boolean {
   if (isSelf) return false;
-  const enabled = moonlight.getConfigOption<boolean>("chatTweaks", "noReplyPing") ?? true;
-  const invertList = moonlight.getConfigOption<boolean>("chatTweaks", "noReplyPingInvert") ?? false;
-  const list = moonlight.getConfigOption<string[]>("chatTweaks", "noReplyPingList") ?? [];
-
-  if (!enabled) return !event.shiftKey;
+  const invertList = moonlight.getConfigOption<boolean>("noReplyPing", "invertList") ?? false;
+  const list = moonlight.getConfigOption<string[]>("noReplyPing", "disabledPingList") ?? [];
 
   if (list.length > 0) {
     let ping = true;

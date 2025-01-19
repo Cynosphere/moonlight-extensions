@@ -8,7 +8,8 @@
     "description": "Do not use attachment URLs, they will not refresh.",
     "authors": ["Cynosphere"],
     "tags": ["chat"],
-    "source": "https://github.com/Cynosphere/moonlight-extensions"
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
   },
   "dependencies": ["spacepack"],
   "settings": {
