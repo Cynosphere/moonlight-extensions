@@ -15,7 +15,8 @@
     "keepAt": {
       "displayName": "Keep \"@\"",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "advice": "none"
     }
   },
   "apiLevel": 2
