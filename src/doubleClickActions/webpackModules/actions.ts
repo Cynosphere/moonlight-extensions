@@ -11,6 +11,7 @@ const replyToMessage = spacepack.findFunctionByStrings(
   spacepack.findByCode(`${',source:"message-actions"}'}`)[0].exports,
   ".TEXTAREA_FOCUS)"
 );
+const canEditMessage = spacepack.findByCode(".IS_VOICE_MESSAGE)||null!=")[0].exports.Z;
 
 type EditData = {
   messageId?: string;
@@ -62,7 +63,7 @@ export default function onDoubleClick({ message }: { message: any }, event: Mous
       replyToMessage!(channel, message, event);
     }
   } else if (edit === true) {
-    if (isEditing === false || (isEditing && editData.messageId !== message.id)) {
+    if (canEditMessage(message, self.id) && (isEditing === false || (isEditing && editData.messageId !== message.id))) {
       startEditMessage(message.channel_id, message.id, message.content);
     }
   }
