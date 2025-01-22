@@ -1,11 +1,14 @@
 import { ExtensionWebpackModule, Patch, PatchReplaceType } from "@moonlight-mod/types";
 
+const FIND_FILE_PREVIEW = ".openFullPreviewSection,";
+const FIND_MARKDOWN_COMPONENTS = "text:{react:";
+
 const lineNumbers = () => moonlight.getConfigOption<boolean>("betterCodeblocks", "lineNumbers") ?? true;
 
 export const patches: Patch[] = [
   // line numbers
   {
-    find: ".openFullPreviewSection,",
+    find: FIND_FILE_PREVIEW,
     replace: [
       {
         match: /"hljs"\),children:(\i)}/,
@@ -20,7 +23,7 @@ export const patches: Patch[] = [
     prerequisite: lineNumbers
   },
   {
-    find: "text:{react:",
+    find: FIND_MARKDOWN_COMPONENTS,
     replace: [
       {
         match: /"hljs"\),children:(\(0,\i\.\i\)\(\i,\i\,\i\))}/,
@@ -37,7 +40,7 @@ export const patches: Patch[] = [
 
   // label
   {
-    find: "text:{react:",
+    find: FIND_MARKDOWN_COMPONENTS,
     replace: {
       match: /\.codeContainer,children:\[(\i\.\i)\?(.+?\.codeActions,children:)(.+?text:(\i)\.content\}\))}\):null/,
       replacement: (_, SUPPORTS_COPY, body, CopyButton, node) =>
@@ -48,7 +51,7 @@ export const patches: Patch[] = [
 
   // preview copy
   {
-    find: ".openFullPreviewSection,",
+    find: FIND_FILE_PREVIEW,
     replace: {
       match: /(?<=fileSize:\i}\),)(?=(\(0,(\i).jsx\)))/g,
       replacement: (_, createElement, ReactJSX) =>
@@ -73,7 +76,7 @@ export const patches: Patch[] = [
 
   // uncap preview
   {
-    find: ".openFullPreviewSection,",
+    find: FIND_FILE_PREVIEW,
     replace: [
       {
         match: /Range:"bytes=0-".concat\(.+?\),/,
