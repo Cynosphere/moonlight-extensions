@@ -1,0 +1,151 @@
+/* lines */
+.bcb-lines {
+  display: grid;
+  grid-template-columns: min-content auto;
+}
+
+.bcb-number {
+  border-right: 1px solid var(--background-tertiary);
+  padding-left: 5px;
+  padding-right: 8px;
+  text-align: right;
+  user-select: none;
+  min-height: 18px;
+}
+
+.bcb-code {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: break-spaces;
+  padding-left: 8px;
+}
+
+/* label */
+[class^="markup"] [class^="codeContainer_"]:hover > [class^="codeActions_"]:has(> .bcb-label) {
+  display: flex;
+}
+.bcb-label {
+  margin-right: 0.5rem;
+  font-family: var(--font-primary);
+}
+
+/* ansi */
+@keyframes hljs-ansi-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hljs-ansi-style-dim {
+  opacity: 0.5;
+}
+.hljs-ansi-style-blink {
+  animation: hljs-ansi-blink 1s linear infinite;
+}
+.hljs-ansi-style-hidden {
+  color: transparent !important;
+}
+.hljs-ansi-style-strike {
+  text-decoration: line-through;
+}
+
+/* using Tango as a sane default */
+.hljs-ansi-foreground-black {
+  color: #000000;
+}
+.hljs-ansi-foreground-red {
+  color: #cc0000;
+}
+.hljs-ansi-foreground-green {
+  color: #4e9a06;
+}
+.hljs-ansi-foreground-yellow {
+  color: #c4a000;
+}
+.hljs-ansi-foreground-blue {
+  color: #3465a4;
+}
+.hljs-ansi-foreground-magenta {
+  color: #75507b;
+}
+.hljs-ansi-foreground-cyan {
+  color: #06989a;
+}
+.hljs-ansi-foreground-white {
+  color: #d3d7cf;
+}
+
+.hljs-ansi-foreground-black-bright {
+  color: #555753;
+}
+.hljs-ansi-foreground-red-bright {
+  color: #ef2929;
+}
+.hljs-ansi-foreground-green-bright {
+  color: #8ae234;
+}
+.hljs-ansi-foreground-yellow-bright {
+  color: #fce94f;
+}
+.hljs-ansi-foreground-blue-bright {
+  color: #729fcf;
+}
+.hljs-ansi-foreground-magenta-bright {
+  color: #ad7fa8;
+}
+.hljs-ansi-foreground-cyan-bright {
+  color: #34e2e2;
+}
+.hljs-ansi-foreground-white-bright {
+  color: #eeeeec;
+}
+
+.hljs-ansi-background-black {
+  background-color: #000000;
+}
+.hljs-ansi-background-red {
+  background-color: #cc0000;
+}
+.hljs-ansi-background-green {
+  background-color: #4e9a06;
+}
+.hljs-ansi-background-yellow {
+  background-color: #c4a000;
+}
+.hljs-ansi-background-blue {
+  background-color: #3465a4;
+}
+.hljs-ansi-background-magenta {
+  background-color: #75507b;
+}
+.hljs-ansi-background-cyan {
+  background-color: #06989a;
+}
+.hljs-ansi-background-white {
+  background-color: #d3d7cf;
+}
+
+.hljs-ansi-background-black-bright {
+  background-color: #555753;
+}
+.hljs-ansi-background-red-bright {
+  background-color: #ef2929;
+}
+.hljs-ansi-background-green-bright {
+  background-color: #8ae234;
+}
+.hljs-ansi-background-yellow-bright {
+  background-color: #fce94f;
+}
+.hljs-ansi-background-blue-bright {
+  background-color: #729fcf;
+}
+.hljs-ansi-background-magenta-bright {
+  background-color: #ad7fa8;
+}
+.hljs-ansi-background-cyan-bright {
+  background-color: #34e2e2;
+}
+.hljs-ansi-background-white-bright {
+  background-color: #eeeeec;
+}

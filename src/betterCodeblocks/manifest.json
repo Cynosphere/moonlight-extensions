@@ -1,0 +1,50 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "betterCodeblocks",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Better Codeblocks",
+    "tagline": "Add line numbers. See what language is used. Expanded ANSI support. Uncap file preview limits.",
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "chat"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
+  },
+  "dependencies": ["spacepack"],
+  "settings": {
+    "lineNumbers": {
+      "displayName": "Line Numbers",
+      "type": "boolean",
+      "default": true,
+      "advice": "reload"
+    },
+    "label": {
+      "displayName": "Language Label",
+      "description": "Shows the language on hover next to the copy button",
+      "type": "boolean",
+      "default": true,
+      "advice": "reload"
+    },
+    "previewCopy": {
+      "displayName": "File Preview Copy Button",
+      "type": "boolean",
+      "default": true,
+      "advice": "reload"
+    },
+    "ansi": {
+      "displayName": "Expanded ANSI support",
+      "description": "Adds more styles, bright colors and support for 256 colors",
+      "type": "boolean",
+      "default": true,
+      "advice": "reload"
+    },
+    "uncapPreview": {
+      "displayName": "Uncap Preview",
+      "description": "Large files **WILL** hang your client with this enabled",
+      "type": "boolean",
+      "default": false,
+      "advice": "reload"
+    }
+  },
+  "apiLevel": 2
+}
