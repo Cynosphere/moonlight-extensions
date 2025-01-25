@@ -36,7 +36,6 @@ const isMessageNewerThanImprovedMarkdownEpoch = Object.values(
 
 const createMessageHeader = spacepack.findByCode(".isInteractionPlaceholder(),")[0].exports.ZP;
 const getMessageAuthor = spacepack.findByCode('"Result cannot be null because the message is not null"')[0].exports.ZP;
-const useRoleIcon = spacepack.findFunctionByStrings(spacepack.findByCode(',"roleIcon",')[0].exports, ',"roleIcon",');
 
 const isSystemMessage = spacepack.findByCode(".USER_MESSAGE.has")[0].exports.Z;
 
@@ -61,9 +60,11 @@ type _MemoizeReferencedMessage = (
   referencedMessage: any,
   compat: boolean
 ) => React.ComponentType<any>;
+type UseRoleIcon = (props: { guildId?: string; roleId: string }, subscription?: string) => React.ReactElement;
 
 let makeTextChatNotification: MakeTextChatNotification,
   shouldNotify: ShouldNotify,
+  useRoleIcon: UseRoleIcon,
   MemoizeReferencedMessage: _MemoizeReferencedMessage,
   SystemMessage: React.ComponentType<any>,
   EmbedClasses: Record<string, string>;
@@ -79,6 +80,11 @@ function lazyLoad() {
       NotificationTextUtils,
       ".SUPPRESS_NOTIFICATIONS))return!1"
     ) as ShouldNotify;
+
+    useRoleIcon = spacepack.findFunctionByStrings(
+      spacepack.findByCode(',"roleIcon",')[0].exports,
+      ',"roleIcon",'
+    ) as UseRoleIcon;
 
     MemoizeReferencedMessage = spacepack.findByCode("isReplyAuthorBlocked:", ".REPLY||null==")[0].exports.Z;
 
