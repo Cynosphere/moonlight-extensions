@@ -1,0 +1,14 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "noJoinMessageWave",
+  "version": "1.0.0",
+  "meta": {
+    "name": "No Join Message Wave",
+    "tagline": "Hides the wave button on join messages, regardless of the guild setting",
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "chat"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
+  },
+  "apiLevel": 2
+}
