@@ -25,10 +25,10 @@ type MimeType = {
 };
 
 const LazyMediaModal = spacepack.findFunctionByStrings(
-  spacepack.findByCode(/let{location:.,contextKey:/, "openModalLazy")[0]?.exports ?? {},
-  "openModalLazy"
+  spacepack.findByCode(/let{location:\i,contextKey:/)[0]?.exports ?? {},
+  ".MEDIA_VIEWER"
 );
-const MediaModalClasses = spacepack.findByCode(/\.exports={modal:"modal_[a-z0-9]+"}/)[0].exports;
+const MediaModalClasses = spacepack.findByCode(/{modal:"modal_[a-z0-9]+"}/)[0].exports;
 
 const MimeTypes = Object.entries(
   spacepack.findByCode(`JSON.parse('{"application/1d-interleaved-parityfec":`)[0].exports

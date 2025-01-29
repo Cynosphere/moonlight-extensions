@@ -1,14 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "mediaTweaks",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "meta": {
     "name": "Media Tweaks",
     "tagline": "Various tweaks to images and videos. Every feature togglable.",
     "authors": ["Cynosphere"],
     "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Fixes for latest Discord"
   },
   "dependencies": ["spacepack"],
   "settings": {

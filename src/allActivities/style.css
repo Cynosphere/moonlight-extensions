@@ -6,6 +6,8 @@
 
 .allActivities-iconCard {
   width: 250px;
+  background: transparent;
+  padding: 0;
 }
 
 .allActivities-iconTooltip {

@@ -6,9 +6,10 @@ import { ApplicationStore, GameStore, UserStore } from "@moonlight-mod/wp/common
 import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
 import { ActivityTypes, PlatformTypes } from "@moonlight-mod/wp/discord/Constants";
 
-const useUserProfileActivity = spacepack.findByCode(`${'("use-user-profile-activity")'}`)[0].exports.Z;
-const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get(", `${"isSupported:"}`)[0].exports.Z;
-const UserProfileActivityCard = spacepack.findByCode(`${'location:"UserProfileActivityCard",'}`)[0].exports.Z;
+const useUserProfileActivity = spacepack.findByCode(`${JSON.stringify("use-user-profile-activity")}`)[0].exports.Z;
+const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get(", "isSupported:")[0].exports.Z;
+const UserProfileActivityCard = spacepack.findByCode(`location:${JSON.stringify("UserProfileActivityCard")},`)[0]
+  .exports.Z;
 
 const ActivityClasses = spacepack.findByCode(
   "applicationStreamingPreviewWrapper:" + '"applicationStreamingPreviewWrapper_'

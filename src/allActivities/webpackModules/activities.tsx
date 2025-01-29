@@ -1,11 +1,13 @@
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
-const UserProfileActivityCardWrapper = spacepack.findByCode('location:"' + 'UserProfileActivityCardWrapper"')[0].exports
-  .Z;
-const UserProfileStreamActivityCard = spacepack.findByCode('surface:"' + 'user-profile-stream-activity-card",')[0]
-  .exports.Z;
-const useUserProfileActivity = spacepack.findByCode('("use-user-' + 'profile-activity")')[0].exports.Z;
+const UserProfileActivityCardWrapper = spacepack.findByCode(
+  `location:${JSON.stringify("UserProfileActivityCardWrapper")}`
+)[0].exports.Z;
+const UserProfileStreamActivityCard = spacepack.findByCode(
+  `surface:${JSON.stringify("user-profile-stream-activity-card")},`
+)[0].exports.Z;
+const useUserProfileActivity = spacepack.findByCode(`${JSON.stringify("use-user-profile-activity")}`)[0].exports.Z;
 const useUserActivityFeedRecent = spacepack.findByCode(
   '"application_id"in',
   ".extra.application_id",
