@@ -5,8 +5,8 @@ export const patches: Patch[] = [
   {
     find: '"UserProfileFeaturedActivity"',
     replace: {
-      match: /:function\(\){return (\i)}/,
-      replacement: ':function(){return require("allActivities_activities").default}'
+      match: /:\(\)=>(\i)}/,
+      replacement: ':()=>require("allActivities_activities").default}'
     }
   },
 
@@ -21,7 +21,7 @@ export const patches: Patch[] = [
 
   // Do not de-duplicate entries in useUserProfileActivity
   {
-    find: '("use-user-profile-activity")',
+    find: '"use-user-profile-activity"',
     replace: {
       match: /\(0,\i\.uniqWith\)/,
       replacement: "((inp)=>inp)"

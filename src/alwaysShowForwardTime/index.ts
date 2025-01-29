@@ -4,7 +4,7 @@ export const patches: Patch[] = [
   {
     find: ".messageSnapshots.map(",
     replace: {
-      match: /(?<=return null==\i\?)null(?=:(\(0,(\i)\.jsxs\))\(\i\.Clickable,{className:(\i)\.footerContainer,)/,
+      match: /(?<=return null==\i\?)null(?=:(\(0,(\i)\.jsxs\))\(\i\.\i,{className:(\i)\.footerContainer,)/,
       replacement: (_, createElement, ReactJSX, classes) =>
         `${createElement}(require("alwaysShowForwardTime_timestamp")?.default??${ReactJSX}.Fragment,{wrapperClass:${classes}.footerContainer,className:${classes}.footerText,timestamp:arguments[0].snapshot.message.timestamp})`
     }

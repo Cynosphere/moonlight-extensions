@@ -28,7 +28,7 @@ const MessageContent = spacepack.findByCode(".hasFlag(", "SOURCE_MESSAGE_DELETED
 const MessageConstructor = spacepack.findByCode('.set("roleSubscriptionData",')[0].exports;
 const createMessageRecord = spacepack.findFunctionByStrings(MessageConstructor, ".createFromServer(");
 
-const MemoizeMessage = spacepack.findByCode(".customRenderedContent:")[0].exports.Z;
+const MemoizeMessage = spacepack.findByCode("let{renderChangelogMessageMarkup:")[0].exports.Z;
 
 const isMessageNewerThanImprovedMarkdownEpoch = Object.values(
   spacepack.findByCode('"1088216706570268682"')[0].exports

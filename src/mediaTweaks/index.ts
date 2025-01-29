@@ -83,7 +83,7 @@ export const patches: Patch[] = [
   {
     find: ',"chat input type must be set");',
     replace: {
-      match: /(?<=!\i&&\()(\(0,\i\.\i\)\(.+?\.drafts\.type\))\?/,
+      match: /(?<=\i\|\|\()(\(0,\i\.\i\)\(.+?\.drafts\.type\))\?/,
       replacement: (_, orig) => `((moonlight.getConfigOption("mediaTweaks","noStickerAutosend")??true)?true:${orig})?`
     }
   }
