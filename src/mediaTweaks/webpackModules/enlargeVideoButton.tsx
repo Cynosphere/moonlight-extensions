@@ -73,7 +73,7 @@ export function createButtonGroup({ video }: VideoProps) {
   const filename = urlObj.pathname.substring(urlObj.pathname.lastIndexOf("/") + 1);
   const extension = filename.substring(filename.lastIndexOf(".") + 1);
   const contentType =
-    MimeTypes.find(([mime, data]) => (data as MimeType).extensions?.includes(extension))?.[0] ?? "unknown/unknown";
+    MimeTypes.find(([mime, data]) => (data as MimeType).extensions?.includes(extension))?.[0] ?? "video/unknown";
   const mimeType = contentType.split("/");
 
   return function MediaTweaksHoverButtons() {
