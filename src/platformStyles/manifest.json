@@ -9,6 +9,7 @@
     "tags": ["appearance"],
     "source": "https://github.com/Cynosphere/moonlight-extensions"
   },
+  "environment": "desktop",
   "settings": {
     "style": {
       "displayName": "Style",
