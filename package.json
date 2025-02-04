@@ -18,6 +18,7 @@
     "@moonlight-mod/eslint-config": "github:moonlight-mod/eslint-config",
     "esbuild": "^0.19.3",
     "esbuild-copy-static-files": "^0.1.0",
+    "esbuild-plugin-inline-import": "^1.1.0",
     "eslint": "^9.17.0",
     "typescript": "^5.3.2"
   },

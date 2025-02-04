@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { watchExt, buildExt } from "@moonlight-mod/esbuild-config";
+import inlineImportPlugin from "esbuild-plugin-inline-import";
 
 const watch = process.argv.includes("--watch");
 const clean = process.argv.includes("--clean");
@@ -14,7 +15,8 @@ if (clean) {
     const cfg = {
       src: path.resolve(path.join("src", ext)),
       dst: path.resolve(path.join("dist", ext)),
-      ext
+      ext,
+      extraPlugins: [inlineImportPlugin()]
     };
 
     if (watch) {

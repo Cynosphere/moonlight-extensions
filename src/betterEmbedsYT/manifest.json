@@ -1,0 +1,24 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "betterEmbedsYT",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Better YouTube Embeds",
+    "tagline": "Bypass copyright blocks, block ads and trackers. Works with Watch Together.",
+    "description": "Ad blocking uses code from the [Iridium](https://github.com/ParticleCore/Iridium) web extension.",
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "privacy"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "settings": {},
+  "apiLevel": 2,
+  "blocked": [
+    "https://play.google.com/log*",
+    "https://*.doubleclick.net/pagead*",
+    "https://*.youtube.com/youtubei/v1/log_event*",
+    "https://*.youtube.com/api/stats/qoe*",
+    "https://*.youtube.com/api/stats/atr*",
+    "https://*.youtube.com/pagead*",
+    "https://*.youtube.com/ptracking*"
+  ]
+}

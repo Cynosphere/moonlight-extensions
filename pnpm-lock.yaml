@@ -27,6 +27,9 @@ importers:
       esbuild-copy-static-files:
         specifier: ^0.1.0
         version: 0.1.0
+      esbuild-plugin-inline-import:
+        specifier: ^1.1.0
+        version: 1.1.0
       eslint:
         specifier: ^9.17.0
         version: 9.17.0
@@ -537,6 +540,9 @@ packages:
 
   esbuild-copy-static-files@0.1.0:
     resolution: {integrity: sha512-KlpmYqANA1t2nZavEdItfcOjJC6wbHA21v35HJWN32DddGTWKNNGDKljUzbCPojmpD+wAw8/DXr5abJ4jFCE0w==}
+
+  esbuild-plugin-inline-import@1.1.0:
+    resolution: {integrity: sha512-b0xX4tPKBdRjX1CkzpnULpEdeTo9vxD+wf83PKvgUYnOEaJfVxLey4q+sfTUPAdDnRRYasJsQUgQW7/e2Gm5Dw==}
 
   esbuild@0.19.3:
     resolution: {integrity: sha512-UlJ1qUUA2jL2nNib1JTSkifQTcYTroFqRjwCFW4QYEKEsixXD5Tik9xML7zh2gTxkYTBKGHNH9y7txMwVyPbjw==}
@@ -1819,6 +1825,8 @@ snapshots:
       is-symbol: 1.1.1
 
   esbuild-copy-static-files@0.1.0: {}
+
+  esbuild-plugin-inline-import@1.1.0: {}
 
   esbuild@0.19.3:
     optionalDependencies:
