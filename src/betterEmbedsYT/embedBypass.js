@@ -6,7 +6,11 @@ function checkStatus() {
   const player_response = JSON.parse(ytcfg.data_.PLAYER_VARS.embedded_player_response);
 
   if (!player_response?.previewPlayabilityStatus?.status) return;
-  if (player_response.previewPlayabilityStatus.status === "OK") return;
+  if (
+    player_response.previewPlayabilityStatus.desktopLegacyAgeGateReason ||
+    player_response.previewPlayabilityStatus.status === "OK"
+  )
+    return;
   location.reload();
 }
 
