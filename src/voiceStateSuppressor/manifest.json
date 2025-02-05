@@ -1,0 +1,21 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "voiceStateSuppressor",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Voice State Suppressor",
+    "tagline": "Drop all voice states of a guild. Useful for large guilds.",
+    "authors": ["Cynosphere"],
+    "tags": ["voice", "fixes"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
+  },
+  "settings": {
+    "ids": {
+      "displayName": "Guild IDs",
+      "type": "list",
+      "advice": "reload"
+    }
+  },
+  "apiLevel": 2
+}
