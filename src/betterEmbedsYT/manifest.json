@@ -1,16 +1,34 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "betterEmbedsYT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "meta": {
     "name": "Better YouTube Embeds",
-    "tagline": "Bypass copyright blocks, block ads and trackers. Works with Watch Together.",
+    "tagline": "Bypass copyright blocks, descriptions, block ads and trackers (works with Watch Together).",
     "description": "Ad blocking uses code from the [Iridium](https://github.com/ParticleCore/Iridium) web extension.",
     "authors": ["Cynosphere"],
     "tags": ["qol", "privacy"],
-    "source": "https://github.com/Cynosphere/moonlight-extensions"
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "changelog": "Added option for showing descriptions"
   },
-  "settings": {},
+  "settings": {
+    "description": {
+      "displayName": "Show video descriptions",
+      "type": "boolean",
+      "default": true
+    },
+    "fullDescription": {
+      "displayName": "Fetch full descriptions",
+      "description": "Fetches the full description through YouTube's API using one of Google's own API keys",
+      "type": "boolean",
+      "default": true
+    },
+    "expandDescription": {
+      "displayName": "Expand description by default",
+      "type": "boolean",
+      "default": false
+    }
+  },
   "apiLevel": 2,
   "blocked": [
     "https://play.google.com/log*",
