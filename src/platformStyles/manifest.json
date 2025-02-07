@@ -1,13 +1,14 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "platformStyles",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "meta": {
     "name": "Platform Styles",
     "tagline": "Change the window border appearance to another operating system's style.",
     "authors": ["Cynosphere", "adryd"],
     "tags": ["appearance"],
-    "source": "https://github.com/Cynosphere/moonlight-extensions"
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "changelog": "Support for Visual Refresh"
   },
   "environment": "desktop",
   "settings": {

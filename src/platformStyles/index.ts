@@ -25,6 +25,15 @@ export const patches: Patch[] = [
       replacement: (_, pipOffset, platformUtil) =>
         `${pipOffset}=require("platformStyles_helper").platformBorders(${platformUtil})!==${platformUtil}.PlatformTypes.WEB&&this.inPopout?22:0;`
     }
+  },
+
+  // visual refresh
+  {
+    find: ".winButtonsWithDivider]:",
+    replace: {
+      match: /\(0,(\i)\.getPlatform\)\(\)/g,
+      replacement: (_, platformUtil) => `require("platformStyles_helper").platformBorders(${platformUtil})`
+    }
   }
 ];
 
