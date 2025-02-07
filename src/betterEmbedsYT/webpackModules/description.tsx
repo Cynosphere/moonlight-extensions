@@ -77,8 +77,8 @@ export default function DescriptionWrapper({
   embed: { rawDescription?: string; video: { url: string } };
   renderDescription: RenderDescription;
 }) {
-  const videoId = embed.video.url.split("/embed/").pop()!;
+  const videoId = embed.video.url.match(/\/embed\/([a-z0-9_\-]+)/i)?.[1];
   return embed.rawDescription == null ? null : (
-    <YTDescription description={embed.rawDescription} renderDescription={renderDescription} videoId={videoId} />
+    <YTDescription description={embed.rawDescription} renderDescription={renderDescription} videoId={videoId!} />
   );
 }
