@@ -34,7 +34,6 @@ const isMessageNewerThanImprovedMarkdownEpoch = Object.values(
   spacepack.findByCode('"1088216706570268682"')[0].exports
 )[0] as (id: string) => boolean;
 
-const createMessageHeader = spacepack.findByCode(".isInteractionPlaceholder(),")[0].exports.ZP;
 const getMessageAuthor = spacepack.findByCode('"Result cannot be null because the message is not null"')[0].exports.ZP;
 
 const isSystemMessage = spacepack.findByCode(".USER_MESSAGE.has")[0].exports.Z;
@@ -60,14 +59,26 @@ type _MemoizeReferencedMessage = (
   referencedMessage: any,
   compat: boolean
 ) => React.ComponentType<any>;
-type UseRoleIcon = (props: { guildId?: string; roleId: string }, subscription?: string) => React.ReactElement;
+type UseRoleIcon = (props: { guildId?: string; roleId: string }, subscription?: string) => React.ReactNode;
+type CreateMessageHeader = (props: {
+  message: any;
+  channel: any;
+  author: any;
+  guildId?: string;
+  isGroupStart: boolean;
+  roleIcon?: React.ReactNode;
+  animateAvatar: boolean;
+  hideTimestamp: boolean;
+  compact: boolean;
+}) => React.ReactNode;
 
 let makeTextChatNotification: MakeTextChatNotification,
   shouldNotify: ShouldNotify,
   useRoleIcon: UseRoleIcon,
   MemoizeReferencedMessage: _MemoizeReferencedMessage,
   SystemMessage: React.ComponentType<any>,
-  EmbedClasses: Record<string, string>;
+  EmbedClasses: Record<string, string>,
+  createMessageHeader: CreateMessageHeader;
 
 function lazyLoad() {
   if (!makeTextChatNotification) {
@@ -85,6 +96,7 @@ function lazyLoad() {
       spacepack.findByCode(',"roleIcon",')[0].exports,
       ',"roleIcon",'
     ) as UseRoleIcon;
+    createMessageHeader = spacepack.findByCode(".isInteractionPlaceholder(),")[0].exports.ZP as CreateMessageHeader;
 
     MemoizeReferencedMessage = spacepack.findByCode("isReplyAuthorBlocked:", ".REPLY||null==")[0].exports.Z;
 
@@ -128,7 +140,7 @@ function InAppNotification({ message, channel, author }: { message: any; channel
   );
 
   const messageAuthor = getMessageAuthor(newMessage);
-  const roleIcon = useRoleIcon!({
+  const roleIcon = useRoleIcon({
     guildId: guild?.id,
     roleId: messageAuthor.iconRoleId
   });
