@@ -22,23 +22,25 @@ import {
 
 const AvatarUtils = spacepack.require("discord/utils/AvatarUtils").default;
 
-const Message = spacepack.findByCode(',role:"article",children:[')[0].exports.Z;
-const MessageContent = spacepack.findByCode(".hasFlag(", "SOURCE_MESSAGE_DELETED")[0].exports.ZP;
+const Message = spacepack.findByCode(`,role:${'"article"'},children:[`)[0].exports.Z;
+const MessageContent = spacepack.findByCode(".hasFlag(", `SOURCE_MESSAGE${"_DELETED"}`)[0].exports.ZP;
 
-const MessageConstructor = spacepack.findByCode('.set("roleSubscriptionData",')[0].exports;
+const MessageConstructor = spacepack.findByCode(`.set(${'"roleSubscriptionData"'},`)[0].exports;
 const createMessageRecord = spacepack.findFunctionByStrings(MessageConstructor, ".createFromServer(");
 
-const MemoizeMessage = spacepack.findByCode("let{renderChangelogMessageMarkup:")[0].exports.Z;
+const MemoizeMessage = spacepack.findByCode(`let{${"renderChangelogMessageMarkup"}:`)[0].exports.Z;
 
 const isMessageNewerThanImprovedMarkdownEpoch = Object.values(
-  spacepack.findByCode('"1088216706570268682"')[0].exports
+  spacepack.findByCode(`${JSON.stringify("1088216706570268682")}`)[0].exports
 )[0] as (id: string) => boolean;
 
-const getMessageAuthor = spacepack.findByCode('"Result cannot be null because the message is not null"')[0].exports.ZP;
+const getMessageAuthor = spacepack.findByCode(
+  `${JSON.stringify("Result cannot be null because the message is not null")}`
+)[0].exports.ZP;
 
-const isSystemMessage = spacepack.findByCode(".USER_MESSAGE.has")[0].exports.Z;
+const isSystemMessage = spacepack.findByCode(`.USER_MESSAGE${".has"}`)[0].exports.Z;
 
-const jumpToMessage = spacepack.findByCode('kind:"channel"', ".CHANNEL_THREAD_VIEW(")[0].exports.Z;
+const jumpToMessage = spacepack.findByCode(`kind:${'"channel"'}`, ".CHANNEL_THREAD_VIEW(")[0].exports.Z;
 
 type MakeTextChatNotification = (
   message: any,
@@ -82,7 +84,7 @@ let makeTextChatNotification: MakeTextChatNotification,
 
 function lazyLoad() {
   if (!makeTextChatNotification) {
-    const NotificationTextUtils = spacepack.findByCode('"NotificationTextUtils"')[0].exports;
+    const NotificationTextUtils = spacepack.findByCode(`"Notification${"Text"}Utils"`)[0].exports;
     makeTextChatNotification = spacepack.findFunctionByStrings(
       NotificationTextUtils,
       '"failed to stringify system message"'
@@ -92,17 +94,19 @@ function lazyLoad() {
       ".SUPPRESS_NOTIFICATIONS))return!1"
     ) as ShouldNotify;
 
+    const roleIconFind = `,${'"roleIcon"'},`;
     useRoleIcon = spacepack.findFunctionByStrings(
-      spacepack.findByCode(',"roleIcon",')[0].exports,
-      ',"roleIcon",'
+      spacepack.findByCode(roleIconFind)[0].exports,
+      roleIconFind
     ) as UseRoleIcon;
-    createMessageHeader = spacepack.findByCode(".isInteractionPlaceholder(),")[0].exports.ZP as CreateMessageHeader;
+    createMessageHeader = spacepack.findByCode(`.isInteraction${"Placeholder()"},`)[0].exports
+      .ZP as CreateMessageHeader;
 
-    MemoizeReferencedMessage = spacepack.findByCode("isReplyAuthorBlocked:", ".REPLY||null==")[0].exports.Z;
+    MemoizeReferencedMessage = spacepack.findByCode("isReplyAuthorBlocked:", `.REPLY||${"null=="}`)[0].exports.Z;
 
-    SystemMessage = spacepack.findByCode('("SystemMessage")')[0].exports.Z;
+    SystemMessage = spacepack.findByCode(`(${'"SystemMessage"'})`)[0].exports.Z;
 
-    EmbedClasses = spacepack.findByCode("embedAuthorIcon:")[0].exports;
+    EmbedClasses = spacepack.findByCode(`embed${"Author"}Icon:`)[0].exports;
   }
 }
 
