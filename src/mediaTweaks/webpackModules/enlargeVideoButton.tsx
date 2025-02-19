@@ -24,9 +24,10 @@ type MimeType = {
   compressible?: boolean;
 };
 
+const LazyMediaModalFind = `.${"MEDIA_VIEWER"},source:`;
 const LazyMediaModal = spacepack.findFunctionByStrings(
-  spacepack.findByCode(/let{location:\i,contextKey:/)[0]?.exports ?? {},
-  ".MEDIA_VIEWER"
+  spacepack.findByCode(LazyMediaModalFind)[0]?.exports ?? {},
+  LazyMediaModalFind
 );
 const MediaModalClasses = spacepack.findByCode(/{modal:"modal_[a-z0-9]+"}/)[0].exports;
 

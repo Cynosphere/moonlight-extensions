@@ -2,7 +2,7 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: ',role:"article",children:[',
+    find: 'role:"article",children:[',
     replace: {
       match: "}),ref:",
       replacement:

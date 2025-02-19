@@ -4,7 +4,8 @@ import type { CustomComponentProps } from "@moonlight-mod/types/coreExtensions/m
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { FormDivider, Text, TextInput } from "@moonlight-mod/wp/discord/components/common/index";
 
-const i18n = spacepack.findByCode("intl:")[0].exports;
+const i18n = spacepack.require("discord/intl");
+const intl = spacepack.findObjectFromKey(i18n, "_forceLookupMatcher");
 
 const soundNames = spacepack
   .findByCode('"./discodo.mp3":')[0]
@@ -24,7 +25,7 @@ moonlight.lunast.register({
   name: "customSounds_NotificationSettings",
   find: ".default.setNotifyMessagesInSelectedChannel,children:",
   process({ id, ast }) {
-    const { traverse } = moonlight.lunast.utils;
+    const { traverse, is } = moonlight.lunast.utils;
 
     traverse(ast, {
       $: { scope: true },
@@ -33,47 +34,35 @@ moonlight.lunast.register({
           node &&
           node.elements.some(
             (obj) =>
-              obj &&
-              obj.type === "ObjectExpression" &&
+              is.objectExpression(obj) &&
               obj.properties.some(
-                (prop) =>
-                  prop &&
-                  prop.type === "Property" &&
-                  prop.key &&
-                  prop.key.type === "Identifier" &&
-                  prop.key.name === "label"
+                (prop) => prop && is.property(prop) && is.identifier(prop.key) && prop.key.name === "label"
               )
           )
         ) {
           for (const element of node!.elements) {
-            if (!element || element.type !== "ObjectExpression") continue;
+            if (!is.objectExpression(element)) continue;
 
             const sound = element.properties.find(
-              (prop) => prop && prop.type === "Property" && prop.key.type === "Identifier" && prop.key.name === "sound"
+              (prop) => is.property(prop) && is.identifier(prop.key) && prop.key.name === "sound"
             )!;
             if (sound == null) continue;
 
             const label = element.properties.find(
-              (prop) => prop && prop.type === "Property" && prop.key.type === "Identifier" && prop.key.name === "label"
+              (prop) => is.property(prop) && is.identifier(prop.key) && prop.key.name === "label"
             )!;
 
-            const name =
-              sound && sound.type === "Property" && sound.value && sound.value.type === "Literal"
-                ? sound.value.value
-                : null;
+            const name = is.property(sound) && is.literal(sound.value) ? sound.value.value : null;
             if (name == null) continue;
 
             const labelProp =
-              label &&
-              label.type === "Property" &&
-              label.value &&
-              label.value.type === "CallExpression" &&
-              label.value.arguments[0].type === "MemberExpression" &&
+              is.property(label) &&
+              is.callExpression(label.value) &&
+              is.memberExpression(label.value.arguments[0]) &&
               label.value.arguments[0].property;
             if (!labelProp) continue;
 
-            const langKey =
-              labelProp.type === "Identifier" ? labelProp.name : labelProp.type === "Literal" ? labelProp.value : null;
+            const langKey = is.identifier(labelProp) ? labelProp.name : is.literal(labelProp) ? labelProp.value : null;
             if (langKey == null) continue;
 
             soundStrings[name as string] = "intl:" + langKey;
@@ -92,7 +81,7 @@ function SoundSettings({ value = {}, setValue }: CustomComponentProps): React.Re
   for (const name of soundNames) {
     let label = soundStrings[name];
     if (label?.startsWith("intl:")) {
-      label = i18n.intl.string(i18n.t[label.replace("intl:", "")]);
+      label = intl.string(i18n.t[label.replace("intl:", "")]);
     }
 
     elements.push(

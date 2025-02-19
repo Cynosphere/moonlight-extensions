@@ -3,7 +3,9 @@ import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { addItem, MenuItem } from "@moonlight-mod/wp/contextMenu_contextMenu";
 import { UserGuildSettingsStore } from "@moonlight-mod/wp/common_stores";
 
-const i18n = spacepack.findByCode("intl:")[0].exports;
+const i18n = spacepack.require("discord/intl");
+const intl = spacepack.findObjectFromKey(i18n, "_forceLookupMatcher");
+
 const { updateChannelOverrideSettings } = spacepack.findByCode(
   '.dispatch({type:"USER_GUILD_SETTINGS_CHANNEL_UPDATE_BULK",'
 )[0].exports.Z;
@@ -17,7 +19,7 @@ function FavoriteDM(props: any) {
   return (
     <MenuItem
       id="dmFavorites"
-      label={i18n.intl.string(i18n.t[langKey])}
+      label={intl.string(i18n.t[langKey])}
       action={() => {
         if (isFavorite) {
           override.flags &= ~2048;

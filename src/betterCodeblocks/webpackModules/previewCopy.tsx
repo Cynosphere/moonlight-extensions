@@ -10,13 +10,14 @@ import {
   showToast
 } from "@moonlight-mod/wp/discord/components/common/index";
 
-const i18n = spacepack.findByCode("intl:")[0].exports;
+const i18n = spacepack.require("discord/intl");
+const intl = spacepack.findObjectFromKey(i18n, "_forceLookupMatcher");
 
 const logger = moonlight.getLogger("Better Codeblocks");
 
 export default function PreviewCopyButton({ fileContents, language }: { fileContents: string; language: string }) {
   return (
-    <Tooltip text={i18n.intl.string(i18n.t.JrGD7O)}>
+    <Tooltip text={intl.string(i18n.t.JrGD7O)}>
       {(tooltipProps) => (
         <Clickable
           {...tooltipProps}
@@ -24,7 +25,7 @@ export default function PreviewCopyButton({ fileContents, language }: { fileCont
           onClick={() => {
             try {
               copy(fileContents);
-              showToast(createToast(i18n.intl.string(i18n.t.mGZ66O), ToastType.SUCCESS));
+              showToast(createToast(intl.string(i18n.t.mGZ66O), ToastType.SUCCESS));
             } catch (err) {
               logger.error("Failed to copy from preview:", err);
               showToast(createToast("Failed to copy", ToastType.FAILURE));

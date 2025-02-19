@@ -4,7 +4,7 @@ export const patches: Patch[] = [
   {
     find: ',"Unexpected missing user"),',
     replace: {
-      match: /children:"@".concat\((.+?)\)(?=}\);return \i\?(\(0,(\i)\.jsx\)))/,
+      match: /children:"@".concat\((.+?)\)(?=}\)\)?;return \i\?(\(0,(\i)\.jsx\)))/,
       replacement: (_, concat, createElement, ReactJSX) =>
         `children:[
   ${createElement}(require("mentionAvatars_avatar")?.default??${ReactJSX}.Fragment,{...arguments[0], children:moonlight.getConfigOption("mentionAvatars","keepAt")?"":"@"}),

@@ -1,7 +1,7 @@
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
-const MetadataClasses = spacepack.findByExports("metadataDownload")[0].exports;
+const MetadataClasses = spacepack.findByCode("metadataDownload:")[0].exports;
 
 type MetadataProps = {
   fileName: string | null;

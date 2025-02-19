@@ -1,7 +1,7 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "doubleClickActions",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "meta": {
     "name": "Double Click Actions",
     "tagline": "Allows double clicking messages to reply or edit",
@@ -9,7 +9,7 @@
     "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
-    "changelog": "Now checks if the message can be edited before attempting to edit"
+    "changelog": "Fixes for latest Discord"
   },
   "settings": {
     "allowEdit": {
