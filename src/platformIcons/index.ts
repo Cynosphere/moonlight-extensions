@@ -18,7 +18,7 @@ export const patches: Patch[] = [
   {
     find: ".listCollapse",
     replace: {
-      match: /(?<=(\(0,\i\.jsxs\))\("div",{className:\i\.iconGroup,onMouseEnter:.+?\(!1\)),children:\[/,
+      match: /(?<=(\(0,\i\.jsxs\))\("div",{className:\i\.iconGroup),children:\[/,
       replacement: (_, createElement) =>
         `,children:[${createElement}(require("platformIcons_voice").default,arguments[0]),`
     }

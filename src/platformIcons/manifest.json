@@ -1,14 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "platformIcons",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "meta": {
     "name": "Platform Icons",
     "tagline": "Shows what platform(s) a user is on",
     "authors": ["Cynosphere"],
     "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Fix voice icons patch"
   },
   "dependencies": ["spacepack", "common", "componentEditor"],
   "settings": {
