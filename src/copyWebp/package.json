@@ -1,0 +1,13 @@
+{
+  "name": "copyWebp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.ts",
+  "keywords": [],
+  "author": "Cynosphere",
+  "license": "MIT",
+  "dependencies": {
+    "@jsquash/png": "^3.0.1",
+    "@jsquash/webp": "^1.4.0"
+  }
+}

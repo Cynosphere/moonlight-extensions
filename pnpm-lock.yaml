@@ -17,7 +17,7 @@ importers:
         version: 3.2.8
       '@moonlight-mod/esbuild-config':
         specifier: github:moonlight-mod/esbuild-config
-        version: https://codeload.github.com/moonlight-mod/esbuild-config/tar.gz/af3684e88df8d8b0c205c22bdfdd1cc3d1f80685(esbuild@0.19.3)
+        version: https://codeload.github.com/moonlight-mod/esbuild-config/tar.gz/e3364450db91265d8940bfde17403d8e6d511d42(esbuild@0.19.3)
       '@moonlight-mod/eslint-config':
         specifier: github:moonlight-mod/eslint-config
         version: https://codeload.github.com/moonlight-mod/eslint-config/tar.gz/e262ac24e1a0955a9b3e0d66da247a0a8c0446c9(eslint@9.17.0)(prettier@3.4.2)(typescript@5.7.2)
@@ -36,6 +36,15 @@ importers:
       typescript:
         specifier: ^5.3.2
         version: 5.7.2
+
+  src/copyWebp:
+    dependencies:
+      '@jsquash/png':
+        specifier: ^3.0.1
+        version: 3.0.1
+      '@jsquash/webp':
+        specifier: ^1.4.0
+        version: 1.4.0
 
 packages:
 
@@ -230,8 +239,14 @@ packages:
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
 
-  '@moonlight-mod/esbuild-config@https://codeload.github.com/moonlight-mod/esbuild-config/tar.gz/af3684e88df8d8b0c205c22bdfdd1cc3d1f80685':
-    resolution: {tarball: https://codeload.github.com/moonlight-mod/esbuild-config/tar.gz/af3684e88df8d8b0c205c22bdfdd1cc3d1f80685}
+  '@jsquash/png@3.0.1':
+    resolution: {integrity: sha512-Bnvv93Y5LL92cuk2r2gpV+9JKuDo2/w7bOODw1iPxk8VARknky0sS1tSDgMosUdhNb4CdMlcCm3TMzTaqa3zZw==}
+
+  '@jsquash/webp@1.4.0':
+    resolution: {integrity: sha512-yKJb6Hilq+qV/4C4qTDEalBobNwJO09LeHHtilmWg5mYHFUDwMunfeAap/r3cL5KsHkGOoI0IjY2nKbTaHq9Bw==}
+
+  '@moonlight-mod/esbuild-config@https://codeload.github.com/moonlight-mod/esbuild-config/tar.gz/e3364450db91265d8940bfde17403d8e6d511d42':
+    resolution: {tarball: https://codeload.github.com/moonlight-mod/esbuild-config/tar.gz/e3364450db91265d8940bfde17403d8e6d511d42}
     version: 1.0.0
     peerDependencies:
       esbuild: '>= 0.19'
@@ -458,7 +473,7 @@ packages:
     engines: {node: '>= 6'}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -700,6 +715,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
@@ -757,6 +773,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -1211,6 +1228,9 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
+  wasm-feature-detect@1.8.0:
+    resolution: {integrity: sha512-zksaLKM2fVlnB5jQQDqKXXwYHLQUVH9es+5TOOHwGOVJOCeRBCiPjwSg+3tN2AdTCzjgli4jijCH290kXb/zWQ==}
+
   which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
     engines: {node: '>= 0.4'}
@@ -1371,7 +1391,13 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.1': {}
 
-  '@moonlight-mod/esbuild-config@https://codeload.github.com/moonlight-mod/esbuild-config/tar.gz/af3684e88df8d8b0c205c22bdfdd1cc3d1f80685(esbuild@0.19.3)':
+  '@jsquash/png@3.0.1': {}
+
+  '@jsquash/webp@1.4.0':
+    dependencies:
+      wasm-feature-detect: 1.8.0
+
+  '@moonlight-mod/esbuild-config@https://codeload.github.com/moonlight-mod/esbuild-config/tar.gz/e3364450db91265d8940bfde17403d8e6d511d42(esbuild@0.19.3)':
     dependencies:
       esbuild: 0.19.3
 
@@ -2637,6 +2663,8 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  wasm-feature-detect@1.8.0: {}
 
   which-boxed-primitive@1.1.1:
     dependencies:
