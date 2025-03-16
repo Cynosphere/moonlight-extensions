@@ -7,9 +7,13 @@ import { ReadStateStore } from "@moonlight-mod/wp/common_stores";
 
 const getTimestampString = spacepack.findByCode('["XIGt+f"]')[0].exports;
 const getAbbreviatedFormatter = spacepack.findFunctionByStrings(getTimestampString, '["XIGt+f"]');
+const { extractTimestamp } = spacepack.require("discord/utils/SnowflakeUtils").default;
 
 function DMDate({ channel }: { channel: any }) {
-  const lastMessage = useStateFromStores([ReadStateStore], () => ReadStateStore.lastMessageTimestamp(channel.id));
+  const lastMessage = useStateFromStores(
+    [ReadStateStore],
+    () => ReadStateStore.lastMessageTimestamp(channel.id) || extractTimestamp(channel.id)
+  );
   const formattedTime = getTimestampString.ZP({ since: lastMessage, getFormatter: getAbbreviatedFormatter });
 
   return (
