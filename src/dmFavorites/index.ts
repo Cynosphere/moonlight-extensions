@@ -19,7 +19,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { ext: "spacepack", id: "spacepack" },
       { ext: "contextMenu", id: "contextMenu" },
       { ext: "common", id: "stores" },
-      "intl:",
+      { id: "discord/intl" },
       '.dispatch({type:"USER_GUILD_SETTINGS_CHANNEL_UPDATE_BULK",'
     ]
   },
