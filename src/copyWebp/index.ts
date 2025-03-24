@@ -16,7 +16,7 @@ export const patches: Patch[] = [
     replace: {
       match: /(\i)=await \i\(\i\);/,
       replacement: (orig, buffer) => `${orig}
-if(/RIFF....WEBP/.test(new TextDecoder("utf-8").decode(${buffer}.slice(0,12)))){
+if(/RIFF...?.?WEBP/.test(new TextDecoder("utf-8").decode(${buffer}.slice(0,12)))){
   ${buffer} = await moonlight.getNatives("copyWebp").convertWebp(${buffer});
 }
 `

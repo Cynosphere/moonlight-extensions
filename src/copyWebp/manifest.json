@@ -1,14 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "copyWebp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "meta": {
     "name": "Copy WebP",
     "tagline": "Allows WebP images to be copied",
     "authors": ["Cynosphere"],
     "tags": ["chat", "qol", "fixes"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Fix being unable to copy some WebP's"
   },
   "environment": "desktop",
   "dependencies": [],
