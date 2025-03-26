@@ -12,6 +12,12 @@ const { ChannelTypes } = spacepack.require("discord/Constants");
 
 function speak(text: string) {
   const utterance = new SpeechSynthesisUtterance(text);
+  const ttsVoice = moonlight.getConfigOption<string>("whoJoined", "ttsVoice");
+  if (ttsVoice && ttsVoice !== "") {
+    const voice = window.speechSynthesis.getVoices().find((voice) => voice.name === ttsVoice);
+    if (voice) utterance.voice = voice;
+  }
+
   window.speechSynthesis.speak(utterance);
 }
 

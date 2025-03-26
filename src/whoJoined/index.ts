@@ -9,5 +9,14 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "discord/Constants" },
       { ext: "common", id: "stores" }
     ]
+  },
+  settings: {
+    entrypoint: true,
+    dependencies: [
+      { ext: "moonbase", id: "moonbase" },
+      { id: "react" },
+      { id: "discord/components/common/index" },
+      { id: "discord/styles/shared/Margins.css" }
+    ]
   }
 };
