@@ -99,8 +99,7 @@ function lazyLoad() {
       spacepack.findByCode(roleIconFind)[0].exports,
       roleIconFind
     ) as UseRoleIcon;
-    createMessageHeader = spacepack.findByCode(`.isInteraction${"Placeholder()"},`)[0].exports
-      .ZP as CreateMessageHeader;
+    createMessageHeader = spacepack.findByCode(/guildId:\i,isGroupStart:\i=!0,/)[0].exports.Z as CreateMessageHeader;
 
     MemoizeReferencedMessage = spacepack.findByCode("isReplyAuthorBlocked:", `.REPLY||${"null=="}`)[0].exports.Z;
 
