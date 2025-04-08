@@ -24,12 +24,11 @@ type MimeType = {
   compressible?: boolean;
 };
 
-const LazyMediaModalFind = `.${"MEDIA_VIEWER"},source:`;
+const LazyMediaModalFind = `=${JSON.stringify("Media Viewer Modal")};`;
 const LazyMediaModal = spacepack.findFunctionByStrings(
   spacepack.findByCode(LazyMediaModalFind)[0]?.exports ?? {},
-  LazyMediaModalFind
+  `.OPEN_MODAL,{`
 );
-const MediaModalClasses = spacepack.findByCode(/{modal:"modal_[a-z0-9]+"}/)[0].exports;
 
 const MimeTypes = Object.entries(
   spacepack.findByCode(`JSON.parse('{"application/1d-interleaved-parityfec":`)[0].exports
@@ -47,7 +46,6 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
           onClick={() => {
             if (LazyMediaModal != null) {
               LazyMediaModal({
-                className: MediaModalClasses.modal,
                 items: [
                   {
                     url: item.originalItem.proxy_url,
@@ -55,7 +53,7 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
                     width: item.originalItem.width,
                     height: item.originalItem.height,
                     type: "VIDEO",
-                    origina: item.originalItem.proxy_url
+                    original: item.originalItem.proxy_url
                   }
                 ]
               });
