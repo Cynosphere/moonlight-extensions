@@ -53,7 +53,7 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
                     width: item.originalItem.width,
                     height: item.originalItem.height,
                     type: "VIDEO",
-                    original: item.originalItem.proxy_url
+                    original: item.originalItem.url
                   }
                 ]
               });
@@ -84,7 +84,7 @@ export function createButtonGroup({ video }: VideoProps) {
             contentType,
             originalItem: {
               proxy_url: video.proxyURL,
-              url: video.proxyURL,
+              url: video.url,
               width: video.width,
               height: video.height
             }

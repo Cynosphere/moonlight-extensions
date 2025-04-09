@@ -32,7 +32,7 @@ export const patches: Patch[] = [
 
   // Inline Mosaic Playback
   {
-    find: 'location:"MessageAccessories"',
+    find: "renderRemoveAttachmentConfirmModal(){",
     replace: {
       match: /=(\(0,\i\.\i\))\((\i),({shouldRedactExplicitContent:\i,shouldHideMediaOptions:\i}),("Media Mosaic")\),/,
       replacement: (_, createCarousel, attachments, props, analytics) =>
@@ -54,8 +54,7 @@ export const patches: Patch[] = [
 
       // Add button
       {
-        match:
-          /(?<=isVisualMediaType:\i,channelId:.+?}=(\i);.+?"MosaicItemHoverButtons"\);)(?=\i&&null!=\i&&(\i)\.push\((\(0,\i\.jsx\)))/,
+        match: /(?<=isVisualMediaType:\i,channelId:.+?}=(\i);.+?;)(?=\i&&(\i)\.push\((\(0,\i\.jsx\)))/,
         replacement: (_, props, buttons, createElement) =>
           `${buttons}.push(${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props},"mediaTweaks_enlargeVideoButton"));`
       }
