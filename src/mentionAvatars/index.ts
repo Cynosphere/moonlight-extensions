@@ -2,7 +2,7 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: ',"Unexpected missing user"),',
+    find: 'location:"UserMention"',
     replace: {
       match: /children:"@".concat\((.+?)\)(?=}\)\)?;return \i\?(\(0,(\i)\.jsx\)))/,
       replacement: (_, concat, createElement, ReactJSX) =>
