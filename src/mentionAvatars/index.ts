@@ -2,7 +2,7 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: 'location:"UserMention"',
+    find: "discord/modules/messages/web/UserMention",
     replace: {
       match: /children:"@".concat\((.+?)\)(?=}\)\)?;return \i\?(\(0,(\i)\.jsx\)))/,
       replacement: (_, concat, createElement, ReactJSX) =>
