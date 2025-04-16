@@ -7,7 +7,8 @@ const UserProfileActivityCardWrapper = spacepack.findByCode(
 const UserProfileStreamActivityCard = spacepack.findByCode(
   `surface:${JSON.stringify("user-profile-stream-activity-card")},`
 )[0].exports.Z;
-const useUserProfileActivity = spacepack.findByCode(`${JSON.stringify("use-user-profile-activity")}`)[0].exports.Z;
+const useUserProfileActivity = spacepack.findByCode(`location:${JSON.stringify("useUserProfileActivity")}`)[0].exports
+  .Z;
 
 type UserPopoutActivitiesProps = {
   user: any; // no discord common types :(

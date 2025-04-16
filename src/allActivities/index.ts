@@ -21,7 +21,7 @@ export const patches: Patch[] = [
 
   // Do not de-duplicate entries in useUserProfileActivity
   {
-    find: '"use-user-profile-activity"',
+    find: 'location:"useUserProfileActivity"',
     replace: {
       match: /\(0,\i\.uniqWith\)/,
       replacement: "((inp)=>inp)"
