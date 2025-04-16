@@ -1,0 +1,14 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "betterUploadButton",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Better Upload Button",
+    "tagline": "Makes the upload button single click to upload and right click for other options",
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "chat"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
+  },
+  "apiLevel": 2
+}
