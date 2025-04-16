@@ -25,7 +25,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "react" },
       { ext: "spacepack", id: "spacepack" },
       { id: "discord/components/common/index" },
-      "intl:",
+      { id: "discord/intl" },
       '"./discodo.mp3":'
     ]
   }
