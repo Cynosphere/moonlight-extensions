@@ -6,7 +6,7 @@ export const patches: Patch[] = [
     find: '"UserProfileFeaturedActivity"',
     replace: {
       match: /:\(\)=>(\i)}/,
-      replacement: ':()=>require("allActivities_activities").default}'
+      replacement: (_, orig) => `:()=>(props)=>require("allActivities_activities").default(props,${orig})}`
     }
   },
 
@@ -31,7 +31,13 @@ export const patches: Patch[] = [
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   activities: {
-    dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }]
+    dependencies: [
+      { id: "react" },
+      { ext: "spacepack", id: "spacepack" },
+      { ext: "common", id: "stores" },
+      '"UserProfileFeaturedActivity"',
+      'location:"UserProfileActivityCardWrapper"'
+    ]
   },
   icons: {
     entrypoint: true,
@@ -42,7 +48,8 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "discord/Constants" },
       { id: "discord/components/common/index" },
       { ext: "componentEditor", id: "memberList" },
-      'applicationStreamingPreviewWrapper:"applicationStreamingPreviewWrapper_'
+      'applicationStreamingPreviewWrapper:"applicationStreamingPreviewWrapper_',
+      'location:"UserProfileActivityCardWrapper"'
     ]
   }
 };
