@@ -4,9 +4,9 @@ export const patches: Patch[] = [
   {
     find: ".lostPermission",
     replace: {
-      match: /=>null!=(\i)&&\i&&null==/,
-      replacement: (_, isOwner) =>
-        `=>null!=(${isOwner}=require("ownerCrown_logic")?.default?.(arguments[0]))&&${isOwner}&&null==`
+      match: /,{user:(\i),isOwner:(\i),lostPermissionTooltipText:/,
+      replacement: (_, user, isOwner) =>
+        `,{user:${user},isOwner:require("ownerCrown_logic")?.default?.(arguments[0])??${isOwner},lostPermissionTooltipText:`
     }
   }
 ];
