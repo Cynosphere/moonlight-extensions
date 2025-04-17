@@ -4,9 +4,9 @@ export const patches: Patch[] = [
   {
     find: "discord/utils/MaskedLinkUtils",
     replace: {
-      match: /let (\i)=(\i);try{decodeURI/,
+      match: /(\i)=encodeURI\((\i)\)}/,
       replacement: (_, href, sanitized) =>
-        `let ${href}=require("openExternally_open").default(${sanitized});try{decodeURI`
+        `${href}=encodeURI(${sanitized})}const openExternally=require("openExternally_open").default(${href});if(openExternally!=null)return openExternally(arguments[1]);`
     }
   }
 ];

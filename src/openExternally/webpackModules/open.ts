@@ -17,10 +17,17 @@ export default function OpenExternallyRedirect(href: string) {
       if (!enabled) continue;
 
       if (handler.links.includes(url.hostname)) {
-        return handler.protocol + href;
+        return function (event?: React.MouseEvent) {
+          if (event != null) event.preventDefault();
+          window.open(handler.protocol + href);
+
+          return true;
+        };
       }
     }
+
+    return null;
   } catch {
-    return href;
+    return null;
   }
 }
