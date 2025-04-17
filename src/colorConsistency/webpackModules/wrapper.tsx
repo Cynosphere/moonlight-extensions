@@ -27,13 +27,13 @@ export default function ColorConsistencyWrapper({
     userId,
     guildId
   ]);
-  const { colorString, colorStrings } = member;
-  const shouldUseGradient = colorStrings && colorStrings.primaryColor && colorStrings.secondaryColor;
+  const { colorString, colorStrings } = member ?? {};
+  const shouldUseGradient = colorStrings?.primaryColor && colorStrings.secondaryColor;
   const { text, gradient } =
     useGradient?.(colorStrings?.primaryColor, colorStrings?.secondaryColor, colorStrings?.tertiaryColor, "username") ??
     {};
 
-  if (!member || !colorString || colorString === "") return children;
+  if (!member || !colorString) return children;
 
   return (
     <span
