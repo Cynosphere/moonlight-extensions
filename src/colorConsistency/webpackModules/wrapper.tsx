@@ -28,24 +28,27 @@ export default function ColorConsistencyWrapper({
     guildId
   ]);
   const { colorString, colorStrings } = member ?? {};
-  const shouldUseGradient = colorStrings?.primaryColor && colorStrings.secondaryColor;
-  const { text, gradient } =
-    useGradient?.(colorStrings?.primaryColor, colorStrings?.secondaryColor, colorStrings?.tertiaryColor, "username") ??
-    {};
+  let gradientClassname, gradientStyle;
+
+  try {
+    const gradientRole =
+      useGradient?.({ ...(colorStrings ?? {}), roleStyle: "username", includeConvenienceGlow: false }) ?? {};
+    gradientClassname = gradientRole.gradientClassname;
+    gradientStyle = gradientRole.gradientStyle;
+  } catch {
+    // noop
+  }
 
   if (!member || !colorString) return children;
 
   return (
     <span
       style={{
-        color: !shouldUseGradient ? colorString : null,
+        color: colorString,
         filter: speaking ? "brightness(1.75)" : null,
-        ...(shouldUseGradient ? text.gradientStyle : {})
+        ...(gradientStyle ?? {})
       }}
-      className={classnames("", {
-        [text.gradientClassName]: shouldUseGradient,
-        [gradient.gradientClassName]: shouldUseGradient
-      })}
+      className={classnames("", gradientClassname ?? {})}
     >
       {children}
     </span>
