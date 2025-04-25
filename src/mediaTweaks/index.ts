@@ -85,6 +85,17 @@ export const patches: Patch[] = [
       match: /(?<=\i\|\|\()(\(0,\i\.\i\)\(.+?\.drafts\.type\))\?/,
       replacement: (_, orig) => `((moonlight.getConfigOption("mediaTweaks","noStickerAutosend")??true)?true:${orig})?`
     }
+  },
+
+  // Voice Message Download Button
+  {
+    find: '?"--:--":',
+    replace: {
+      match:
+        /(\(0,(\i)\.jsx\))\(\i\.\i,{(className:\i\.volumeButton,iconClassName:\i\.volumeButtonIcon,).+?onVolumeHide:\i}\),/,
+      replacement: (orig, createElement, ReactJSX, classnames) =>
+        `${orig}${createElement}(require("mediaTweaks_voiceMessageDownload")?.default??${ReactJSX}.Fragment,{${classnames}src:arguments[0].src}),`
+    }
   }
 ];
 
@@ -99,6 +110,15 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
 
   imagePropsProcessor: {
     dependencies: []
+  },
+
+  voiceMessageDownload: {
+    dependencies: [
+      { id: "react" },
+      { id: "discord/components/common/index" },
+      { id: "discord/intl" },
+      { ext: "spacepack", id: "spacepack" }
+    ]
   }
 };
 

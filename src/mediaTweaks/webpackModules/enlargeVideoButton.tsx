@@ -48,12 +48,12 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
               LazyMediaModal({
                 items: [
                   {
-                    url: item.originalItem.proxy_url,
-                    proxyUrl: item.originalItem.proxy_url,
-                    width: item.originalItem.width,
-                    height: item.originalItem.height,
+                    url: item.originalItem.proxy_url ?? item.originalItem.media.proxyUrl,
+                    proxyUrl: item.originalItem.proxy_url ?? item.originalItem.media.proxyUrl,
+                    width: item.originalItem.width ?? item.originalItem.media.width,
+                    height: item.originalItem.height ?? item.originalItem.media.height,
                     type: "VIDEO",
-                    original: item.originalItem.url
+                    original: item.originalItem.url ?? item.originalItem.media.url
                   }
                 ]
               });
