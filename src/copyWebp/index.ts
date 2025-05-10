@@ -3,7 +3,7 @@ import { Patch } from "@moonlight-mod/types";
 export const patches: Patch[] = [
   // add to copy list
   {
-    find: '="https://media.discordapp.net",',
+    find: "discord/utils/NativeUtils",
     replace: {
       match: '"png"]',
       replacement: '"png","webp"]'
