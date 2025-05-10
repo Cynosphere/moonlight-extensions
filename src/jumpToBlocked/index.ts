@@ -4,8 +4,8 @@ export const patches: Patch[] = [
   {
     find: '("interactionAvatarProfile",',
     replace: {
-      match: /&&\(\i\?\i\.\i.show\({.+?:(\i\.\i)\.jumpToMessage/,
-      replacement: (_, mod) => `&&(${mod}.jumpToMessage`
+      match: /\(null==\i\|\|\(0,\i\.\i\)\(\i\)\)&&(\i\.\i)\.jumpToMessage/,
+      replacement: (_, mod) => `${mod}.jumpToMessage`
     }
   }
 ];
