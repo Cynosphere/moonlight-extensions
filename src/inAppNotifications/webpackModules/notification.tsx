@@ -22,7 +22,7 @@ import {
 
 const AvatarUtils = spacepack.require("discord/utils/AvatarUtils").default;
 
-const Message = spacepack.findByCode(`role:${'"article"'},children:[`)[0].exports.Z;
+const Message = spacepack.findByCode(`[${'"className","compact"'},${'"contentOnly","zalgo"'},`)[0].exports.Z;
 const MessageContent = spacepack.findByCode(".hasFlag(", `SOURCE_MESSAGE${"_DELETED"}`)[0].exports.ZP;
 
 const MessageConstructor = spacepack.findByCode(`.set(${'"roleSubscriptionData"'},`)[0].exports;
