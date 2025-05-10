@@ -1,14 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "hideBlocked",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "meta": {
     "name": "Hide Blocked/Ignored Messages",
     "tagline": "Hide messages from blocked and/or ignored users",
     "authors": ["Cynosphere"],
     "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Make patch find unique"
   },
   "settings": {
     "blocked": {
