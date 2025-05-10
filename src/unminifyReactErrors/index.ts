@@ -3,7 +3,7 @@ import { Patch, ExtensionWebpackModule } from "@moonlight-mod/types";
 import ERROR_CODES from "./codes.json";
 
 const ERROR_MATCH =
-  /function (\i)\(\i\){for\(var \i="https:\/\/reactjs\.org\/docs\/error-decoder\.html\?invariant="\+\i,\i=1;\i<arguments\.length;\i\+\+\)\i\+="&args\[\]="\+encodeURIComponent\(arguments\[\i\]\);return"Minified React error #"\+\i\+"; visit "\+\i\+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings\."}/;
+  /function (\i)\(\i\){var \i="https:\/\/react\.dev\/errors\/"\+\i;if\(1<arguments\.length\){\i\+="\?args\[\]="\+encodeURIComponent\(arguments\[1\]\);for\(var \i=2;\i<arguments\.length;\i\+\+\)\i\+="&args\[\]="\+encodeURIComponent\(arguments\[\i\]\)}return"Minified React error #"\+\i\+"; visit "\+\i\+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings\."}/g;
 
 export const patches: Patch[] = [
   {
