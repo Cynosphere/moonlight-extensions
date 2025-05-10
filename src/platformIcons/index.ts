@@ -8,9 +8,9 @@ export const patches: Patch[] = [
   {
     find: ".userTagDiscriminator,hideBotTag:!0",
     replace: {
-      match: /,(\(0,\i\.jsx\))\(\i\.\i,{userId:(\i)\.id,.+?(\i)\.clanTag}\),/,
-      replacement: (orig: string, createElement, user, ProfileClasses) =>
-        `${orig}${createElement}(require("platformIcons_icons").default,{user:${user},configKey:"profiles",extraClasses:["platform-icons-profile", ${ProfileClasses}.clanTagContainer, ${ProfileClasses}.clanTag]}),`
+      match: /,(\(0,\i\.jsx\))\(\i\.\i,{userId:(\i)\.id,onClose:\i}\),/,
+      replacement: (orig: string, createElement, user) =>
+        `${orig}${createElement}(require("platformIcons_icons").default,{user:${user},configKey:"profiles",extraClasses:["platform-icons-profile"]}),`
     }
   },
 
@@ -62,6 +62,11 @@ export const patches: Patch[] = [
         // why is this check there twice, are they stupid?
         match: /\i===\i\.\i\.ONLINE&&/g,
         replacement: ""
+      },
+      {
+        match:
+          /(?<=dotRadius:0};)(switch\(\i\){case \i\.\i\.ONLINE:)(if\(\i\)return{bgRadius:.+?,dotRadius:.125\*\i};)/,
+        replacement: (_, online, mobileCheck) => `${mobileCheck}${online}`
       }
     ],
     prerequisite: alwaysShowMobile
