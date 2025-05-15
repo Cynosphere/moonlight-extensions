@@ -1,14 +1,14 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "platformStyles",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "meta": {
     "name": "Platform Styles",
-    "tagline": "Change the window border appearance to another operating system's style.",
+    "tagline": "Change the window border appearance to another operating system's style and other window tweaks",
     "authors": ["Cynosphere", "adryd"],
     "tags": ["appearance"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "changelog": "Support for Visual Refresh"
+    "changelog": "- Transparency\n- macOS vibrancy and Windows 11 background material\n- Disable Rounded Corners\n- No Minimum Window Size"
   },
   "environment": "desktop",
   "settings": {
@@ -18,6 +18,58 @@
       "type": "select",
       "default": "default",
       "options": ["default", "win", "osx", "linux", "web"],
+      "advice": "restart"
+    },
+    "noMinimumSize": {
+      "displayName": "No Minimum Window Size",
+      "type": "boolean",
+      "default": false,
+      "advice": "restart"
+    },
+    "unround": {
+      "displayName": "Disable Rounded Corners",
+      "description": "macOS and Windows 11 only",
+      "type": "boolean",
+      "default": false,
+      "advice": "restart"
+    },
+    "transparency": {
+      "displayName": "Window Transparency",
+      "description": "Requires CSS to make the client transparent",
+      "type": "boolean",
+      "default": false,
+      "advice": "restart"
+    },
+    "macosVibrancy": {
+      "displayName": "Window Vibrancy",
+      "description": "macOS only",
+      "type": "select",
+      "default": "none",
+      "options": [
+        "none",
+        "under-page",
+        "content",
+        "window",
+        "selection",
+        "titlebar",
+        "header",
+        "sidebar",
+        "tooltip",
+        "menu",
+        "popover",
+        "fullscreen-ui",
+        "hud",
+        "sheet",
+        "under-window"
+      ],
+      "advice": "restart"
+    },
+    "windowsMaterial": {
+      "displayName": "Background Material",
+      "description": "Windows 11 only",
+      "type": "select",
+      "default": "auto",
+      "options": ["auto", "none", "mica", "acrylic", "tabbed"],
       "advice": "restart"
     }
   },
