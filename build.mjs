@@ -4,6 +4,8 @@ import { createRequire } from "node:module";
 import { watchExt, buildExt } from "@moonlight-mod/esbuild-config";
 import inlineImportPlugin from "esbuild-plugin-inline-import";
 
+const esm = [];
+
 const watch = process.argv.includes("--watch");
 const clean = process.argv.includes("--clean");
 
@@ -69,10 +71,12 @@ if (clean) {
   const exts = fs.readdirSync("./src");
 
   for (const ext of exts) {
+    /** @type {import("@moonlight-mod/esbuild-config").ESBuildFactoryOptions} */
     const cfg = {
-      src: path.resolve(path.join("src", ext)),
-      dst: path.resolve(path.join("dist", ext)),
       ext,
+      entry: path.resolve(path.join("src", ext)),
+      output: path.resolve(path.join("dist", ext)),
+      esm: esm.includes(ext),
       extraPlugins: [inlineImportPlugin(), wasmPlugin]
     };
 
