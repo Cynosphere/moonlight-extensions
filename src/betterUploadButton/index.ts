@@ -4,8 +4,10 @@ export const patches: Patch[] = [
   {
     find: '("ChannelAttachButton")',
     replace: {
-      match: /(?<="Invalid popout type provided"\)}},children:\i=>\(0,\i\.jsx\)\(\i\.\i,)(\i)\((\i)\({look:/,
-      replacement: (_, defineProps, mergeProps) => `require("betterUploadButton_fixProps").default(${mergeProps}({look:`
+      match:
+        /(?<="Invalid popout type provided"\)}},children:\i=>\(0,\i\.jsx\)\(\i\.\i,)(\i)\((\i)\({(buttonRef|look):/,
+      replacement: (_, defineProps, mergeProps, firstProp) =>
+        `require("betterUploadButton_fixProps").default(${mergeProps}({${firstProp}:`
     }
   }
 ];
