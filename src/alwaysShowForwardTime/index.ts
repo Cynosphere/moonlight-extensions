@@ -2,7 +2,7 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: ".messageSnapshots.map(",
+    find: /\.messageSnapshots\.map\(/g,
     replace: {
       match: /(?<=return null==\i\?)null(?=:(\(0,(\i)\.jsxs\))\(\i\.\i,{className:(\i)\.footerContainer,)/,
       replacement: (_, createElement, ReactJSX, classes) =>
