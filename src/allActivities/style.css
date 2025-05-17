@@ -14,11 +14,29 @@
   max-width: unset !important;
 }
 
-[class^="member_"] > [class^="childContainer_"] > [class^="memberInner_"] {
-  width: 100%;
+.allActivities-icon {
+  position: relative;
+}
+.allActivities-subicon {
+  pointer-events: none;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: -4px;
+  right: -4px;
+  filter: drop-shadow(0 0 1px black);
+}
 
-  /* controversal rule but w/e, i dont get why discord uses --space-16 on the right side only */
-  .visual-refresh & {
-    padding: var(--space-xxs) var(--space-xs);
+[class^="member_"] > [class^="childContainer_"] {
+  /* hey discord, maybe you should like, actually learn how to position gradients instead of using padding */
+  padding-right: 0;
+
+  & > [class^="memberInner_"] {
+    width: 100%;
+
+    /* controversal rule but w/e, i dont get why discord uses --space-16 on the right side only */
+    .visual-refresh & {
+      padding: var(--space-xxs) var(--space-xs);
+    }
   }
 }

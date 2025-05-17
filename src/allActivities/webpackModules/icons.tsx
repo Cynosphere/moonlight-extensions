@@ -30,12 +30,18 @@ type ActivityIconProps = {
 type ActivityIconIconProps = {
   card: React.ReactNode;
   icon: string;
+  subicon?: string | null;
 };
 
-function ActivityIconIcon({ card, icon }: ActivityIconIconProps) {
+function ActivityIconIcon({ card, icon, subicon = null }: ActivityIconIconProps) {
   return (
     <Tooltip text={card} position="left" tooltipClassName="allActivities-iconTooltip">
-      {(tooltipProps: any) => <img {...tooltipProps} className={ActivityClasses.headerIcon} src={icon} />}
+      {(tooltipProps: any) => (
+        <div {...tooltipProps} className="allActivities-icon">
+          <img className={ActivityClasses.headerIcon} src={icon} />
+          {subicon != null ? <img className="allActivities-subicon" src={subicon} /> : null}
+        </div>
+      )}
     </Tooltip>
   );
 }
@@ -62,15 +68,21 @@ function ActivityIcon({ user, currentUser, activity }: ActivityIconProps) {
   );
 
   if (activity.name === "Spotify") {
-    return <ActivityIconIcon card={card} icon={SpotifyIcon} />;
+    return (
+      <ActivityIconIcon
+        card={card}
+        icon={activity.assets.large_image.replace("spotify:", "https://i.scdn.co/image/")}
+        subicon={SpotifyIcon}
+      />
+    );
   } else if (activity.type === ActivityTypes.STREAMING) {
     return <ActivityIconIcon card={card} icon={TwitchIcon} />;
   } else if (activity.application_id && activity?.assets?.large_image) {
     const icon = activity.assets.large_image.startsWith("mp:")
-      ? activity.assets.large_image.replace("mp:", "https://media.discordapp.net/") + "?width=24&height=24"
+      ? activity.assets.large_image.replace("mp:", "https://media.discordapp.net/") + "?width=128&height=128"
       : activity.assets.large_image.startsWith("spotify:")
         ? activity.assets.large_image.replace("spotify:", "https://i.scdn.co/image/")
-        : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=24`;
+        : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=128`;
     return <ActivityIconIcon card={card} icon={icon} />;
   } else if (game && gameIcon) {
     return <ActivityIconIcon card={card} icon={gameIcon} />;
