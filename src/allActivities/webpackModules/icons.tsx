@@ -68,12 +68,9 @@ function ActivityIcon({ user, currentUser, activity }: ActivityIconProps) {
   );
 
   if (activity.name === "Spotify") {
+    const albumArt = activity.assets?.large_image?.replace("spotify:", "https://i.scdn.co/image/");
     return (
-      <ActivityIconIcon
-        card={card}
-        icon={activity.assets.large_image.replace("spotify:", "https://i.scdn.co/image/")}
-        subicon={SpotifyIcon}
-      />
+      <ActivityIconIcon card={card} icon={albumArt ?? SpotifyIcon} subicon={albumArt != null ? SpotifyIcon : null} />
     );
   } else if (activity.type === ActivityTypes.STREAMING) {
     return <ActivityIconIcon card={card} icon={TwitchIcon} />;
