@@ -23,7 +23,7 @@ const IconsForPlatform: Record<Exclude<Platforms, "unknown">, React.ComponentTyp
   embedded: GameControllerIcon
 };
 
-const { humanizeStatus } = spacepack.findByExports("humanizeStatus")[0].exports.ZP;
+const { humanizeStatus } = spacepack.findByCode("humanizeStatus:")[0].exports.ZP;
 
 type Statuses = "online" | "idle" | "dnd" | "offline" | "invisible";
 const StatusColors: Record<Exclude<Statuses, "offline" | "invisible">, string> = {

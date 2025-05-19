@@ -25,12 +25,6 @@ const AvatarUtils = spacepack.require("discord/utils/AvatarUtils").default;
 const MessageConstructor = spacepack.findByCode(`.set(${'"roleSubscriptionData"'},`)[0].exports;
 const createMessageRecord = spacepack.findFunctionByStrings(MessageConstructor, ".createFromServer(");
 
-const MemoizeMessage = spacepack.findByCode(`let{${"renderChangelogMessageMarkup"}:`)[0].exports.Z;
-
-const isMessageNewerThanImprovedMarkdownEpoch = Object.values(
-  spacepack.findByCode(`${JSON.stringify("1088216706570268682")}`)[0].exports
-)[0] as (id: string) => boolean;
-
 const getMessageAuthor = spacepack.findByCode(
   `${JSON.stringify("Result cannot be null because the message is not null")}`
 )[0].exports.ZP;
@@ -79,7 +73,9 @@ let makeTextChatNotification: MakeTextChatNotification,
   EmbedClasses: Record<string, string>,
   createMessageHeader: CreateMessageHeader,
   Message: React.ComponentType<any>,
-  MessageContent: React.ComponentType<any>;
+  MessageContent: React.ComponentType<any>,
+  isMessageNewerThanImprovedMarkdownEpoch: (id: string) => boolean,
+  MemoizeMessage: (message: any, props: Record<string, any>) => any;
 
 function lazyLoad() {
   if (!makeTextChatNotification) {
@@ -107,6 +103,10 @@ function lazyLoad() {
     EmbedClasses = spacepack.findByCode(`embed${"Author"}Icon:`)[0].exports;
     Message = spacepack.findByCode(`[${'"className","compact"'},${'"contentOnly","zalgo"'},`)[0].exports.Z;
     MessageContent = spacepack.findByCode(".hasFlag(", `SOURCE_MESSAGE${"_DELETED"}`)[0].exports.ZP;
+    isMessageNewerThanImprovedMarkdownEpoch = Object.values(
+      spacepack.findByCode(`${JSON.stringify("1088216706570268682")}`)[0].exports
+    )[0] as (id: string) => boolean;
+    MemoizeMessage = spacepack.findByCode(`let{${"renderChangelogMessageMarkup"}:`)[0].exports.Z;
   }
 }
 
@@ -254,6 +254,6 @@ Dispatcher.subscribe("MESSAGE_CREATE", (event: any) => {
       })
     );
   } catch (err) {
-    logger.error("Failed to do things:", err);
+    logger.error("Failed to create notification:", err);
   }
 });
