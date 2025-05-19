@@ -22,9 +22,6 @@ import {
 
 const AvatarUtils = spacepack.require("discord/utils/AvatarUtils").default;
 
-const Message = spacepack.findByCode(`[${'"className","compact"'},${'"contentOnly","zalgo"'},`)[0].exports.Z;
-const MessageContent = spacepack.findByCode(".hasFlag(", `SOURCE_MESSAGE${"_DELETED"}`)[0].exports.ZP;
-
 const MessageConstructor = spacepack.findByCode(`.set(${'"roleSubscriptionData"'},`)[0].exports;
 const createMessageRecord = spacepack.findFunctionByStrings(MessageConstructor, ".createFromServer(");
 
@@ -80,7 +77,9 @@ let makeTextChatNotification: MakeTextChatNotification,
   MemoizeReferencedMessage: _MemoizeReferencedMessage,
   SystemMessage: React.ComponentType<any>,
   EmbedClasses: Record<string, string>,
-  createMessageHeader: CreateMessageHeader;
+  createMessageHeader: CreateMessageHeader,
+  Message: React.ComponentType<any>,
+  MessageContent: React.ComponentType<any>;
 
 function lazyLoad() {
   if (!makeTextChatNotification) {
@@ -106,6 +105,8 @@ function lazyLoad() {
     SystemMessage = spacepack.findByCode(`(${'"SystemMessage"'})`)[0].exports.Z;
 
     EmbedClasses = spacepack.findByCode(`embed${"Author"}Icon:`)[0].exports;
+    Message = spacepack.findByCode(`[${'"className","compact"'},${'"contentOnly","zalgo"'},`)[0].exports.Z;
+    MessageContent = spacepack.findByCode(".hasFlag(", `SOURCE_MESSAGE${"_DELETED"}`)[0].exports.ZP;
   }
 }
 
