@@ -1,14 +1,14 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "platformStyles",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "meta": {
     "name": "Platform Styles",
     "tagline": "Change the window border appearance to another operating system's style and other window tweaks",
     "authors": ["Cynosphere", "adryd"],
     "tags": ["appearance"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "changelog": "- Transparency\n- macOS vibrancy and Windows 11 background material\n- Disable Rounded Corners\n- No Minimum Window Size"
+    "changelog": "Fix transparency not persisting between theme changes"
   },
   "environment": "desktop",
   "settings": {

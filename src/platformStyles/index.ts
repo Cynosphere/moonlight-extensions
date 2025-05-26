@@ -34,6 +34,16 @@ export const patches: Patch[] = [
       match: /\(0,(\i)\.getPlatform\)\(\)/g,
       replacement: (_, platformUtil) => `require("platformStyles_helper").platformBorders(${platformUtil})`
     }
+  },
+
+  // transparency fix for switching themes
+  {
+    find: "discord/utils/NativeUtils",
+    replace: {
+      match: /"SETTINGS_UPDATE_BACKGROUND_COLOR",\i\)/,
+      replacement: `"SETTINGS_UPDATE_BACKGROUND_COLOR","#00000000")`
+    },
+    prerequisite: () => moonlight.getConfigOption<boolean>("platformStyles", "transparency") ?? false
   }
 ];
 
