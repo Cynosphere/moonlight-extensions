@@ -1,0 +1,22 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "svgEmbed",
+  "version": "1.0.0",
+  "meta": {
+    "name": "SVG Embed",
+    "tagline": "Makes SVG files embed as images.",
+    "authors": ["aamiaa", "nakoyasha", "Cynosphere"],
+    "tags": ["chat"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions"
+  },
+  "settings": {
+    "embedLinks": {
+      "type": "boolean",
+      "displayName": "Embed SVG links",
+      "description": "Only embeds from `discord.com` and `cdn.discordapp.com`",
+      "default": true,
+      "advice": "none"
+    }
+  },
+  "apiLevel": 2
+}
