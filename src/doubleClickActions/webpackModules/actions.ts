@@ -9,7 +9,7 @@ const canReplyToMessage = spacepack.findFunctionByStrings(
 );
 const replyToMessage = spacepack.findFunctionByStrings(
   spacepack.findByCode(`${',source:"message-actions"}'}`)[0].exports,
-  ".TEXTAREA_FOCUS)"
+  ",showMentionToggle:"
 );
 const canEditMessage = spacepack.findByCode(".IS_VOICE_MESSAGE)||")[0].exports.Z;
 
