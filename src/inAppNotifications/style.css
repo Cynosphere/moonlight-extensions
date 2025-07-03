@@ -11,7 +11,7 @@
 .inAppNotification-card {
   padding: 8px 4px;
   border-radius: 8px;
-  background-color: var(--background-secondary);
+  background-color: var(--background-secondary, var(--background-base-low));
   max-width: 65vw;
   cursor: pointer;
   -webkit-user-select: none;
