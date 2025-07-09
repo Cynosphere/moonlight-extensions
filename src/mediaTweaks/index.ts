@@ -34,7 +34,7 @@ export const patches: Patch[] = [
   {
     find: "renderRemoveAttachmentConfirmModal(){",
     replace: {
-      match: /=(\(0,\i\.\i\))\((\i),({shouldRedactExplicitContent:\i,shouldHideMediaOptions:\i}),("Media Mosaic")\),/,
+      match: /=(\(0,\i\.\i\))\((\i),({enabledContentHarmTypeFlags:\i,shouldHideMediaOptions:\i}),("Media Mosaic")\),/,
       replacement: (_, createCarousel, attachments, props, analytics) =>
         `=${createCarousel}((moonlight.getConfigOption("mediaTweaks","inlineMosaicPlayback")??true)?${attachments}.filter(x=>x.type!="VIDEO"):${attachments},${props},${analytics}),`
     }
