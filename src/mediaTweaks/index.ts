@@ -24,7 +24,7 @@ export const patches: Patch[] = [
     find: '"state",{resultType:',
     replace: [{
       match: /(?<="state",{resultType:)null/,
-      replacement: (orig: string) => `(moonlight.getConfigOption("mediaTweaks","gifAutoFavorites")??true?"Favorites":${orig})`
+      replacement: (orig: string) => `(moonlight.getConfigOption("mediaTweaks","gifAutoFavorites")??false?"Favorites":${orig})`
     }]
   },
 
