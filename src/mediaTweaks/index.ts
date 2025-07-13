@@ -96,6 +96,19 @@ export const patches: Patch[] = [
       replacement: (orig, createElement, ReactJSX, classnames) =>
         `${orig}${createElement}(require("mediaTweaks_voiceMessageDownload")?.default??${ReactJSX}.Fragment,{${classnames}src:arguments[0].src}),`
     }
+  },
+
+  // Open GIF Picker to Favorites
+  {
+    find: "onSelectGIF:this.handleSelectGIF,",
+    replace: {
+      match: '"state",{resultType:null}',
+      replacement: (orig: string) =>
+        orig.replace(
+          ":null",
+          `:(moonlight.getConfigOption("mediaTweaks","openGifPickerFavorites")??true)?"Favorites":null`
+        )
+    }
   }
 ];
 
