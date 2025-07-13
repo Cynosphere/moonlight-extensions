@@ -19,6 +19,15 @@ export const patches: Patch[] = [
     }
   },
 
+  // GIF Auto Favorites
+  {
+    find: '"state",{resultType:',
+    replace: [{
+      match: /(?<="state",{resultType:)null/,
+      replacement: (orig: string) => `(moonlight.getConfigOption("mediaTweaks","gifAutoFavorites")??true?"Favorites":${orig})`
+    }]
+  },
+
   // Video Metadata
   {
     find: "renderMetadata()",

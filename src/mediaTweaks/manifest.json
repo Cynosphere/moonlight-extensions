@@ -26,6 +26,13 @@
       "default": true,
       "advice": "none"
     },
+    "gifAutoFavorites": {
+      "displayName": "GIF Default to Favorites",
+      "description": "Automatically opens the favorites tab in the GIF picker",
+      "type": "boolean",
+      "default": false,
+      "advice": "none"
+    },
     "videoMetadata": {
       "displayName": "Video Metadata",
       "description": "Restores filename and filesize on video attachments",
