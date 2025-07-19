@@ -8,9 +8,9 @@ export const patches: Patch[] = [
   {
     find: ".userTagDiscriminator,hideBotTag:!0",
     replace: {
-      match: /,(\(0,\i\.jsx\))\(\i\.\i,{userId:(\i)\.id,onClose:\i}\),/,
-      replacement: (orig: string, createElement, user) =>
-        `${orig}${createElement}(require("platformIcons_icons").default,{user:${user},configKey:"profiles",extraClasses:["platform-icons-profile"]}),`
+      match: /(,(\(0,\i\.jsx\))\(\i\.\i,{userId:(\i)\.id,onClose:\i.*?}\),\i)]/,
+      replacement: (_, orig, createElement, user) =>
+        `${orig},${createElement}(require("platformIcons_icons").default,{user:${user},configKey:"profiles",extraClasses:["platform-icons-profile"]})]`
     }
   },
 
