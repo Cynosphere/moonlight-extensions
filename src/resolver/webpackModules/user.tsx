@@ -3,7 +3,14 @@ import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { addItem, MenuItem } from "@moonlight-mod/wp/contextMenu_contextMenu";
 import { ToastType, createToast, showToast } from "@moonlight-mod/wp/discord/components/common/index";
 
-const { getUser } = spacepack.require("discord/actions/UserActionCreators");
+const UserActionCreators = spacepack.require("discord/actions/UserActionCreators");
+// TODO: fix mapping
+const getUser = spacepack.findFunctionByStrings(
+  UserActionCreators,
+  ".get({url:",
+  ".USER(",
+  '.dispatch({type:"USER_UPDATE",user:'
+)!;
 const { openUserProfileModal } = spacepack.require("discord/actions/UserProfileModalActionCreators");
 
 const logger = moonlight.getLogger("Resolver");

@@ -1,4 +1,16 @@
-import { ExtensionWebpackModule } from "@moonlight-mod/types";
+import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
+
+export const patches: Patch[] = [
+  {
+    find: "discord/modules/messages/web/UserMention",
+    replace: [
+      {
+        match: /\.default\.getUser\((\i)\)/,
+        replacement: (_, id) => `.default.getUser(${id}??arguments[0].parsedUserId)`
+      }
+    ]
+  }
+];
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   user: {
