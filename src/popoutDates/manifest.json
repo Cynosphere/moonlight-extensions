@@ -1,14 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "popoutDates",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "meta": {
     "name": "Popout Dates",
     "tagline": "Restore join dates to the profile popout",
     "authors": ["Cynosphere"],
     "tags": ["fixes", "profiles"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Always show Discord icon when no guild, make the default tooltips more clearer"
   },
   "dependencies": ["spacepack", "common"],
   "apiLevel": 2
