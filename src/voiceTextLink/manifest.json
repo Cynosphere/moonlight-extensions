@@ -1,0 +1,24 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "voiceTextLink",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Voice Text Link",
+    "tagline": "Link voice text chat to a normal text channel",
+    "description": "Recommended to use with DM Call Layout for best results",
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "voice", "chat"],
+    "source": "https://github.com/Cynosphere/moonlight-extensions",
+    "donate": "https://ko-fi.com/Cynosphere"
+  },
+  "settings": {
+    "channelMap": {
+      "type": "dictionary",
+      "displayName": "Channel Map",
+      "description": "Voice ID -> Channel ID (You might want to use the context menu on the voice channel for convenience)",
+      "advice": "none"
+    }
+  },
+  "dependencies": ["contextMenu", "common"],
+  "apiLevel": 2
+}
