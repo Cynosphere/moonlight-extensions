@@ -2,7 +2,8 @@ import React from "@moonlight-mod/wp/react";
 import Moonbase from "@moonlight-mod/wp/moonbase_moonbase";
 import type { CustomComponentProps } from "@moonlight-mod/types/coreExtensions/moonbase";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { FormDivider, Text, TextInput } from "@moonlight-mod/wp/discord/components/common/index";
+import { FormDivider, Text } from "@moonlight-mod/wp/discord/components/common/index";
+import TextInput from "@moonlight-mod/wp/discord/uikit/TextInput";
 
 const i18n = spacepack.require("discord/intl");
 const intl = spacepack.findObjectFromKey(i18n, "_forceLookupMatcher");

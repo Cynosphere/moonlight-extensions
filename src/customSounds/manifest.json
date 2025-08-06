@@ -1,7 +1,7 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "customSounds",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "meta": {
     "name": "Custom Sounds",
     "tagline": "Replace client sounds",
@@ -10,7 +10,7 @@
     "tags": ["chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
-    "changelog": "Fixes for latest Discord"
+    "changelog": "Fix settings"
   },
   "dependencies": ["spacepack"],
   "settings": {
