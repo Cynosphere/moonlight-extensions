@@ -1,14 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "neatSettingsContext",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "meta": {
     "name": "Neat Settings Context Menu",
     "tagline": "Groups the user settings context menu by their headings",
     "authors": ["Cynosphere"],
     "tags": ["qol"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Fixes for latest Discord"
   },
   "dependencies": ["contextMenu", "settings"],
   "apiLevel": 2

@@ -5,7 +5,7 @@ export const patches: Patch[] = [
     find: 'navId:"user-settings-cog"',
     replace: [
       {
-        match: /(?<=,\i=\(0,(\i\.\i)\)\(\)\.filter\(.+?),children:\[(?=\i\.map\()/,
+        match: /(?<=let \i=\(0,(\i\.\i)\)\(\)\.filter\(.+?),children:\[(?=\i\.map\()/,
         replacement: (_, getSections) => `,children:[require("neatSettingsContext_menu").default(${getSections},`
       },
       {
