@@ -1,15 +1,6 @@
 import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
-  // Replace the existing activity/stream wrapper component with one we can add to easier
-  {
-    find: '"UserProfileFeaturedActivity"',
-    replace: {
-      match: /:\(\)=>(\i)}/,
-      replacement: (_, orig) => `:()=>(props)=>require("allActivities_activities").default(props,${orig})}`
-    }
-  },
-
   // Make streams account for "Competing In"
   {
     find: '.STREAM_PREVIEW="StreamPreview"',
@@ -30,15 +21,6 @@ export const patches: Patch[] = [
 ];
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
-  activities: {
-    dependencies: [
-      { id: "react" },
-      { ext: "spacepack", id: "spacepack" },
-      { ext: "common", id: "stores" },
-      '"UserProfileFeaturedActivity"',
-      'location:"UserProfileActivityCardWrapper"'
-    ]
-  },
   icons: {
     entrypoint: true,
     dependencies: [
@@ -49,7 +31,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "discord/components/common/index" },
       { ext: "componentEditor", id: "memberList" },
       'applicationStreamingPreviewWrapper:"applicationStreamingPreviewWrapper_',
-      'location:"UserProfileActivityCardWrapper"'
+      { id: "discord/modules/user_profile/web/UserProfileActivityCardWrapper" }
     ]
   }
 };

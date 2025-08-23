@@ -1,23 +1,16 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "allActivities",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "meta": {
-    "name": "All Activities",
-    "tagline": "Shows all activities in user popouts, and optionally icons in the member list",
+    "name": "Activity Icons",
+    "tagline": "Shows activity icons in the member list (formerly All Activities)",
+    "description": "Showing all activities became a vanilla feature.",
     "authors": ["Cynosphere"],
     "tags": ["profiles"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
-    "changelog": "Icons: Null check Spotify album art"
-  },
-  "settings": {
-    "icons": {
-      "displayName": "Enable activity icons in member list",
-      "type": "boolean",
-      "default": true,
-      "advice": "reload"
-    }
+    "changelog": "Showing all activities became a vanilla feature, and as such this extension is now only the icons in the member list.\nIf you did not use the icons option you are free to disable/remove this extension."
   },
   "dependencies": ["spacepack", "common", "componentEditor"],
   "apiLevel": 2

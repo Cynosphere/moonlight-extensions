@@ -101,5 +101,4 @@ function ActivityIcons({ user }: ActivityIconsProps) {
   );
 }
 
-if (moonlight.getConfigOption<boolean>("allActivities", "icons") ?? true)
-  MemberList.addItem("activityIcons", ActivityIcons);
+MemberList.addItem("activityIcons", ActivityIcons);
