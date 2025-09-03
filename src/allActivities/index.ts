@@ -17,6 +17,22 @@ export const patches: Patch[] = [
       match: /\(0,\i\.uniqWith\)/,
       replacement: "((inp)=>inp)"
     }
+  },
+
+  // Do NOT only allow ONE playing activity to be sent out, what are they THINKING
+  {
+    find: '"displayName","SelfPresenceStore"',
+    replace: {
+      match: /\i\.type===\i\.\i\.PLAYING\?\i\.push\(\i\):/,
+      replacement: ""
+    }
+  },
+  {
+    find: '"displayName","PresenceStore"',
+    replace: {
+      match: /\i\.type===\i\.\i\.PLAYING\?\i\.push\(\i\):/,
+      replacement: ""
+    }
   }
 ];
 

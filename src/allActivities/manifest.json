@@ -1,16 +1,16 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "allActivities",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "meta": {
     "name": "Activity Icons",
-    "tagline": "Shows activity icons in the member list (formerly All Activities)",
+    "tagline": "Shows activity icons in the member list (and activity viewing/sending related tweaks) (formerly All Activities)",
     "description": "Showing all activities became a vanilla feature.",
     "authors": ["Cynosphere"],
     "tags": ["profiles"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
-    "changelog": "Showing all activities became a vanilla feature, and as such this extension is now only the icons in the member list.\nIf you did not use the icons option you are free to disable/remove this extension."
+    "changelog": "Disable only sending one (1) playing activity"
   },
   "dependencies": ["spacepack", "common", "componentEditor"],
   "apiLevel": 2
