@@ -5,8 +5,8 @@ import { Text } from "@moonlight-mod/wp/discord/components/common/index";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import { ReadStateStore } from "@moonlight-mod/wp/common_stores";
 
-const getTimestampString = spacepack.findByCode('["XIGt+f"]')[0].exports;
-const getAbbreviatedFormatter = spacepack.findFunctionByStrings(getTimestampString, '["XIGt+f"]');
+const getTimestampString = spacepack.findByCode('["XIGt+W"]')[0].exports;
+const getAbbreviatedFormatter = spacepack.findFunctionByStrings(getTimestampString, '["XIGt+W"]');
 const { extractTimestamp } = spacepack.require("discord/utils/SnowflakeUtils").default;
 
 function DMDate({ channel }: { channel: any }) {
