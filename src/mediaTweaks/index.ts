@@ -54,9 +54,9 @@ export const patches: Patch[] = [
 
       // Add button
       {
-        match: /(?<=isVisualMediaType:\i,channelId:.+?}=(\i);.+?;)(?=\i&&(\i)\.push\((\(0,\i\.jsx\)))/,
+        match: /(?<=showDownload:\i,isVisualMediaType:\i}=(\i),.+?,)(?=\i&&(\i)\.push\((\(0,\i\.jsx\)))/,
         replacement: (_, props, buttons, createElement) =>
-          `${buttons}.push(${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props},"mediaTweaks_enlargeVideoButton"));`
+          `${buttons}.push(${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props},"mediaTweaks_enlargeVideoButton")),`
       }
     ]
   },
@@ -82,7 +82,7 @@ export const patches: Patch[] = [
   {
     find: ',"chat input type must be set");',
     replace: {
-      match: /(?<=\i\|\|\()(\(0,\i\.\i\)\(.+?\.drafts\.type\))\?/,
+      match: /(?<=\i===\i\.\i\.CREATE_ANNOUNCEMENT_POST\|\|)(\(0,\i\.\i\)\(.+?\.drafts\.type\))\?/,
       replacement: (_, orig) => `((moonlight.getConfigOption("mediaTweaks","noStickerAutosend")??true)?true:${orig})?`
     }
   },
