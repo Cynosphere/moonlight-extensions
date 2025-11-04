@@ -8,6 +8,7 @@ type RenderDescription = (embed: any, description: string, headings: boolean) =>
 
 const logger = moonlight.getLogger("Better YouTube Embeds - Description");
 const descriptionCache = new Map<string, string>();
+const sizeCache = new Map<string, number>();
 
 const API_KEY = "AIzaSyCpphGplamUhCCEIcum1VyDXBt0i1nOqac"; // one of Google's own
 const FAKE_EMBED = { type: "rich" };
@@ -27,6 +28,7 @@ function YTDescription({
   const [fullDescription, setFullDescription] = React.useState(
     descriptionCache.has(videoId) ? descriptionCache.get(videoId) : description
   );
+  const [firstLineLength, setFirstLineLength] = React.useState(sizeCache.has(videoId) ? sizeCache.get(videoId) : -1);
 
   React.useEffect(() => {
     if (!descriptionCache.has(videoId))
@@ -53,15 +55,35 @@ function YTDescription({
       }
   });
 
-  const lines = fullDescription!.split("\n");
+  const lines = fullDescription!.trim().split("\n");
+  const descClass = EmbedClasses.embedDescription + " " + EmbedClasses.embedMargin;
+
+  if (lines.length === 1 && firstLineLength === -1) {
+    const inner = document.createElement("span");
+    inner.innerText = fullDescription!;
+    const wrapper = document.createElement("div");
+    wrapper.className = descClass;
+    wrapper.appendChild(inner);
+    wrapper.style.position = "absolute";
+    wrapper.style.opacity = "0";
+    wrapper.style.pointerEvents = "none";
+    document.body.appendChild(wrapper);
+
+    const width = wrapper.clientWidth;
+
+    setFirstLineLength(width);
+    sizeCache.set(videoId, width);
+
+    setTimeout(() => wrapper.remove(), 0);
+  }
 
   const rendered = renderDescription(FAKE_EMBED, fullDescription!, false);
   const firstLine = renderDescription(FAKE_EMBED, lines[0], false);
 
-  return lines.length === 1 && description.length <= 40 ? (
-    <div className={EmbedClasses.embedDescription + " " + EmbedClasses.embedMargin}>{rendered}</div>
+  return lines.length === 1 && firstLineLength! > 0 && firstLineLength! < 400 ? (
+    <div className={descClass}>{rendered}</div>
   ) : (
-    <div className={EmbedClasses.embedDescription + " " + EmbedClasses.embedMargin}>
+    <div className={descClass}>
       {expanded ? rendered : <div className="betterEmbedsYT-description-firstLine">{firstLine}</div>}
       <Clickable className="betterEmbedsYT-description-button" onClick={() => setExpanded(!expanded)}>
         {expanded ? "Show less" : "Show more"}
