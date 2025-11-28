@@ -14,7 +14,7 @@ function FavoriteDM(props: any) {
   const id = props.channel.id;
   const override = UserGuildSettingsStore.getChannelOverrides("null")[id] ?? {};
   const isFavorite = (override.flags & 2048) !== 0;
-  const langKey = isFavorite ? "z7I3gY" : "N2c/Ul";
+  const langKey = isFavorite ? "z7I3gd" : "N2c/Un";
 
   return (
     <MenuItem
