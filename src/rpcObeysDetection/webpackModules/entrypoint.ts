@@ -3,7 +3,8 @@ import {
   GameStore,
   RunningGameStore,
   LibraryApplicationStore,
-  SelfPresenceStore
+  SelfPresenceStore,
+  ApplicationStore
 } from "@moonlight-mod/wp/common_stores";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
@@ -17,7 +18,11 @@ Dispatcher.addInterceptor((event) => {
     if (event.type !== "LOCAL_ACTIVITY_UPDATE") return false;
     if (event.activity?.application_id == null) return false;
 
-    const game = RunningGameStore.getRunningGames().find((g: any) => g.id === event.activity.application_id);
+    const app = ApplicationStore.getApplication(event.activity.application_id);
+    const linked = (app?.linkedGames ?? []).map((a: any) => a.id);
+    const game = RunningGameStore.getRunningGames().find(
+      (g: any) => g.id === event.activity.application_id || linked.includes(g.id)
+    );
     if (game != null) {
       const extended = extendGameEntry!(game, RunningGameStore, GameStore, LibraryApplicationStore);
       if (!extended.detectable) {
