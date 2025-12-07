@@ -1,4 +1,13 @@
 .dmFavorites-icon {
-  margin-right: 4px;
+  margin: 0 4px;
   pointer-events: none;
+  align-self: center;
+}
+
+.dmFavorites-icon + .dmDates-date {
+  margin-left: 0;
+}
+
+.dmFavorites-icon + div[class^="iconsContainer_"] {
+  padding-inline-start: 0 !important;
 }
