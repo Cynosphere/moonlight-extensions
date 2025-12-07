@@ -24,9 +24,9 @@ export const patches: Patch[] = [
     find: "renderMetadata()",
     replace: {
       match:
-        /(?<=(\i===\i\.VIDEO)\?.+?(\(0,\i\.jsx\))\("div",{className:(.+?\.overlayContentHidden]:)\i\|\|\i\}\),children:\i\(\)}\):null)]/,
-      replacement: (_, videoCheck, createElement, className) =>
-        `,${videoCheck}&&(moonlight.getConfigOption("mediaTweaks","videoMetadata")??true)?${createElement}("div",{className:${className}this.state.playing&&!this.state.hovering}),children:${createElement}(require("mediaTweaks_videoMetadata").default,this.props)}):null]`
+        /(?<=(\i===\i\.VIDEO)\?.+?(\(0,\i\.jsx\))\("div",{className:(.+?\.overlayContentHidden]:)\i\|\|\i\}\),children:\i\(\)}\):null)(,|])/,
+      replacement: (_, videoCheck, createElement, className, trailing) =>
+        `,${videoCheck}&&(moonlight.getConfigOption("mediaTweaks","videoMetadata")??true)?${createElement}("div",{className:${className}this.state.playing&&!this.state.hovering}),children:${createElement}(require("mediaTweaks_videoMetadata").default,this.props)}):null${trailing}`
     }
   },
 
