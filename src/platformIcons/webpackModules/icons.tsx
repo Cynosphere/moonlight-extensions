@@ -15,12 +15,17 @@ import Messages from "@moonlight-mod/wp/componentEditor_messages";
 
 import { AuthenticationStore, PresenceStore, SessionsStore } from "@moonlight-mod/wp/common_stores";
 
-type Platforms = "desktop" | "mobile" | "web" | "embedded" | "unknown";
+const VrHeadsetIcon = (Object.values(
+  spacepack.findByCode("M8.46 8.64a1 1 0 0 1 1 1c0 .44-.3.8-.72.92l-.11.07c-.08.06-.2.19-.2.41a.99.99")[0]?.exports
+)?.[0] ?? (() => {})) as React.ComponentType<IconsProps>;
+
+type Platforms = "desktop" | "mobile" | "web" | "embedded" | "vr" | "unknown";
 const IconsForPlatform: Record<Exclude<Platforms, "unknown">, React.ComponentType<IconsProps>> = {
   desktop: ScreenIcon,
   mobile: MobilePhoneIcon,
   web: GlobeEarthIcon,
-  embedded: GameControllerIcon
+  embedded: GameControllerIcon,
+  vr: VrHeadsetIcon
 };
 
 const { humanizeStatus } = spacepack.findByCode("humanizeStatus:")[0].exports.ZP;
@@ -71,11 +76,13 @@ export default function PlatformIcons({ user, extraClasses, configKey, size = "x
     for (const platform of Object.keys(platforms)) {
       const status = platforms[platform];
 
+      let platformName = `${platform.charAt(0).toUpperCase()}${platform.slice(1)}`;
+      if (platform === "vr") platformName = "VR";
       const props = {
-        text: `${humanizeStatus(status, false)} on ${platform.charAt(0).toUpperCase()}${platform.slice(1)}`,
+        text: `${humanizeStatus(status, false)} ${platform === "vr" ? "i" : "o"}n ${platformName}`,
         key: `platform-icons-tooltip-${platform}`
       };
-      const Icon = IconsForPlatform[platform as Exclude<Platforms, "unknown">];
+      const Icon = IconsForPlatform[platform as Exclude<Platforms, "unknown">] ?? (() => {});
       const color = StatusColors[status as Exclude<Statuses, "offline" | "invisible">];
 
       elements.push(

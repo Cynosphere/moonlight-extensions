@@ -7,8 +7,8 @@ export const patches: Patch[] = [
   {
     find: ".BOT:default:",
     replace: {
-      match: "9RNkeH", // APP_TAG
-      replacement: "PQt9z8" // BOT_TAG_BOT
+      match: "9RNkeF", // APP_TAG
+      replacement: "PQt9z6" // BOT_TAG_BOT
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("betterTags", "appToBot") ?? true
   },
