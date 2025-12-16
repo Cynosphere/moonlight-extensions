@@ -15,10 +15,10 @@ export const patches: Patch[] = [
 
   // Typing
   {
-    find: '("TypingUsers")',
+    find: "this.handleDismissInviteEducation",
     replace: {
-      match: /=>(\i\.\i\.getName\((\i),\i\.id,(\i)\))(?=.+?(\(0,(\i)\.jsxs\)))/,
-      replacement: (_, name, guildId, user, createElement, React) =>
+      match: /(?<=(\(0,(\i)\.jsx\)).+?)=>(\i\.\i\.getName\((\i\.guild_id),\i\.id,(\i)\))/,
+      replacement: (_, createElement, React, name, guildId, user) =>
         `=>${createElement}(require("colorConsistency_wrapper")?.default??${React}.Fragment,{children:${name},userId:${user}.id,guildId:${guildId}})`
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("colorConsistency", "typing") ?? true

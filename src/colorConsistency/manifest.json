@@ -1,7 +1,7 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "colorConsistency",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "meta": {
     "name": "Color Consistency",
     "tagline": "Add role colors to places missing them",
@@ -9,7 +9,7 @@
     "tags": ["qol", "chat", "accessibility", "appearance", "voice"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
-    "changelog": "Fixes for latest Discord"
+    "changelog": "Fixes for latest Discord, display name font support"
   },
   "settings": {
     "voice": {

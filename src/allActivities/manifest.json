@@ -1,7 +1,7 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "allActivities",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "meta": {
     "name": "Activity Icons",
     "tagline": "Shows activity icons in the member list (and activity viewing/sending related tweaks) (formerly All Activities)",
@@ -10,7 +10,7 @@
     "tags": ["profiles"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
-    "changelog": "Disable only sending one (1) playing activity"
+    "changelog": "Fixes for latest Discord"
   },
   "dependencies": ["spacepack", "common", "componentEditor"],
   "apiLevel": 2

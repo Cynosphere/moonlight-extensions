@@ -8,6 +8,6 @@
   margin-left: 0;
 }
 
-.dmFavorites-icon + div[class^="iconsContainer_"] {
+.dmFavorites-icon + div[class$="-iconsContainer"] {
   padding-inline-start: 0 !important;
 }

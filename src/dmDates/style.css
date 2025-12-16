@@ -2,9 +2,9 @@
   margin: 0 4px;
   pointer-events: none;
   align-self: center;
-  min-width: 24px;
+  min-width: 28px;
 }
 
-.dmDates-date + div[class^="iconsContainer_"] {
+.dmDates-date + div[class$="-iconsContainer"] {
   padding-inline-start: 0 !important;
 }

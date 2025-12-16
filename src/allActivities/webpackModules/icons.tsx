@@ -12,9 +12,7 @@ const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get(", "isSupport
 const UserProfileActivityCard = spacepack.findByCode(`location:${JSON.stringify("UserProfileActivityCard")},`)[0]
   .exports.Z;
 
-const ActivityClasses = spacepack.findByCode(
-  "applicationStreamingPreviewWrapper:" + '"applicationStreamingPreviewWrapper_'
-)[0].exports;
+const ActivityClasses = spacepack.findByCode('applicationStreamingPreviewWrapper:"')[0].exports;
 
 const SpotifyIcon = ConnectionPlatforms.get(PlatformTypes.SPOTIFY).icon.lightSVG;
 const TwitchIcon = ConnectionPlatforms.get(PlatformTypes.TWITCH).icon.lightSVG;
