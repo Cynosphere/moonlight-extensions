@@ -52,7 +52,7 @@ export const patches: Patch[] = [
     prerequisite: alwaysShowMobile
   },
   {
-    find: ')("useStatusFillColor")',
+    find: ".STATUS_TYPING;switch",
     replace: [
       {
         match: /(?<=\.STATUS_TYPING;)(switch.+?default:)(if\(\i\)return \i\.\i\.Masks\.STATUS_ONLINE_MOBILE;)/,
