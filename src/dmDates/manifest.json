@@ -4,12 +4,13 @@
   "version": "1.0.5",
   "meta": {
     "name": "DM Dates",
-    "tagline": "Implements dates next to direct messages like mobile",
+    "tagline": "[Deprecated, vanilla feature] Implements dates next to direct messages like mobile",
     "authors": ["Cynosphere"],
     "tags": ["chat", "qol"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
-    "changelog": "Styling fixes"
+    "changelog": "Deprecate as Discord has added it as a feature",
+    "deprecated": true
   },
   "dependencies": ["spacepack", "componentEditor", "common"],
   "apiLevel": 2

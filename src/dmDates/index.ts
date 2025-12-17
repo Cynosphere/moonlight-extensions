@@ -2,7 +2,7 @@ import { ExtensionWebpackModule } from "@moonlight-mod/types";
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   dmDates: {
-    entrypoint: true,
+    entrypoint: false,
     dependencies: [
       { id: "react" },
       { id: "discord/components/common/index" },
