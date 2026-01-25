@@ -7,12 +7,12 @@ import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
 import { ActivityTypes, PlatformTypes } from "@moonlight-mod/wp/discord/Constants";
 
 const useUserProfileActivity = spacepack.findByCode(`location:${JSON.stringify("useUserProfileActivity")}`)[0].exports
-  .Z;
-const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get(", "isSupported:")[0].exports.Z;
+  .A;
+const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get(", "isSupported:")[0].exports.A;
 const UserProfileActivityCard = spacepack.findByCode(`location:${JSON.stringify("UserProfileActivityCard")},`)[0]
-  .exports.Z;
+  .exports.A;
 
-const ActivityClasses = spacepack.findByCode('applicationStreamingPreviewWrapper:"')[0].exports;
+const ActivityClasses = spacepack.findByCode('"applicationStreamingPreviewWrapper_')[0].exports;
 
 const SpotifyIcon = ConnectionPlatforms.get(PlatformTypes.SPOTIFY).icon.lightSVG;
 const TwitchIcon = ConnectionPlatforms.get(PlatformTypes.TWITCH).icon.lightSVG;
@@ -36,7 +36,7 @@ function ActivityIconIcon({ card, icon, subicon = null }: ActivityIconIconProps)
     <Tooltip text={card} position="left" tooltipClassName="allActivities-iconTooltip">
       {(tooltipProps: any) => (
         <div {...tooltipProps} className="allActivities-icon">
-          <img className={ActivityClasses.headerIcon} src={icon} />
+          <img className={spacepack.findObjectFromValueSubstring(ActivityClasses, "headerIcon_")} src={icon} />
           {subicon != null ? <img className="allActivities-subicon" src={subicon} /> : null}
         </div>
       )}

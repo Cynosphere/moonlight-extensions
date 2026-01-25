@@ -2,7 +2,7 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: ".lostPermission",
+    find: ",nudgeAlignIntoViewport:!1,useRawTargetDimensions:!0,animation:",
     replace: {
       match: /,{user:(\i),isOwner:(\i),lostPermissionTooltipText:/,
       replacement: (_, user, isOwner) =>

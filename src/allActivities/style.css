@@ -27,15 +27,15 @@
   filter: drop-shadow(0 0 1px black);
 }
 
-div[class*="-member"] > div[class*="-childContainer"] {
+div[class*="member_"] > div[class*="childContainer_"] {
   /* hey discord, maybe you should like, actually learn how to position gradients instead of using padding */
   padding-right: 0;
 
-  & > div[class*="-memberInner"] {
+  & > div[class*="memberInner_"] {
     width: 100%;
 
     /* controversal rule but w/e, i dont get why discord uses --space-16 on the right side only */
-    .visual-refresh & {
+    html.visual-refresh & {
       padding: var(--space-xxs) var(--space-xs);
     }
   }

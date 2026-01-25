@@ -2,7 +2,7 @@ import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 import { UserStore, ChannelStore } from "@moonlight-mod/wp/common_stores";
 
-const { startEditMessage } = spacepack.findByCode("startEditMessage(", "trackInvite:")[0].exports.Z;
+const { startEditMessage } = spacepack.findByCode("startEditMessage(", "trackInvite:")[0].exports.A;
 const canReplyToMessage = spacepack.findFunctionByStrings(
   spacepack.findByCode(".REPLYABLE.has(")[0].exports,
   ".getCurrentUser()"
@@ -11,7 +11,7 @@ const replyToMessage = spacepack.findFunctionByStrings(
   spacepack.findByCode(`${',source:"message-actions"}'}`)[0].exports,
   ",showMentionToggle:"
 );
-const canEditMessage = spacepack.findByCode(".IS_VOICE_MESSAGE)||")[0].exports.Z;
+const canEditMessage = spacepack.findByCode(".IS_VOICE_MESSAGE)||")[0].exports.A;
 
 type EditData = {
   messageId?: string;

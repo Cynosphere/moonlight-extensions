@@ -2,9 +2,9 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: "(png|jpe?g|webp|gif|",
+    find: "(png|jpe?g|",
     replace: {
-      match: "png|jpe?g|webp|gif|",
+      match: "png|jpe?g|",
       replacement: "$&svg|"
     }
   },

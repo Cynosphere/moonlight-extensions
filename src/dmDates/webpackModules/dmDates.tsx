@@ -14,7 +14,7 @@ function DMDate({ channel }: { channel: any }) {
     [ReadStateStore],
     () => ReadStateStore.lastMessageTimestamp(channel.id) || extractTimestamp(channel.id)
   );
-  const formattedTime = getTimestampString.ZP({ since: lastMessage, getFormatter: getAbbreviatedFormatter });
+  const formattedTime = getTimestampString.Ay({ since: lastMessage, getFormatter: getAbbreviatedFormatter });
 
   return (
     <Text variant="text-xxs/normal" color="currentColor" className="dmDates-date">

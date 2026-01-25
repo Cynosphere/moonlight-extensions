@@ -2,7 +2,9 @@ import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { Clickable, Tooltip, MaximizeIcon } from "@moonlight-mod/wp/discord/components/common/index";
 
-const HoverButtonClasses = spacepack.findByCode("nonMediaMosaicItem:")[0].exports;
+const HoverButtonClasses = spacepack.findByCode('"nonMediaMosaicItem_')[0].exports;
+const hoverButton = spacepack.findObjectFromValueSubstring(HoverButtonClasses, "hoverButton_");
+const hoverButtonGroup = spacepack.findObjectFromValueSubstring(HoverButtonClasses, "hoverButtonGroup_");
 
 type HoverButtonsProps = {
   mimeType: string[];
@@ -40,7 +42,7 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
       {(tooltipProps: any) => (
         <Clickable
           {...tooltipProps}
-          className={HoverButtonClasses.hoverButton}
+          className={hoverButton}
           focusProps={{ offset: 2 }}
           aria-label="Enlarge Video"
           onClick={() => {
@@ -77,7 +79,7 @@ export function createButtonGroup({ video }: VideoProps) {
 
   return function MediaTweaksHoverButtons() {
     return (
-      <div className={HoverButtonClasses.hoverButtonGroup}>
+      <div className={hoverButtonGroup}>
         <EnlargeVideoButton
           mimeType={mimeType}
           item={{

@@ -6,9 +6,9 @@ export const patches: Patch[] = [
   // Profile
   // TODO: api-ify
   {
-    find: ".userTagDiscriminator,hideBotTag:!0",
+    find: /:\i\.\i,hideBotTag:!0/,
     replace: {
-      match: /(,(\(0,\i\.jsx\))\(\i\.\i,{userId:(\i)\.id,onClose:\i.*?}\),\i)]/,
+      match: /(,(\(0,\i\.jsx\))\(\i\.\i,{primaryGuild:\i,userId:(\i)\.id,onClose:\i.*?}\),\i)]/,
       replacement: (_, orig, createElement, user) =>
         `${orig},${createElement}(require("platformIcons_icons").default,{user:${user},configKey:"profiles",extraClasses:["platform-icons-profile"]})]`
     }
@@ -16,11 +16,11 @@ export const patches: Patch[] = [
 
   // Voice icons
   {
-    find: ".listCollapse",
+    find: '["avatarContainerClass","userNameClassName","size","selected","disabled","isOverlay","ref"]',
     replace: {
-      match: /(?<=(\(0,\i\.jsxs\))\("div",{className:\i\.iconGroup),children:\[/,
-      replacement: (_, createElement) =>
-        `,children:[${createElement}(require("platformIcons_voice").default,arguments[0]),`
+      match: /;(?=\i&&\(\i\?(\i)\.push\((\(0,\i\.jsx\)))/,
+      replacement: (_, icons, createElement) =>
+        `;${icons}.push(${createElement}(require("platformIcons_voice").default,arguments[0]));`
     }
   },
 

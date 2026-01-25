@@ -1,6 +1,6 @@
 import { ExtensionWebpackModule, Patch, PatchReplaceType } from "@moonlight-mod/types";
 
-const FIND_FILE_PREVIEW = ".openFullPreviewSection,";
+const FIND_FILE_PREVIEW = 'Accept:"text/plain"';
 const FIND_MARKDOWN_COMPONENTS = "text:{react:";
 
 const lineNumbers = () => moonlight.getConfigOption<boolean>("betterCodeblocks", "lineNumbers") ?? true;
@@ -42,9 +42,9 @@ export const patches: Patch[] = [
   {
     find: FIND_MARKDOWN_COMPONENTS,
     replace: {
-      match: /\.codeContainer,children:\[(\i\.\i)\?(.+?\.codeActions,children:)(.+?text:(\i)\.content\}\))}\):null/,
-      replacement: (_, SUPPORTS_COPY, body, CopyButton, node) =>
-        `.codeContainer,children:[${body}[require("betterCodeblocks_label").default(${node}.lang),${SUPPORTS_COPY}?${CopyButton}:null]})`
+      match: /children:\[(\i\.\i\?.+?:null)(,\(0,\i\.jsx\)\(\i\.\i,{createPromise:)/,
+      replacement: (_, CopyButton, body) =>
+        `children:[[require("betterCodeblocks_label").default(arguments[0].lang),${CopyButton}]${body}`
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("betterCodeblocks", "label") ?? true
   },

@@ -24,7 +24,7 @@ export const patches: Patch[] = [
     find: "renderMetadata()",
     replace: {
       match:
-        /(?<=(\i===\i\.VIDEO)\?.+?(\(0,\i\.jsx\))\("div",{className:(.+?\.overlayContentHidden]:)\i\|\|\i\}\),children:\i\(\)}\):null)(,|])/,
+        /(?<=(\i===\i\.VIDEO)\?.+?(\(0,\i\.jsx\))\("div",{className:(.+?[\i\.\i]:)\i\|\|\i\}\),children:\i\(\)}\):null)(,|])/,
       replacement: (_, videoCheck, createElement, className, trailing) =>
         `,${videoCheck}&&(moonlight.getConfigOption("mediaTweaks","videoMetadata")??true)?${createElement}("div",{className:${className}this.state.playing&&!this.state.hovering}),children:${createElement}(require("mediaTweaks_videoMetadata").default,this.props)}):null${trailing}`
     }
@@ -44,7 +44,7 @@ export const patches: Patch[] = [
   // This is technically a Discord feature now but it doesn't support videos (yet?)
   // TODO: Move this patch to a library
   {
-    find: ".spoilerRemoveMosaicItemButton:",
+    find: '["VIDEO","CLIP","AUDIO"].includes(',
     replace: [
       // Send the full item over
       {
@@ -91,8 +91,7 @@ export const patches: Patch[] = [
   {
     find: '?"--:--":',
     replace: {
-      match:
-        /(\(0,(\i)\.jsx\))\(\i\.\i,{(className:\i\.volumeButton,iconClassName:\i\.volumeButtonIcon,).+?onVolumeHide:\i}\),/,
+      match: /(\(0,(\i)\.jsx\))\(\i\.\i,{(className:\i\.\i,iconClassName:\i\.\i,).+?onVolumeHide:\i}\),/,
       replacement: (orig, createElement, ReactJSX, classnames) =>
         `${orig}${createElement}(require("mediaTweaks_voiceMessageDownload")?.default??${ReactJSX}.Fragment,{${classnames}src:arguments[0].src}),`
     }

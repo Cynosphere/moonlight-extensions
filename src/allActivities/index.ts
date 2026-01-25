@@ -46,7 +46,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "discord/Constants" },
       { id: "discord/components/common/index" },
       { ext: "componentEditor", id: "memberList" },
-      'applicationStreamingPreviewWrapper:"',
+      '"applicationStreamingPreviewWrapper_',
       { id: "discord/modules/user_profile/web/UserProfileActivityCardWrapper" }
     ]
   }

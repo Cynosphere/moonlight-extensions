@@ -27,11 +27,11 @@ const createMessageRecord = spacepack.findFunctionByStrings(MessageConstructor, 
 
 const getMessageAuthor = spacepack.findByCode(
   `${JSON.stringify("Result cannot be null because the message is not null")}`
-)[0].exports.ZP;
+)[0].exports.Ay;
 
-const isSystemMessage = spacepack.findByCode(`.USER_MESSAGE${".has"}`)[0].exports.Z;
+const isSystemMessage = spacepack.findByCode(`.USER_MESSAGE${".has"}`)[0].exports.A;
 
-const jumpToMessage = spacepack.findByCode(`kind:${'"channel"'}`, ".CHANNEL_THREAD_VIEW(")[0].exports.Z;
+const jumpToMessage = spacepack.findByCode(`kind:${'"channel"'}`, ".CHANNEL_THREAD_VIEW(")[0].exports.A;
 
 type MakeTextChatNotification = (
   message: any,
@@ -70,7 +70,7 @@ let makeTextChatNotification: MakeTextChatNotification,
   useRoleIcon: UseRoleIcon,
   MemoizeReferencedMessage: _MemoizeReferencedMessage,
   SystemMessage: React.ComponentType<any>,
-  EmbedClasses: Record<string, string>,
+  embedAuthorIcon: string,
   createMessageHeader: CreateMessageHeader,
   Message: React.ComponentType<any>,
   MessageContent: React.ComponentType<any>,
@@ -94,19 +94,20 @@ function lazyLoad() {
       spacepack.findByCode(roleIconFind)[0].exports,
       roleIconFind
     ) as UseRoleIcon;
-    createMessageHeader = spacepack.findByCode(/guildId:\i,isGroupStart:\i=!0,/)[0].exports.Z as CreateMessageHeader;
+    createMessageHeader = spacepack.findByCode(/guildId:\i,isGroupStart:\i=!0,/)[0].exports.A as CreateMessageHeader;
 
-    MemoizeReferencedMessage = spacepack.findByCode("isReplyAuthorBlocked:", `.REPLY||${"null=="}`)[0].exports.Z;
+    MemoizeReferencedMessage = spacepack.findByCode("isReplyAuthorBlocked:", `.REPLY||${"null=="}`)[0].exports.A;
 
-    SystemMessage = spacepack.findByCode(`(${'"SystemMessage"'})`)[0].exports.Z;
+    SystemMessage = spacepack.findByCode(`(${'"SystemMessage"'})`)[0].exports.A;
 
-    EmbedClasses = spacepack.findByCode(`embed${"Author"}Icon:`)[0].exports;
-    Message = spacepack.findByCode(`[${'"className","compact"'},${'"contentOnly","zalgo"'},`)[0].exports.Z;
-    MessageContent = spacepack.findByCode(".hasFlag(", `SOURCE_MESSAGE${"_DELETED"}`)[0].exports.ZP;
+    const EmbedClasses = spacepack.findByCode('"embedAuthorIcon_')[0].exports;
+    embedAuthorIcon = spacepack.findObjectFromValueSubstring(EmbedClasses, "embedAuthorIcon_");
+    Message = spacepack.findByCode(`[${'"className","compact"'},${'"contentOnly","zalgo"'},`)[0].exports.A;
+    MessageContent = spacepack.findByCode(".hasFlag(", `SOURCE_MESSAGE${"_DELETED"}`)[0].exports.Ay;
     isMessageNewerThanImprovedMarkdownEpoch = Object.values(
-      spacepack.findByCode(`${JSON.stringify("1088216706570268682")}`)[0].exports
+      spacepack.require("discord/modules/markup/MarkupEligibilityUtils")
     )[0] as (id: string) => boolean;
-    MemoizeMessage = spacepack.findByCode(`let{${"renderChangelogMessageMarkup"}:`)[0].exports.Z;
+    MemoizeMessage = spacepack.findByCode(`let{${"renderChangelogMessageMarkup"}:`)[0].exports.A;
   }
 }
 
@@ -203,7 +204,7 @@ function InAppNotification({ message, channel, author }: { message: any; channel
     >
       {guild != null || channel.type === ChannelTypes.GROUP_DM ? (
         <div className="inAppNotification-nameContainer">
-          {guildIcon || dmIcon ? <img className={EmbedClasses.embedAuthorIcon} src={guildIcon ?? dmIcon} /> : null}
+          {guildIcon || dmIcon ? <img className={embedAuthorIcon} src={guildIcon ?? dmIcon} /> : null}
 
           <Text variant="text-md/bold" tag="span" color="text-muted">
             {guild

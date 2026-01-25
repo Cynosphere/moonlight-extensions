@@ -8,7 +8,7 @@ const intl = spacepack.findObjectFromKey(i18n, "_forceLookupMatcher");
 
 const { updateChannelOverrideSettings } = spacepack.findByCode(
   '.dispatch({type:"USER_GUILD_SETTINGS_CHANNEL_UPDATE_BULK",'
-)[0].exports.Z;
+)[0].exports.A;
 
 function FavoriteDM(props: any) {
   const id = props.channel.id;

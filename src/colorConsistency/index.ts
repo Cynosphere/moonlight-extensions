@@ -3,10 +3,10 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 export const patches: Patch[] = [
   // Voice
   {
-    find: ".listCollapse",
+    find: '["avatarContainerClass","userNameClassName","size","selected","disabled","isOverlay","ref"]',
     replace: {
       match:
-        /(?<=\.usernameSpeaking]:(.+?)}\),)children:\[(null!=\i\?\i:\i\.\i\.getName\(\i\)),(?=\i\?(\(0,(\i)\.jsxs\)).+?,userId:(\i\.id),contextGuildId:(\i),)/,
+        /(?<=\[\i\.\i]:(.+?)}\),)children:\[(null!=\i\?\i:\i\.\i\.getName\(\i\)),(?=\i\?(\(0,(\i)\.jsxs\)).+?,userId:(\i\.id),contextGuildId:(\i),)/,
       replacement: (_, speaking, name, createElement, React, userId, guildId) =>
         `children:[${createElement}(require("colorConsistency_wrapper")?.default??${React}.Fragment,{children:${name},userId:${userId},guildId:${guildId},speaking:${speaking}}),`
     },

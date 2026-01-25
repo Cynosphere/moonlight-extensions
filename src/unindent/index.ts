@@ -16,7 +16,7 @@ return {
 
   // file preview
   {
-    find: ".openFullPreviewSection,",
+    find: 'Accept:"text/plain"',
     replace: {
       match: /(?<=let{text:(\i),language:(\i)}=\i),(?=\i=\(\)=>)/,
       replacement: (_, text, language) => `;

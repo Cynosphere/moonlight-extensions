@@ -2,7 +2,11 @@ import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { Clickable } from "@moonlight-mod/wp/discord/components/common/index";
 
-const EmbedClasses = spacepack.findByCode("embedDescription:")[0].exports;
+const EmbedClasses = spacepack.findByCode('"embedDescription_')[0].exports;
+const descClass =
+  spacepack.findObjectFromValueSubstring(EmbedClasses, "embedDescription_") +
+  " " +
+  spacepack.findObjectFromValueSubstring(EmbedClasses, "embedMargin_");
 
 type RenderDescription = (embed: any, description: string, headings: boolean) => React.ReactNode;
 
@@ -40,7 +44,7 @@ function YTDescription({
         (async () => {
           try {
             const data = await fetch(
-              `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${API_KEY}`
+              `https://content-youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${API_KEY}`
             ).then((res) => res.json());
             const newDesc = data?.items?.[0]?.snippet?.description ?? description;
             descriptionCache.set(videoId, newDesc);
@@ -56,7 +60,6 @@ function YTDescription({
   });
 
   const lines = fullDescription!.trim().split("\n");
-  const descClass = EmbedClasses.embedDescription + " " + EmbedClasses.embedMargin;
 
   if (lines.length === 1 && firstLineLength === -1) {
     const inner = document.createElement("span");

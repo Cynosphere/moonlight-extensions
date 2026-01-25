@@ -16,7 +16,8 @@ const PlatformNames = {
   [VoicePlatforms.XBOX]: "Xbox"
 };
 
-const VoiceClasses = spacepack.findByCode("iconPriortySpeakerSpeaking:")[0].exports;
+const VoiceClasses = spacepack.findByCode('"iconPriortySpeakerSpeaking_')[0].exports;
+const iconClass = spacepack.findObjectFromValueSubstring(VoiceClasses, "icon_");
 
 type PlatformIconVoiceProps = {
   channelId: string;
@@ -36,14 +37,14 @@ export default function PlatformIconVoice({ channelId, user }: PlatformIconVoice
     () => (platform === VoicePlatforms.MOBILE ? MobilePhoneIcon : GameControllerIcon),
     [platform]
   );
-  const tooltipText = React.useMemo(() => `Connected via ${PlatformNames[platform]}`, [platform]);
+  const tooltipText = React.useMemo(() => `Connected on ${PlatformNames[platform]}`, [platform]);
 
   // @ts-expect-error only not inlining this so i dont suppress all errors on the line
   const isOverlay = window.__OVERLAY__;
 
-  return isOverlay || !enabled || !platform || platform === VoicePlatforms.DESKTOP ? null : (
+  return isOverlay || !enabled || !platform || platform !== VoicePlatforms.MOBILE ? null : (
     <Tooltip text={tooltipText}>
-      {(tooltipProps: any) => <Icon {...tooltipProps} className={VoiceClasses.icon} color="currentColor" />}
+      {(tooltipProps: any) => <Icon {...tooltipProps} className={iconClass} color="currentColor" />}
     </Tooltip>
   );
 }

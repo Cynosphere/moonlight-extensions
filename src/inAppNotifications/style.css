@@ -11,7 +11,7 @@
 .inAppNotification-card {
   padding: 8px 4px;
   border-radius: 8px;
-  background-color: var(--background-secondary, var(--background-base-low));
+  background-color: var(--background-base-low);
   max-width: 65vw;
   cursor: pointer;
   -webkit-user-select: none;
@@ -35,7 +35,7 @@
   position: relative;
   bottom: -8px;
   left: -4px;
-  background: var(--text-normal);
+  background: var(--text-default);
   animation: 10s ease-in 0s inAppNotification-timer;
 }
 
