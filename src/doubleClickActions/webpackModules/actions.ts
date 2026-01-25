@@ -11,7 +11,7 @@ const replyToMessage = spacepack.findFunctionByStrings(
   spacepack.findByCode(`${',source:"message-actions"}'}`)[0].exports,
   ",showMentionToggle:"
 );
-const canEditMessage = spacepack.findByCode(".IS_VOICE_MESSAGE)||")[0].exports.A;
+const canEditMessage = spacepack.findByCode(".IS_VOICE_MESSAGE)||", ".isPoll()||")[0].exports.A;
 
 type EditData = {
   messageId?: string;
