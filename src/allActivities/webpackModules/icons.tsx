@@ -66,7 +66,10 @@ function ActivityIcon({ user, currentUser, activity }: ActivityIconProps) {
   );
 
   if (activity.name === "Spotify") {
-    const albumArt = activity.assets?.large_image?.replace("spotify:", "https://i.scdn.co/image/");
+    let albumArt = activity.assets?.large_image?.replace("spotify:", "https://i.scdn.co/image/");
+    if (albumArt?.startsWith("mp:"))
+      albumArt = activity.assets.large_image.replace("mp:", "https://media.discordapp.net/") + "?width=128&height=128";
+
     return (
       <ActivityIconIcon card={card} icon={albumArt ?? SpotifyIcon} subicon={albumArt != null ? SpotifyIcon : null} />
     );
