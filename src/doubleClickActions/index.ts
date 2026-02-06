@@ -2,7 +2,7 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: '["className","compact","contentOnly","zalgo",',
+    find: /hasReply:\i,author:\i,/,
     replace: {
       match: "}),ref:",
       replacement:
