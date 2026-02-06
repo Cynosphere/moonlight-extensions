@@ -5,7 +5,7 @@ export const patches: Patch[] = [
   {
     find: '.STREAM_PREVIEW="StreamPreview"',
     replace: {
-      match: /\(null==\i\?void 0:\i\.type\)!==\i\.\i\.PLAYING&&/,
+      match: /\i\?\.type!==\i\.\i\.PLAYING&&/,
       replacement: (orig: string) => orig + orig.replace("PLAYING", "COMPETING")
     }
   },
@@ -21,14 +21,14 @@ export const patches: Patch[] = [
 
   // Do NOT only allow ONE playing activity to be sent out, what are they THINKING
   {
-    find: '"displayName","SelfPresenceStore"',
+    find: 'displayName="SelfPresenceStore"',
     replace: {
       match: /\i\.type===\i\.\i\.PLAYING\?\i\.push\(\i\):/,
       replacement: ""
     }
   },
   {
-    find: '"displayName","PresenceStore"',
+    find: 'displayName="PresenceStore"',
     replace: {
       match: /\i\.type===\i\.\i\.PLAYING\?\i\.push\(\i\):/,
       replacement: ""

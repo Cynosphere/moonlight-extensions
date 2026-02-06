@@ -102,7 +102,7 @@ function lazyLoad() {
 
     const EmbedClasses = spacepack.findByCode('"embedAuthorIcon_')[0].exports;
     embedAuthorIcon = spacepack.findObjectFromValueSubstring(EmbedClasses, "embedAuthorIcon_");
-    Message = spacepack.findByCode(`[${'"className","compact"'},${'"contentOnly","zalgo"'},`)[0].exports.A;
+    Message = spacepack.findByCode(/hasReply:\i,author:\i,/)[0].exports.A;
     MessageContent = spacepack.findByCode(".hasFlag(", `SOURCE_MESSAGE${"_DELETED"}`)[0].exports.Ay;
     isMessageNewerThanImprovedMarkdownEpoch = Object.values(
       spacepack.require("discord/modules/markup/MarkupEligibilityUtils")

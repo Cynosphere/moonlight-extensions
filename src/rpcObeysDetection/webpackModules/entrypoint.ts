@@ -8,7 +8,7 @@ import {
 } from "@moonlight-mod/wp/common_stores";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
-const modRunningGameStore = spacepack.findByCode(`"${"displayName"}","${"RunningGameStore"}"`)[0].exports;
+const modRunningGameStore = spacepack.findByCode(`displayName=${JSON.stringify("RunningGameStore")}`)[0].exports;
 const extendGameEntry = spacepack.findFunctionByStrings(modRunningGameStore, ':" ",overlay:');
 
 const logger = moonlight.getLogger("Rich Presence Obeys Game Detection");

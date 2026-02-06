@@ -5,7 +5,7 @@ export const patches: Patch[] = [
   {
     find: "allowLinks:!!",
     replace: {
-      match: /,(\(null!=\i\?\i:\i\)\.embeds\)\),)/,
+      match: /,(\(\i\?\?\i\)\.embeds\)\),)/,
       replacement: (_, orig) => `,moonlight.getConfigOption("mediaTweaks","imageUrls")??true?{}:${orig}`
     }
   },

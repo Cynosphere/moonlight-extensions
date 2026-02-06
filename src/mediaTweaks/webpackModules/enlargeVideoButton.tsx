@@ -26,11 +26,9 @@ type MimeType = {
   compressible?: boolean;
 };
 
-const LazyMediaModalFind = `=${JSON.stringify("Media Viewer Modal")};`;
-const LazyMediaModal = spacepack.findFunctionByStrings(
-  spacepack.findByCode(LazyMediaModalFind)[0]?.exports ?? {},
-  `.OPEN_MODAL,{`
-);
+const LazyMediaModal = Object.values(
+  spacepack.findByCode(`=${JSON.stringify("Media Viewer Modal")};`)[0]?.exports ?? {}
+).find((x) => typeof x === "function");
 
 const MimeTypes = Object.entries(
   spacepack.findByCode(`JSON.parse('{"application/1d-interleaved-parityfec":`)[0].exports
