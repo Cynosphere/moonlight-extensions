@@ -1,9 +1,9 @@
-import React from "@moonlight-mod/wp/react";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
+import { ReadStateStore } from "@moonlight-mod/wp/common_stores";
 import DMList from "@moonlight-mod/wp/componentEditor_dmList";
 import { Text } from "@moonlight-mod/wp/discord/components/common/index";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
-import { ReadStateStore } from "@moonlight-mod/wp/common_stores";
+import React from "@moonlight-mod/wp/react";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const getTimestampString = spacepack.findByCode('["XIGt+W"]')[0].exports;
 const getAbbreviatedFormatter = spacepack.findFunctionByStrings(getTimestampString, '["XIGt+W"]');

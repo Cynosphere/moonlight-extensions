@@ -49,7 +49,7 @@ export const patches: Patch[] = [
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   helper: {
-    run: function (module, exports, require) {
+    run: (module, exports, require) => {
       const style = moonlight.getConfigOption<PlatformStyle>("platformStyles", "style") ?? "default";
 
       function platformBorders(platformUtils: PlatformUtils) {

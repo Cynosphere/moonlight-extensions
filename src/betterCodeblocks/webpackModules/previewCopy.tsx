@@ -1,14 +1,14 @@
-import React from "@moonlight-mod/wp/react";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { copy } from "@moonlight-mod/wp/discord/utils/ClipboardUtils";
 import {
   Clickable,
   CopyIcon,
-  Tooltip,
-  ToastType,
   createToast,
-  showToast
+  showToast,
+  ToastType,
+  Tooltip
 } from "@moonlight-mod/wp/discord/components/common/index";
+import { copy } from "@moonlight-mod/wp/discord/utils/ClipboardUtils";
+import React from "@moonlight-mod/wp/react";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const i18n = spacepack.require("discord/intl");
 const intl = spacepack.findObjectFromKey(i18n, "_forceLookupMatcher");
@@ -21,7 +21,7 @@ export default function PreviewCopyButton({ fileContents, language }: { fileCont
       {(tooltipProps) => (
         <Clickable
           {...tooltipProps}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", marginInlineEnd: "var(--space-16)" }}
           onClick={() => {
             try {
               copy(fileContents);
@@ -41,7 +41,7 @@ export default function PreviewCopyButton({ fileContents, language }: { fileCont
             }
           }}
         >
-          <CopyIcon size="md" color="currentcolor" />
+          <CopyIcon size="sm" color="currentcolor" />
         </Clickable>
       )}
     </Tooltip>

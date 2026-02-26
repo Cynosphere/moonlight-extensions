@@ -1,4 +1,4 @@
-import { Patch, ExtensionWebpackModule } from "@moonlight-mod/types";
+import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 import ERROR_CODES from "./codes.json";
 
@@ -18,7 +18,7 @@ export const patches: Patch[] = [
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   unminify: {
-    run: function (module, exports, require) {
+    run: (module, exports, require) => {
       module.exports = function unminify(code: string, ...args: any[]) {
         let index = 0;
         return (

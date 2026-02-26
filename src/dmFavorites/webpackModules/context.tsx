@@ -1,7 +1,7 @@
+import { UserGuildSettingsStore } from "@moonlight-mod/wp/common_stores";
+import { addItem, MenuItem } from "@moonlight-mod/wp/contextMenu_contextMenu";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { addItem, MenuItem } from "@moonlight-mod/wp/contextMenu_contextMenu";
-import { UserGuildSettingsStore } from "@moonlight-mod/wp/common_stores";
 
 const i18n = spacepack.require("discord/intl");
 const intl = spacepack.findObjectFromKey(i18n, "_forceLookupMatcher");

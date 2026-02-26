@@ -1,12 +1,12 @@
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 import {
-  VoiceStateStore,
-  GuildMemberStore,
-  UserStore,
   ChannelStore,
-  RelationshipStore
+  GuildMemberStore,
+  RelationshipStore,
+  UserStore,
+  VoiceStateStore
 } from "@moonlight-mod/wp/common_stores";
+import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const { ChannelTypes } = spacepack.require("discord/Constants");
 

@@ -2,7 +2,7 @@
 
 const Util = {
   getSingleObjectAndParentByKey: (obj, keys, match) => {
-    for (let property in obj) {
+    for (const property in obj) {
       if (!Object.hasOwn(obj, property) || obj[property] === null || obj[property] === undefined) {
         continue;
       }
@@ -18,13 +18,13 @@ const Util = {
       }
 
       if (obj[property].constructor.name === "Object") {
-        let result = Util.getSingleObjectAndParentByKey(obj[property], keys, match);
+        const result = Util.getSingleObjectAndParentByKey(obj[property], keys, match);
         if (result) {
           return result;
         }
       } else if (obj[property].constructor.name === "Array") {
         for (let i = 0; i < obj[property].length; i++) {
-          let result = Util.getSingleObjectAndParentByKey(obj[property][i], keys, match);
+          const result = Util.getSingleObjectAndParentByKey(obj[property][i], keys, match);
           if (result) {
             return result;
           }
@@ -48,13 +48,15 @@ const OverrideHandleResponse = (() => {
         if (response?.constructor === String && original?.toString()?.indexOf('")]}\'"') !== -1) {
           try {
             const parsed = JSON.parse(response);
-            listeners?.forEach((listener) => listener?.(parsed));
-            arguments[2] = JSON.stringify(parsed);
+            listeners?.forEach((listener) => {
+              listener?.(parsed);
+            });
+            response = JSON.stringify(parsed);
           } catch {
             //
           }
         }
-        return original?.apply(this, arguments);
+        return original?.apply(this, [url, code, response, callback]);
       };
     }
   });
@@ -68,27 +70,27 @@ const OverrideFetch = (() => {
   const listeners = [];
 
   const canProceed = (data) => {
-    const endpoints = data?.["onResponseReceivedEndpoints"];
+    const endpoints = data?.onResponseReceivedEndpoints;
 
     if (endpoints != null && endpoints?.constructor === Array && endpoints.length > 0) {
       for (let i = endpoints.length - 1; i >= 0; i--) {
-        if (endpoints[i]?.["reloadContinuationItemsCommand"]?.["targetId"] === "comments-section") {
+        if (endpoints[i]?.reloadContinuationItemsCommand?.targetId === "comments-section") {
           return false;
         }
       }
     }
 
     return (
-      data?.["contents"] ||
-      data?.["videoDetails"] ||
-      data?.["items"] ||
-      data?.["onResponseReceivedActions"] ||
-      data?.["onResponseReceivedEndpoints"] ||
-      data?.["onResponseReceivedCommands"]
+      data?.contents ||
+      data?.videoDetails ||
+      data?.items ||
+      data?.onResponseReceivedActions ||
+      data?.onResponseReceivedEndpoints ||
+      data?.onResponseReceivedCommands
     );
   };
 
-  const override = function (target, thisArg, argArray) {
+  const override = (target, thisArg, argArray) => {
     if (!argArray?.[0]?.url || Object.getOwnPropertyDescriptor(argArray[0], "url") !== undefined) {
       return target.apply(thisArg, argArray);
     } else {
@@ -99,7 +101,9 @@ const OverrideFetch = (() => {
           .then((text) => {
             const data = JSON.parse(text.replace(")]}'\n", ""));
             if (canProceed(data)) {
-              listeners?.forEach((listener) => listener?.(data));
+              listeners?.forEach((listener) => {
+                listener?.(data);
+              });
               return new Response(JSON.stringify(data));
             } else {
               return response;
@@ -110,29 +114,33 @@ const OverrideFetch = (() => {
     }
   };
 
-  const original = window.fetch?.["original"] || window.fetch;
+  const original = window.fetch?.original || window.fetch;
 
   window.fetch = new Proxy(window.fetch, { apply: override });
   window.fetch.original = original;
 
-  let ytInitialData = undefined;
+  let ytInitialData;
 
   Object.defineProperty(window, "ytInitialData", {
     set(data) {
       ytInitialData = data;
-      listeners?.forEach((listener) => listener?.(ytInitialData));
+      listeners?.forEach((listener) => {
+        listener?.(ytInitialData);
+      });
     },
     get() {
       return ytInitialData;
     }
   });
 
-  let ytInitialPlayerResponse = undefined;
+  let ytInitialPlayerResponse;
 
   Object.defineProperty(window, "ytInitialPlayerResponse", {
     set(data) {
       ytInitialPlayerResponse = data;
-      listeners?.forEach((listener) => listener?.(ytInitialPlayerResponse));
+      listeners?.forEach((listener) => {
+        listener?.(ytInitialPlayerResponse);
+      });
     },
     get() {
       return ytInitialPlayerResponse;
@@ -150,16 +158,16 @@ const OverrideFetch = (() => {
     const adSlotsParent = Util.getSingleObjectAndParentByKey(args, "adSlots");
     const playerAdsParent = Util.getSingleObjectAndParentByKey(args, "playerAds");
 
-    if (adPlacementsParent?.parent?.["adPlacements"]) {
-      delete adPlacementsParent.parent["adPlacements"];
+    if (adPlacementsParent?.parent?.adPlacements) {
+      delete adPlacementsParent.parentadPlacements;
     }
 
-    if (adSlotsParent?.parent?.["adSlots"]) {
-      delete adSlotsParent.parent["adSlots"];
+    if (adSlotsParent?.parent?.adSlots) {
+      delete adSlotsParent.parent.adSlots;
     }
 
-    if (playerAdsParent?.parent?.["playerAds"]) {
-      delete playerAdsParent.parent["playerAds"];
+    if (playerAdsParent?.parent?.playerAds) {
+      delete playerAdsParent.parent.playerAds;
     }
   };
 

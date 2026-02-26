@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/suspicious/noControlCharactersInRegex: constrol characters */
+
 const ANSI_STYLES: Record<string, string> = {
   1: "bold",
   2: "dim",
@@ -141,7 +143,6 @@ function ansiLanguage() {
               (code === "5" && (prevCode === "38" || prevCode === "48")) ||
               (prevCode === "5" && (prevPrevCode === "38" || prevPrevCode === "48"))
             ) {
-              continue;
             } else if (code === "0") {
               for (const category of Object.keys(openNodes)) {
                 closeNode(emitter, openNodes, category);
@@ -158,7 +159,7 @@ function ansiLanguage() {
                   scope += nextNextCode;
                 }
 
-                let fgScope;
+                let fgScope: string | undefined;
                 if (category === "background" && openNodes.foreground != null && lastCategory === "foreground") {
                   fgScope = openNodes.foreground.scope;
                   closeNode(emitter, openNodes, "foreground");
@@ -172,15 +173,16 @@ function ansiLanguage() {
             } else if (namedForeground) {
               closeNode(emitter, openNodes, "foreground");
 
-              openNode(emitter, openNodes, "foreground", "ansi-foreground-" + namedForeground);
+              openNode(emitter, openNodes, "foreground", `ansi-foreground-${namedForeground}`);
             } else if (code === "39" && openNodes.foreground != null) {
               closeNode(emitter, openNodes, "foreground");
             } else if (namedBackground) {
               closeNode(emitter, openNodes, "background");
 
-              openNode(emitter, openNodes, "background", "ansi-background-" + namedBackground);
+              openNode(emitter, openNodes, "background", `ansi-background-${namedBackground}`);
+              // biome-ignore lint/suspicious/noDoubleEquals: intended behavior
             } else if (code == "49" && openNodes.background != null) {
-              let fgScope;
+              let fgScope: string | undefined;
               if (openNodes.foreground != null && lastCategory === "foreground") {
                 fgScope = openNodes.foreground.scope;
                 closeNode(emitter, openNodes, "foreground");
@@ -190,8 +192,8 @@ function ansiLanguage() {
 
               if (fgScope) openNode(emitter, openNodes, "foreground", fgScope);
             } else if (style) {
-              openNode(emitter, openNodes, style, "ansi-style-" + style);
-            } else if (code.length == 2 && code.startsWith("2")) {
+              openNode(emitter, openNodes, style, `ansi-style-${style}`);
+            } else if (code.length === 2 && code.startsWith("2")) {
               const closeStyle = ANSI_STYLES[code.substring(1)];
               closeNode(emitter, openNodes, closeStyle);
             }

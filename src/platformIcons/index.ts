@@ -1,4 +1,4 @@
-import { Patch, ExtensionWebpackModule } from "@moonlight-mod/types";
+import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 const alwaysShowMobile = () => moonlight.getConfigOption<boolean>("platformIcons", "alwaysShowMobile") ?? true;
 
@@ -16,11 +16,11 @@ export const patches: Patch[] = [
 
   // Voice icons
   {
-    find: '["avatarContainerClass","userNameClassName","size","selected","disabled","isOverlay","ref"]',
+    find: '},"mute"))}',
     replace: {
       match: /;(?=\i&&\(\i\?(\i)\.push\((\(0,\i\.jsx\)))/,
       replacement: (_, icons, createElement) =>
-        `;${icons}.push(${createElement}(require("platformIcons_voice").default,arguments[0]));`
+        `;${icons}.push(${createElement}(require("platformIcons_voice").default,arguments[0],"platform-icons"));`
     }
   },
 
@@ -34,7 +34,7 @@ export const patches: Patch[] = [
     prerequisite: alwaysShowMobile
   },
   {
-    find: '"getMaskId(): Unsupported type, size: "',
+    find: "getMaskId(): Unsupported type, size: ",
     replace: [
       {
         match: /&&\i===\i\.\i\.ONLINE/,
@@ -55,7 +55,8 @@ export const patches: Patch[] = [
     find: ".STATUS_TYPING;switch",
     replace: [
       {
-        match: /(?<=\.STATUS_TYPING;)(switch.+?default:)(if\(\i\)return \i\.\i\.Masks\.STATUS_ONLINE_MOBILE;)/,
+        match:
+          /(?<=\.STATUS_TYPING;)(switch.+?default:)(if\(\i\)return \i\.\i\.Masks\.STATUS_ONLINE_VR;if\(\i\)return \i\.\i\.Masks\.STATUS_ONLINE_MOBILE;)/,
         replacement: (_, body, mobileCheck) => `${mobileCheck}${body}`
       },
       {
@@ -65,7 +66,7 @@ export const patches: Patch[] = [
       },
       {
         match:
-          /(?<=dotRadius:0};)(switch\(\i\){case \i\.\i\.ONLINE:)(if\(\i\)return{bgRadius:.+?,dotRadius:.125\*\i};)/,
+          /(?<=dotRadius:0};)(switch\(\i\){case \i\.\i\.ONLINE:)(if\(\i\)return{bgRadius:.+?,dotRadius:\.125\*\i};)/,
         replacement: (_, online, mobileCheck) => `${mobileCheck}${online}`
       }
     ],

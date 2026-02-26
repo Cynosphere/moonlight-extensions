@@ -2,10 +2,12 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: ".hasCurrentUserSentMessageSinceAppStart());",
+    find: '"Invalid popout type provided")}},',
     replace: {
-      match: /(?<="Invalid popout type provided"\)}},children:\i=>\(0,\i\.jsx\)\(\i\.\i,)(\i)\((\i)\({ref:/,
-      replacement: (_, defineProps, mergeProps) => `require("betterUploadButton_fixProps").default(${mergeProps}({ref:`
+      match:
+        /(?<="Invalid popout type provided"\)}},children:\i=>.+?),(onDoubleClick:.+?:void 0),"aria-haspopup":"menu",\.\.\.(\i),/,
+      replacement: (_, onDoubleClick, props) =>
+        `,"aria-haspopup":"menu",...require("betterUploadButton_fixProps").default(${props},{${onDoubleClick}}),`
     }
   },
   {

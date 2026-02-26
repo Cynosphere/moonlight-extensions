@@ -1,5 +1,5 @@
-import React from "@moonlight-mod/wp/react";
 import { MenuItem } from "@moonlight-mod/wp/contextMenu_contextMenu";
+import React from "@moonlight-mod/wp/react";
 import Settings from "@moonlight-mod/wp/settings_settings";
 
 export default function ReorganizeMenu(getSections: () => any[], sections: any[]) {

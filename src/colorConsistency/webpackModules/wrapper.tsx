@@ -1,16 +1,34 @@
-import React, { useState } from "@moonlight-mod/wp/react";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { GuildMemberStore, UserStore } from "@moonlight-mod/wp/common_stores";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
+import React from "@moonlight-mod/wp/react";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
+import type { CSSProperties } from "react";
+
+type GradientProps = {
+  primary: string;
+  secondary?: string;
+  tertiary?: string;
+  roleStyle: string;
+  includeConvenienceGlow: boolean;
+};
+type Gradient = {
+  gradientClassname: string;
+  gradientStyle: CSSProperties;
+};
+
+type DisplayNameFontProps = {
+  displayNameStyles: Record<string, any>; // FIXME
+  inProfile: boolean;
+};
 
 const useGradient = spacepack.findFunctionByStrings(
-  spacepack.findByCode(`${'"--custom-gradient-color-2"'}:null!=`)?.[0]?.exports ?? {},
+  spacepack.findByCode(`"--custom-gradient-color-2":`)?.[0]?.exports ?? {},
   ".useMemo("
-);
+) as (props: GradientProps, className?: string) => Gradient;
 const useDisplayNameStylesFont = spacepack.findFunctionByStrings(
-  spacepack.findByCode(".dnsFont")?.[0]?.exports ?? {},
-  ".dnsFont"
-);
+  spacepack.findByCode('location:"useDisplayNameStylesFont"')?.[0]?.exports ?? {},
+  'location:"useDisplayNameStylesFont"'
+) as (props: DisplayNameFontProps) => string;
 
 const classnames = spacepack.require("classnames");
 
@@ -34,7 +52,8 @@ export default function ColorConsistencyWrapper({
   const user = useStateFromStores([UserStore], () => UserStore.getUser(userId), [userId]);
 
   const { colorString, colorStrings } = member ?? {};
-  let gradientClassname, gradientStyle;
+  let gradientClassname: string = "",
+    gradientStyle: CSSProperties = {};
 
   const displayNameStyles = member?.displayNameStyles ?? user?.displayNameStyles;
   const fontClass = useDisplayNameStylesFont?.({ displayNameStyles, inProfile: false });
@@ -54,10 +73,10 @@ export default function ColorConsistencyWrapper({
     <span
       style={{
         color: colorString,
-        filter: speaking ? "brightness(1.75)" : null,
-        ...(gradientStyle ?? {})
+        filter: speaking ? "brightness(1.75)" : undefined,
+        ...gradientStyle
       }}
-      className={classnames("", gradientClassname ?? {}, fontClass ?? "")}
+      className={classnames("", gradientClassname, fontClass ?? "")}
     >
       {children}
     </span>

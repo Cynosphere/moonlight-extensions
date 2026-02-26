@@ -1,24 +1,23 @@
-import React from "@moonlight-mod/wp/react";
-import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
-import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { ChannelTypes, Routes } from "@moonlight-mod/wp/discord/Constants";
-import {
-  Text,
-  Clickable,
-  showToast,
-  createToast,
-  popToast,
-  ToastType
-} from "@moonlight-mod/wp/discord/components/common/index";
-
 import {
   ChannelStore,
-  UserStore,
   GuildStore,
   ReferencedMessageStore,
-  SelectedChannelStore
+  SelectedChannelStore,
+  UserStore
 } from "@moonlight-mod/wp/common_stores";
+import { ChannelTypes, Routes } from "@moonlight-mod/wp/discord/Constants";
+import {
+  Clickable,
+  createToast,
+  popToast,
+  showToast,
+  Text,
+  ToastType
+} from "@moonlight-mod/wp/discord/components/common/index";
+import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
+import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
+import React from "@moonlight-mod/wp/react";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const AvatarUtils = spacepack.require("discord/utils/AvatarUtils").default;
 

@@ -1,6 +1,6 @@
+import { Clickable } from "@moonlight-mod/wp/discord/components/common/index";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { Clickable } from "@moonlight-mod/wp/discord/components/common/index";
 
 const EmbedClasses = spacepack.findByCode('"embedDescription_')[0].exports;
 const descClass =

@@ -1,8 +1,7 @@
-import React from "@moonlight-mod/wp/react";
-import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
-import { Avatar, AvatarSizes } from "@moonlight-mod/wp/discord/components/common/index";
-
 import { ChannelStore, UserStore } from "@moonlight-mod/wp/common_stores";
+import { Avatar, AvatarSizes } from "@moonlight-mod/wp/discord/components/common/index";
+import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
+import React from "@moonlight-mod/wp/react";
 
 type MessageAvatarProps = {
   userId: string | undefined;

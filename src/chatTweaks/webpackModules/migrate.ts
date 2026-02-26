@@ -1,7 +1,7 @@
 import { Config } from "@moonlight-mod/types";
+import { NoticeColors } from "@moonlight-mod/wp/discord/components/common/index";
 import Notices from "@moonlight-mod/wp/notices_notices";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { NoticeColors } from "@moonlight-mod/wp/discord/components/common/index";
 
 const { MoonbaseSettingsStore } = spacepack.require("moonbase_stores");
 

@@ -1,6 +1,6 @@
+import ErrorBoundary from "@moonlight-mod/wp/common_ErrorBoundary";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import ErrorBoundary from "@moonlight-mod/wp/common_ErrorBoundary";
 
 const MemberSince = spacepack.findByCode(`.member${""}Since,`)[0]?.exports?.Z;
 

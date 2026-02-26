@@ -1,6 +1,6 @@
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
+import { ChannelStore, UserStore } from "@moonlight-mod/wp/common_stores";
 import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
-import { UserStore, ChannelStore } from "@moonlight-mod/wp/common_stores";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const { startEditMessage } = spacepack.findByCode("startEditMessage(", "trackInvite:")[0].exports.A;
 const canReplyToMessage = spacepack.findFunctionByStrings(

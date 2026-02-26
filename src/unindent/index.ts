@@ -5,11 +5,10 @@ export const patches: Patch[] = [
   {
     find: "/^(¯\\\\_\\(ツ\\)_\\/¯)/.exec",
     replace: {
-      match: /return{lang:(.+?),content:(.+?),inQuote:/,
-      replacement: (_, lang, content) => `const lang=${lang},content=${content};
-return {
-  lang,
-  content:lang.toLowerCase()==="ansi"?content:require("unindent_unindent").default(content),
+      match: /=>\({lang:(.+?),content:(.+?),inQuote:/,
+      replacement: (_, lang, content) => `=>({
+  lang:${lang},
+  content:(${lang}).toLowerCase()==="ansi"?(${content}):require("unindent_unindent").default(${content}),
   inQuote:`
     }
   },
@@ -18,7 +17,7 @@ return {
   {
     find: 'Accept:"text/plain"',
     replace: {
-      match: /(?<=let{text:(\i),language:(\i)}=\i),(?=\i=\(\)=>)/,
+      match: /(?<=let{text:(\i),language:(\i),wordWrap:\i}=\i),(?=\i=\(\)=>)/,
       replacement: (_, text, language) => `;
 if(${language}.toLowerCase()!=="ansi")
   ${text}=require("unindent_unindent").default(${text});

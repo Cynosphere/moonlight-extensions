@@ -1,7 +1,7 @@
 import fs from "node:fs";
-import path from "node:path";
 import { createRequire } from "node:module";
-import { watchExt, buildExt } from "@moonlight-mod/esbuild-config";
+import path from "node:path";
+import { buildExt, watchExt } from "@moonlight-mod/esbuild-config";
 import inlineImportPlugin from "esbuild-plugin-inline-import";
 
 const esm = [];

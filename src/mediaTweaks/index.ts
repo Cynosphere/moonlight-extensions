@@ -41,7 +41,6 @@ export const patches: Patch[] = [
   },
 
   // Enlarge Video Button
-  // This is technically a Discord feature now but it doesn't support videos (yet?)
   // TODO: Move this patch to a library
   {
     find: '["VIDEO","CLIP","AUDIO"].includes(',
@@ -101,7 +100,7 @@ export const patches: Patch[] = [
   {
     find: "onSelectGIF:this.handleSelectGIF,",
     replace: {
-      match: '"state",{resultType:null}',
+      match: "state={resultType:null};",
       replacement: (orig: string) =>
         orig.replace(
           ":null",

@@ -2,7 +2,7 @@ import { Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: '},"forum-post-action-bar-".concat(',
+    find: "},`forum-post-action-bar-",
     replace: {
       match: /if\((\i)\.type===(\i\.\i)\.MESSAGE_GROUP_BLOCKED\|\|/,
       replacement: (orig, message, types) =>

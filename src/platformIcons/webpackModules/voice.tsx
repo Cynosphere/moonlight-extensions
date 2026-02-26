@@ -1,9 +1,8 @@
+import { VoiceStateStore } from "@moonlight-mod/wp/common_stores";
+import { GameControllerIcon, MobilePhoneIcon, Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
+import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
-import { Tooltip, MobilePhoneIcon, GameControllerIcon } from "@moonlight-mod/wp/discord/components/common/index";
-
-import { VoiceStateStore } from "@moonlight-mod/wp/common_stores";
 
 const VoicePlatforms = spacepack.findObjectFromKey(
   spacepack.findByCode('.PLAYSTATION=3]="PLAYSTATION"')[0].exports,

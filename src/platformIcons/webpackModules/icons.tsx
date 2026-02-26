@@ -1,22 +1,21 @@
+import { AuthenticationStore, PresenceStore, SessionsStore } from "@moonlight-mod/wp/common_stores";
+import DMList from "@moonlight-mod/wp/componentEditor_dmList";
+import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
+import Messages from "@moonlight-mod/wp/componentEditor_messages";
+import {
+  GameControllerIcon,
+  GlobeEarthIcon,
+  MobilePhoneIcon,
+  ScreenIcon,
+  Tooltip
+} from "@moonlight-mod/wp/discord/components/common/index";
+import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
-import {
-  Tooltip,
-  ScreenIcon,
-  MobilePhoneIcon,
-  GlobeEarthIcon,
-  GameControllerIcon
-} from "@moonlight-mod/wp/discord/components/common/index";
-
-import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
-import DMList from "@moonlight-mod/wp/componentEditor_dmList";
-import Messages from "@moonlight-mod/wp/componentEditor_messages";
-
-import { AuthenticationStore, PresenceStore, SessionsStore } from "@moonlight-mod/wp/common_stores";
 
 const VrHeadsetIcon = (Object.values(
-  spacepack.findByCode("M8.46 8.64a1 1 0 0 1 1 1c0 .44-.3.8-.72.92l-.11.07c-.08.06-.2.19-.2.41a.99.99")[0]?.exports
+  spacepack.findByCode("M8.46 8.64a1 1 0 0 1 1 1c0 .44-.3.8-.72.92l-.11.07c-.08.06-.2.19-.2.41a.99.99", '="md"')[0]
+    ?.exports
 )?.[0] ?? (() => {})) as React.ComponentType<IconsProps>;
 
 type Platforms = "desktop" | "mobile" | "web" | "embedded" | "vr" | "unknown";

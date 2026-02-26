@@ -1,11 +1,11 @@
-import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 import {
+  ApplicationStore,
   GameStore,
-  RunningGameStore,
   LibraryApplicationStore,
-  SelfPresenceStore,
-  ApplicationStore
+  RunningGameStore,
+  SelfPresenceStore
 } from "@moonlight-mod/wp/common_stores";
+import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const modRunningGameStore = spacepack.findByCode(`displayName=${JSON.stringify("RunningGameStore")}`)[0].exports;

@@ -1,7 +1,7 @@
+import { addItem, MenuItem } from "@moonlight-mod/wp/contextMenu_contextMenu";
+import { createToast, showToast, ToastType } from "@moonlight-mod/wp/discord/components/common/index";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { addItem, MenuItem } from "@moonlight-mod/wp/contextMenu_contextMenu";
-import { ToastType, createToast, showToast } from "@moonlight-mod/wp/discord/components/common/index";
 
 const UserActionCreators = spacepack.require("discord/actions/UserActionCreators");
 // TODO: fix mapping

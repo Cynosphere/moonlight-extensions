@@ -1,7 +1,7 @@
-import React from "@moonlight-mod/wp/react";
 import { UserGuildSettingsStore } from "@moonlight-mod/wp/common_stores";
 import DMList from "@moonlight-mod/wp/componentEditor_dmList";
 import { StarIcon } from "@moonlight-mod/wp/discord/components/common/index";
+import React from "@moonlight-mod/wp/react";
 
 function FavoritedIcon(props: any) {
   const id = props.channel.id;

@@ -1,10 +1,10 @@
-import React from "@moonlight-mod/wp/react";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
-import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import { ApplicationStore, GameStore, UserStore } from "@moonlight-mod/wp/common_stores";
 import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
 import { ActivityTypes, PlatformTypes } from "@moonlight-mod/wp/discord/Constants";
+import { Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
+import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
+import React from "@moonlight-mod/wp/react";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const useUserProfileActivity = spacepack.findByCode(`location:${JSON.stringify("useUserProfileActivity")}`)[0].exports
   .A;
@@ -46,7 +46,7 @@ function ActivityIconIcon({ card, icon, subicon = null }: ActivityIconIconProps)
 
 function ActivityIcon({ user, currentUser, activity }: ActivityIconProps) {
   const game = useStateFromStores([GameStore, ApplicationStore], () => {
-    return activity != null && activity.application_id
+    return activity?.application_id
       ? ApplicationStore.getApplication(activity.application_id)
       : activity.title && GameStore.getGameByName(activity.title);
   });
@@ -68,7 +68,7 @@ function ActivityIcon({ user, currentUser, activity }: ActivityIconProps) {
   if (activity.name === "Spotify") {
     let albumArt = activity.assets?.large_image?.replace("spotify:", "https://i.scdn.co/image/");
     if (albumArt?.startsWith("mp:"))
-      albumArt = activity.assets.large_image.replace("mp:", "https://media.discordapp.net/") + "?width=128&height=128";
+      albumArt = `${activity.assets.large_image.replace("mp:", "https://media.discordapp.net/")}?width=128&height=128`;
 
     return (
       <ActivityIconIcon card={card} icon={albumArt ?? SpotifyIcon} subicon={albumArt != null ? SpotifyIcon : null} />
@@ -77,7 +77,7 @@ function ActivityIcon({ user, currentUser, activity }: ActivityIconProps) {
     return <ActivityIconIcon card={card} icon={TwitchIcon} />;
   } else if (activity.application_id && activity?.assets?.large_image) {
     const icon = activity.assets.large_image.startsWith("mp:")
-      ? activity.assets.large_image.replace("mp:", "https://media.discordapp.net/") + "?width=128&height=128"
+      ? `${activity.assets.large_image.replace("mp:", "https://media.discordapp.net/")}?width=128&height=128`
       : activity.assets.large_image.startsWith("spotify:")
         ? activity.assets.large_image.replace("spotify:", "https://i.scdn.co/image/")
         : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=128`;

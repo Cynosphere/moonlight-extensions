@@ -17,7 +17,7 @@ export default function OpenExternallyRedirect(href: string) {
       if (!enabled) continue;
 
       if (handler.links.includes(url.hostname)) {
-        return function (event?: React.MouseEvent) {
+        return (event?: React.MouseEvent) => {
           if (event != null) event.preventDefault();
           window.open(handler.protocol + href);
 

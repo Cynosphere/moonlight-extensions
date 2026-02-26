@@ -1,7 +1,7 @@
-import React from "@moonlight-mod/wp/react";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import { DownloadIcon, Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
 import { Button } from "@moonlight-mod/wp/discord/uikit/legacy/Button";
+import React from "@moonlight-mod/wp/react";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const i18n = spacepack.require("discord/intl");
 const { intl } = i18n;

@@ -1,6 +1,6 @@
+import { Clickable, MaximizeIcon, Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-import { Clickable, Tooltip, MaximizeIcon } from "@moonlight-mod/wp/discord/components/common/index";
 
 const HoverButtonClasses = spacepack.findByCode('"nonMediaMosaicItem_')[0].exports;
 const hoverButton = spacepack.findObjectFromValueSubstring(HoverButtonClasses, "hoverButton_");

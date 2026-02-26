@@ -1,8 +1,8 @@
-import decodeWebp, { init as initWebpDecode } from "@jsquash/webp/decode.js";
-import webpWasmModule from "@jsquash/webp/codec/dec/webp_dec.wasm";
-import encodePng, { init as initPngEncode } from "@jsquash/png/encode.js";
 // @ts-expect-error why are you complaining about this one but not the other one
 import pngWasmModule from "@jsquash/png/codec/pkg/squoosh_png_bg.wasm";
+import encodePng, { init as initPngEncode } from "@jsquash/png/encode.js";
+import webpWasmModule from "@jsquash/webp/codec/dec/webp_dec.wasm";
+import decodeWebp, { init as initWebpDecode } from "@jsquash/webp/decode.js";
 
 let init = false;
 

@@ -4,11 +4,11 @@ export const patches: Patch[] = [
   {
     find: "discord/modules/messages/web/UserMention",
     replace: {
-      match: /children:"@".concat\((.+?)\)(?=}\)\)?;return \i\?(\(0,(\i)\.jsx\)))/,
-      replacement: (_, concat, createElement, ReactJSX) =>
+      match: /children:`@\${(.+?)}`(?=}\);return \i\?(\(0,(\i)\.jsx\)))/,
+      replacement: (_, name, createElement, ReactJSX) =>
         `children:[
   ${createElement}(require("mentionAvatars_avatar")?.default??${ReactJSX}.Fragment,{...arguments[0], children:moonlight.getConfigOption("mentionAvatars","keepAt")?"":"@"}),
-  (moonlight.getConfigOption("mentionAvatars","keepAt")?"@":"").concat(${concat})
+  \`\${moonlight.getConfigOption("mentionAvatars","keepAt")?"@":""}\${${name}}\`
 ]`
     }
   }

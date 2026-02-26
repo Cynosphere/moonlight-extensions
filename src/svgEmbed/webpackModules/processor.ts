@@ -1,5 +1,5 @@
-import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 import { MessageFlags } from "@moonlight-mod/wp/discord/Constants";
+import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 
 const MAX_EMBEDS_PER_MESSAGE = 5;
 const MIN_SVG_WIDTH = 400;

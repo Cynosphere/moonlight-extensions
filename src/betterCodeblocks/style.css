@@ -14,10 +14,24 @@
 }
 
 .bcb-code {
-  word-wrap: break-word;
-  word-break: break-all;
-  white-space: break-spaces;
   padding-left: 8px;
+  word-wrap: normal;
+  word-break: normal;
+  white-space: pre;
+}
+
+.hljs[class*="wordWrap_"] {
+  .bcb-number {
+    word-wrap: normal !important;
+    word-break: normal !important;
+    white-space: pre !important;
+  }
+
+  .bcb-code {
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+    white-space: break-spaces !important;
+  }
 }
 
 /* label */

@@ -11,13 +11,12 @@ export const patches: Patch[] = [
     find: FIND_FILE_PREVIEW,
     replace: [
       {
-        match: /"hljs"\),children:(\i)}/,
-        replacement: (_, content) => `"hljs"),children:require("betterCodeblocks_lines").wrapFallback(${content})}`
+        match: /(?<="hljs",{\[\i\.\i]:\i}\)),children:(\i)}/,
+        replacement: (_, content) => `,children:require("betterCodeblocks_lines").wrapFallback(${content})}`
       },
       {
-        match: /"hljs",(\i)\.language\),dangerouslySetInnerHTML:{__html:\i\.value}}/,
-        replacement: (_, highlighted) =>
-          `"hljs",${highlighted}.language),children:require("betterCodeblocks_lines").wrapCode(${highlighted}.value)}`
+        match: /(?<="hljs",(\i)\.language,{\[\i\.\i]:\i}\)),dangerouslySetInnerHTML:{__html:\i\.value}}/,
+        replacement: (_, highlighted) => `,children:require("betterCodeblocks_lines").wrapCode(${highlighted}.value)}`
       }
     ],
     prerequisite: lineNumbers
@@ -53,7 +52,7 @@ export const patches: Patch[] = [
   {
     find: FIND_FILE_PREVIEW,
     replace: {
-      match: /(?<=fileSize:\i}\),)(?=(\(0,(\i).jsx\)))/g,
+      match: /(?<=className:\i\.\i}\),)(?=(\(0,(\i)\.jsx\))\(\i,{language:)/,
       replacement: (_, createElement, ReactJSX) =>
         `${createElement}(require("betterCodeblocks_previewCopy")?.default??${ReactJSX}.Fragment,arguments[0]),`
     },
@@ -61,15 +60,23 @@ export const patches: Patch[] = [
     prerequisite: () => moonlight.getConfigOption<boolean>("betterCodeblocks", "previewCopy") ?? true
   },
 
+  // preview scrollbar fix
+  {
+    find: FIND_FILE_PREVIEW,
+    replace: {
+      match: /(?<=className:\i\(\)\(\i\.\i,{\[\i\.\i\]:\i)}\),children:/,
+      replacement: `},require("discord/components/common/Scroller.css")?.auto??""),children:`
+    }
+  },
+
   // ansi
   {
     find: 'className:"ansi-control-sequence",',
     replace: {
       type: PatchReplaceType.Module,
-      replacement: () =>
-        function (module, exports, require) {
-          module.exports = require("betterCodeblocks_ansi");
-        }
+      replacement: () => (module, _exports, require) => {
+        module.exports = require("betterCodeblocks_ansi");
+      }
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("betterCodeblocks", "ansi") ?? true
   },

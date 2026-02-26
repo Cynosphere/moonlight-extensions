@@ -1,8 +1,9 @@
-import React from "@moonlight-mod/wp/react";
-import Moonbase from "@moonlight-mod/wp/moonbase_moonbase";
-import { FormItem, SingleSelect } from "@moonlight-mod/wp/discord/components/common/index";
-import Margins from "@moonlight-mod/wp/discord/styles/shared/Margins.css";
 import type { CustomComponentProps } from "@moonlight-mod/types/coreExtensions/moonbase";
+import { FormItem } from "@moonlight-mod/wp/discord/components/common/index";
+import { SingleSelect } from "@moonlight-mod/wp/discord/components/common/Select";
+import Margins from "@moonlight-mod/wp/discord/styles/shared/Margins.css";
+import Moonbase from "@moonlight-mod/wp/moonbase_moonbase";
+import React from "@moonlight-mod/wp/react";
 
 function VoiceSettings({ value = "", setValue }: CustomComponentProps): React.ReactNode {
   const voices = window.speechSynthesis.getVoices();

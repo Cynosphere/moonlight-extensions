@@ -1,5 +1,5 @@
-import React from "@moonlight-mod/wp/react";
 import { getLanguage } from "@moonlight-mod/wp/highlight.js";
+import React from "@moonlight-mod/wp/react";
 
 export default function CodeblockLabel(language: string) {
   const lang = getLanguage(language);
