@@ -1,14 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "shiftjis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "meta": {
     "name": "ShiftJIS Codeblocks",
     "tagline": "Renders codeblocks with the `sjis` language as normal text in a ShiftJIS supported font",
     "authors": ["Cynosphere"],
     "tags": ["chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Explicitly depend on React (this will be important later)"
   },
   "dependencies": ["markdown"],
   "apiLevel": 2
