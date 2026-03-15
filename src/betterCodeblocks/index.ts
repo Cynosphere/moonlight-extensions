@@ -41,9 +41,9 @@ export const patches: Patch[] = [
   {
     find: FIND_MARKDOWN_COMPONENTS,
     replace: {
-      match: /children:\[(\i\.\i\?.+?:null)(,\(0,\i\.jsx\)\(\i\.\i,{createPromise:)/,
-      replacement: (_, CopyButton, body) =>
-        `children:[[require("betterCodeblocks_label").default(arguments[0].lang),${CopyButton}]${body}`
+      match: /children:(\(0,\i\.jsx\)\(\i,{text:\i\.content}\))/,
+      replacement: (_, CopyButton) =>
+        `children:[require("betterCodeblocks_label").default(arguments[0].lang),${CopyButton}]`
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("betterCodeblocks", "label") ?? true
   },
