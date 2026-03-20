@@ -6,8 +6,7 @@ import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
-const useUserProfileActivity = spacepack.findByCode(`location:${JSON.stringify("useUserProfileActivity")}`)[0].exports
-  .A;
+const useUserProfileActivity = spacepack.findByCode(/return{live:\i,recent:\i,stream:\i,outbox:\i}/)[0].exports.A;
 const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get:", "isSupported:")[0].exports.A;
 const UserProfileActivityCard = spacepack.findByCode(`location:${JSON.stringify("UserProfileActivityCard")},`)[0]
   .exports.A;
