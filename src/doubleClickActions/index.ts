@@ -6,7 +6,7 @@ export const patches: Patch[] = [
     replace: {
       match: "}),ref:",
       replacement:
-        '}),onDoubleClick:(event)=>require("doubleClickActions_actions")?.default?.(arguments[0].childrenMessageContent.props,event),ref:'
+        '}),onDoubleClick:(event)=>require("doubleClickActions_actions")?.default?.(arguments[0].childrenMessageContent.props.children?.props??arguments[0].childrenMessageContent.props,event),ref:'
     }
   }
 ];
