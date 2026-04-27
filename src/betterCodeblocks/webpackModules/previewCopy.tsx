@@ -1,11 +1,9 @@
-import {
-  Clickable,
-  CopyIcon,
-  createToast,
-  showToast,
-  ToastType,
-  Tooltip
-} from "@moonlight-mod/wp/discord/components/common/index";
+import Clickable from "@moonlight-mod/wp/discord/design/components/Clickable/web/Clickable";
+import { createToast } from "@moonlight-mod/wp/discord/design/components/Toast/web/Toast";
+import { showToast } from "@moonlight-mod/wp/discord/design/components/Toast/web/ToastAPI";
+import { ToastType } from "@moonlight-mod/wp/discord/design/components/Toast/web/ToastConstants";
+import Tooltip from "@moonlight-mod/wp/discord/design/components/Tooltip/web/VoidTooltip";
+import CopyIcon from "@moonlight-mod/wp/discord/modules/icons/web/CopyIcon";
 import { copy } from "@moonlight-mod/wp/discord/utils/ClipboardUtils";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
@@ -18,7 +16,7 @@ const logger = moonlight.getLogger("Better Codeblocks");
 export default function PreviewCopyButton({ fileContents, language }: { fileContents: string; language: string }) {
   return (
     <Tooltip text={intl.string(i18n.t.JrGD7E)}>
-      {(tooltipProps) => (
+      {(tooltipProps: any) => (
         <Clickable
           {...tooltipProps}
           style={{ cursor: "pointer", marginInlineEnd: "var(--space-16)" }}

@@ -2,21 +2,15 @@ import { AuthenticationStore, PresenceStore, SessionsStore } from "@moonlight-mo
 import DMList from "@moonlight-mod/wp/componentEditor_dmList";
 import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
 import Messages from "@moonlight-mod/wp/componentEditor_messages";
-import {
-  GameControllerIcon,
-  GlobeEarthIcon,
-  MobilePhoneIcon,
-  ScreenIcon,
-  Tooltip
-} from "@moonlight-mod/wp/discord/components/common/index";
+import Tooltip from "@moonlight-mod/wp/discord/design/components/Tooltip/web/VoidTooltip";
+import GameControllerIcon from "@moonlight-mod/wp/discord/modules/icons/web/GameControllerIcon";
+import GlobeEarthIcon from "@moonlight-mod/wp/discord/modules/icons/web/GlobeEarthIcon";
+import MobilePhoneIcon from "@moonlight-mod/wp/discord/modules/icons/web/MobilePhoneIcon";
+import ScreenIcon from "@moonlight-mod/wp/discord/modules/icons/web/ScreenIcon";
+import VrHeadsetIcon from "@moonlight-mod/wp/discord/modules/icons/web/VrHeadsetIcon";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
+import { humanizeStatus } from "@moonlight-mod/wp/discord/utils/UserUtils";
 import React from "@moonlight-mod/wp/react";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-
-const VrHeadsetIcon = (Object.values(
-  spacepack.findByCode("M8.46 8.64a1 1 0 0 1 1 1c0 .44-.3.8-.72.92l-.11.07c-.08.06-.2.19-.2.41a.99.99", '="md"')[0]
-    ?.exports
-)?.[0] ?? (() => {})) as React.ComponentType<IconsProps>;
 
 type Platforms = "desktop" | "mobile" | "web" | "embedded" | "vr" | "unknown";
 const IconsForPlatform: Record<Exclude<Platforms, "unknown">, React.ComponentType<IconsProps>> = {
@@ -26,8 +20,6 @@ const IconsForPlatform: Record<Exclude<Platforms, "unknown">, React.ComponentTyp
   embedded: GameControllerIcon,
   vr: VrHeadsetIcon
 };
-
-const { humanizeStatus } = spacepack.findByCode("humanizeStatus:")[0].exports.Ay;
 
 type Statuses = "online" | "idle" | "dnd" | "offline" | "invisible";
 const StatusColors: Record<Exclude<Statuses, "offline" | "invisible">, string> = {

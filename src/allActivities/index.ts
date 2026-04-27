@@ -12,7 +12,7 @@ export const patches: Patch[] = [
 
   // Do not de-duplicate entries in useUserProfileActivity
   {
-    find: 'location:"useUserProfileActivity"',
+    find: /return{live:\i,recent:\i,stream:\i,outbox:\i}/,
     replace: {
       match: /\(0,\i\.uniqWith\)/,
       replacement: "((inp)=>inp)"
@@ -44,9 +44,10 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "react" },
       { ext: "common", id: "stores" },
       { id: "discord/Constants" },
-      { id: "discord/components/common/index" },
+      { id: "discord/design/components/Tooltip/web/VoidTooltip" },
       { ext: "componentEditor", id: "memberList" },
       '"applicationStreamingPreviewWrapper_',
+      ".USER_PROFILE_LIVE_ACTIVITY_CARD),{themeType:",
       { id: "discord/modules/user_profile/web/UserProfileActivityCardWrapper" }
     ]
   }

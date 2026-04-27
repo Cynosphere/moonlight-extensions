@@ -29,7 +29,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "react" },
       { ext: "spacepack", id: "spacepack" },
       { ext: "common", id: "stores" },
-      { id: "discord/components/common/index" },
+      { id: "discord/modules/icons/web/StarIcon" },
       { ext: "componentEditor", id: "dmList" }
     ]
   }

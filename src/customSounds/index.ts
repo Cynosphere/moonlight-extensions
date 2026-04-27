@@ -19,7 +19,8 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     dependencies: [
       { id: "react" },
       { ext: "spacepack", id: "spacepack" },
-      { id: "discord/components/common/index" },
+      { id: "discord/design/components/Text/Text" },
+      { id: "discord/design/components/Divider/Divider" },
       { id: "discord/intl" },
       '"./discodo.mp3":'
     ]

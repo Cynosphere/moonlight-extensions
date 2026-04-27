@@ -5,7 +5,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     entrypoint: true,
     dependencies: [
       { id: "react" },
-      { id: "discord/components/common/index" },
+      { id: "discord/design/components/Text/Text" },
       { id: "discord/packages/flux" },
       { ext: "spacepack", id: "spacepack" },
       { ext: "common", id: "stores" },

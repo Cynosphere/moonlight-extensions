@@ -1,4 +1,4 @@
-import { Clickable } from "@moonlight-mod/wp/discord/components/common/index";
+import Clickable from "@moonlight-mod/wp/discord/design/components/Clickable/web/Clickable";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 

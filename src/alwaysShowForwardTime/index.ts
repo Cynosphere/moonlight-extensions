@@ -13,6 +13,10 @@ export const patches: Patch[] = [
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   timestamp: {
-    dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/components/common/index" }]
+    dependencies: [
+      { id: "react" },
+      { ext: "spacepack", id: "spacepack" },
+      { id: "discord/design/components/Text/Text" }
+    ]
   }
 };

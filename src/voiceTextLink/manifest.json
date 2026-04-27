@@ -1,7 +1,7 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "voiceTextLink",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "meta": {
     "name": "Voice Text Link",
     "tagline": "Link voice text chat to a normal text channel",
@@ -9,7 +9,8 @@
     "authors": ["Cynosphere"],
     "tags": ["qol", "voice", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Fixes for latest Discord"
   },
   "settings": {
     "channelMap": {

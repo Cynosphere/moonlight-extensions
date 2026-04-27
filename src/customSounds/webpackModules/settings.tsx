@@ -1,5 +1,5 @@
 import type { CustomComponentProps } from "@moonlight-mod/types/coreExtensions/moonbase";
-import { FormDivider, Text } from "@moonlight-mod/wp/discord/components/common/index";
+import Text from "@moonlight-mod/wp/discord/design/components/Text/Text";
 import TextInput from "@moonlight-mod/wp/discord/uikit/TextInput";
 import Moonbase from "@moonlight-mod/wp/moonbase_moonbase";
 import React from "@moonlight-mod/wp/react";
@@ -25,15 +25,14 @@ const soundStrings: Record<string, string> = {
 moonlight.lunast.register({
   name: "customSounds_NotificationSettings",
   find: ".default.setNotifyMessagesInSelectedChannel,children:",
-  process({ id, ast }) {
+  process({ ast }) {
     const { traverse, is } = moonlight.lunast.utils;
 
     traverse(ast, {
       $: { scope: true },
       ArrayExpression({ node }) {
         if (
-          node &&
-          node.elements.some(
+          node?.elements.some(
             (obj) =>
               is.objectExpression(obj) &&
               obj.properties.some(
@@ -66,7 +65,7 @@ moonlight.lunast.register({
             const langKey = is.identifier(labelProp) ? labelProp.name : is.literal(labelProp) ? labelProp.value : null;
             if (langKey == null) continue;
 
-            soundStrings[name as string] = "intl:" + langKey;
+            soundStrings[name as string] = `intl:${langKey}`;
           }
         }
       }
@@ -76,7 +75,13 @@ moonlight.lunast.register({
   }
 });
 
+let Divider: typeof import("@moonlight-mod/wp/discord/design/components/Divider/Divider").default;
+
 function SoundSettings({ value = {}, setValue }: CustomComponentProps): React.ReactNode {
+  if (!Divider) {
+    Divider = spacepack.require("discord/design/components/Divider/Divider").default;
+  }
+
   const elements = [];
 
   for (const name of soundNames) {
@@ -105,7 +110,7 @@ function SoundSettings({ value = {}, setValue }: CustomComponentProps): React.Re
             }}
           />
         </div>
-        <FormDivider />
+        <Divider gap="8px" />
       </>
     );
   }

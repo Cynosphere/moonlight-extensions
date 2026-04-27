@@ -213,4 +213,3 @@ function ansiLanguage() {
 }
 
 export default ansiLanguage;
-export const A = ansiLanguage;

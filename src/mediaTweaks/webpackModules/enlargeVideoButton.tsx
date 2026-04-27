@@ -1,10 +1,9 @@
-import { Clickable, MaximizeIcon, Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
+import Clickable from "@moonlight-mod/wp/discord/design/components/Clickable/web/Clickable";
+import Tooltip from "@moonlight-mod/wp/discord/design/components/Tooltip/web/VoidTooltip";
+import { hoverButton, hoverButtonGroup } from "@moonlight-mod/wp/discord/modules/chat/web/ImageHoverButtons.css";
+import MaximizeIcon from "@moonlight-mod/wp/discord/modules/icons/web/MaximizeIcon";
+import { openMediaModal } from "@moonlight-mod/wp/discord/modules/media_viewer/web/components/openMediaModal";
 import React from "@moonlight-mod/wp/react";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-
-const HoverButtonClasses = spacepack.findByCode('"nonMediaMosaicItem_')[0].exports;
-const hoverButton = spacepack.findObjectFromValueSubstring(HoverButtonClasses, "hoverButton_");
-const hoverButtonGroup = spacepack.findObjectFromValueSubstring(HoverButtonClasses, "hoverButtonGroup_");
 
 type HoverButtonsProps = {
   mimeType: string[];
@@ -20,19 +19,15 @@ type VideoProps = {
   };
 };
 
-type MimeType = {
+/*type MimeType = {
   source: string;
   extensions?: string[];
   compressible?: boolean;
 };
 
-const LazyMediaModal = Object.values(
-  spacepack.findByCode(`=${JSON.stringify("Media Viewer Modal")};`)[0]?.exports ?? {}
-).find((x) => typeof x === "function");
-
 const MimeTypes = Object.entries(
   spacepack.findByCode(`JSON.parse('{"application/1d-interleaved-parityfec":`)[0].exports
-);
+);*/
 
 export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps) {
   return mimeType?.[0] !== "video" ? null : (
@@ -44,8 +39,8 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
           focusProps={{ offset: 2 }}
           aria-label="Enlarge Video"
           onClick={() => {
-            if (LazyMediaModal != null) {
-              LazyMediaModal({
+            if (openMediaModal != null) {
+              openMediaModal({
                 items: [
                   {
                     url: item.originalItem.proxy_url ?? item.originalItem.media.proxyUrl,
@@ -68,11 +63,10 @@ export default function EnlargeVideoButton({ mimeType, item }: HoverButtonsProps
 }
 
 export function createButtonGroup({ video }: VideoProps) {
-  const urlObj = new URL(video.proxyURL);
-  const filename = urlObj.pathname.substring(urlObj.pathname.lastIndexOf("/") + 1);
-  const extension = filename.substring(filename.lastIndexOf(".") + 1);
-  const contentType =
-    MimeTypes.find(([mime, data]) => (data as MimeType).extensions?.includes(extension))?.[0] ?? "video/unknown";
+  //const urlObj = new URL(video.proxyURL);
+  //const filename = urlObj.pathname.substring(urlObj.pathname.lastIndexOf("/") + 1);
+  //const extension = filename.substring(filename.lastIndexOf(".") + 1);
+  const contentType = "video/unknown";
   const mimeType = contentType.split("/");
 
   return function MediaTweaksHoverButtons() {

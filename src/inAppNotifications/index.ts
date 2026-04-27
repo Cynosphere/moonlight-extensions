@@ -5,7 +5,11 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     entrypoint: true,
     dependencies: [
       { id: "react" },
-      { id: "discord/components/common/index" },
+      { id: "discord/design/components/Clickable/web/Clickable" },
+      { id: "discord/design/components/Text/Text" },
+      { id: "discord/design/components/Toast/web/Toast" },
+      { id: "discord/design/components/Toast/web/ToastAPI" },
+      { id: "discord/design/components/Toast/web/ToastConstants" },
       { id: "discord/packages/flux" },
       { ext: "spacepack", id: "spacepack" },
       { ext: "common", id: "stores" },

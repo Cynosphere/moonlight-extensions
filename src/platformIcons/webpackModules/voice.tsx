@@ -1,5 +1,8 @@
 import { VoiceStateStore } from "@moonlight-mod/wp/common_stores";
-import { GameControllerIcon, MobilePhoneIcon, Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
+import Tooltip from "@moonlight-mod/wp/discord/design/components/Tooltip/web/VoidTooltip";
+import GameControllerIcon from "@moonlight-mod/wp/discord/modules/icons/web/GameControllerIcon";
+import MobilePhoneIcon from "@moonlight-mod/wp/discord/modules/icons/web/MobilePhoneIcon";
+import VrHeadsetIcon from "@moonlight-mod/wp/discord/modules/icons/web/VrHeadsetIcon";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
@@ -12,7 +15,14 @@ const VoicePlatforms = spacepack.findObjectFromKey(
 const PlatformNames = {
   [VoicePlatforms.MOBILE]: "mobile",
   [VoicePlatforms.PLAYSTATION]: "PlayStation",
-  [VoicePlatforms.XBOX]: "Xbox"
+  [VoicePlatforms.XBOX]: "Xbox",
+  [VoicePlatforms.QUEST]: "VR"
+};
+const PlatformIcons = {
+  [VoicePlatforms.MOBILE]: MobilePhoneIcon,
+  [VoicePlatforms.PLAYSTATION]: GameControllerIcon,
+  [VoicePlatforms.XBOX]: GameControllerIcon,
+  [VoicePlatforms.QUEST]: VrHeadsetIcon
 };
 
 const VoiceClasses = spacepack.findByCode('"iconPriortySpeakerSpeaking_')[0].exports;
@@ -32,10 +42,7 @@ export default function PlatformIconVoice({ channelId, user }: PlatformIconVoice
     [channelId, user]
   );
 
-  const Icon = React.useMemo(
-    () => (platform === VoicePlatforms.MOBILE ? MobilePhoneIcon : GameControllerIcon),
-    [platform]
-  );
+  const Icon = React.useMemo(() => PlatformIcons[platform] ?? React.Fragment, [platform]);
   const tooltipText = React.useMemo(() => `Connected on ${PlatformNames[platform]}`, [platform]);
 
   // @ts-expect-error only not inlining this so i dont suppress all errors on the line

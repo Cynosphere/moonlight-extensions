@@ -1,4 +1,4 @@
-import { ExtensionWebpackModule, Patch, PatchReplaceType } from "@moonlight-mod/types";
+import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 const FIND_FILE_PREVIEW = 'Accept:"text/plain"';
 const FIND_MARKDOWN_COMPONENTS = "text:{react:";
@@ -73,10 +73,8 @@ export const patches: Patch[] = [
   {
     find: 'className:"ansi-control-sequence",',
     replace: {
-      type: PatchReplaceType.Module,
-      replacement: () => (module, _exports, require) => {
-        module.exports = require("betterCodeblocks_ansi");
-      }
+      match: /\.registerLanguage\("ansi",(function\(\){.+?contains:\i}\]}})\);/,
+      replacement: (_, original) => `.registerLanguage("ansi",require("betterCodeblocks_ansi")?.default??${original});`
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("betterCodeblocks", "ansi") ?? true
   },
@@ -107,12 +105,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     dependencies: [{ id: "react" }, { id: "highlight.js" }]
   },
   previewCopy: {
-    dependencies: [
-      { id: "react" },
-      { ext: "spacepack", id: "spacepack" },
-      { id: "discord/utils/ClipboardUtils" },
-      { id: "discord/components/common/index" }
-    ]
+    dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/utils/ClipboardUtils" }]
   },
   ansi: {}
 };

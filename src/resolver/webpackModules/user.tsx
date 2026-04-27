@@ -1,17 +1,10 @@
 import { addItem, MenuItem } from "@moonlight-mod/wp/contextMenu_contextMenu";
-import { createToast, showToast, ToastType } from "@moonlight-mod/wp/discord/components/common/index";
+import { createToast } from "@moonlight-mod/wp/discord/design/components/Toast/web/Toast";
+import { showToast } from "@moonlight-mod/wp/discord/design/components/Toast/web/ToastAPI";
+import { ToastType } from "@moonlight-mod/wp/discord/design/components/Toast/web/ToastConstants";
 import React from "@moonlight-mod/wp/react";
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-
-const UserActionCreators = spacepack.require("discord/actions/UserActionCreators");
-// TODO: fix mapping
-const getUser = spacepack.findFunctionByStrings(
-  UserActionCreators,
-  ".get({url:",
-  ".USER(",
-  '.dispatch({type:"USER_UPDATE",user:'
-)!;
-const { openUserProfileModal } = spacepack.require("discord/actions/UserProfileModalActionCreators");
+import { getUser } from "@moonlight-mod/wp/discord/actions/UserActionCreators";
+import { openUserProfileModal } from "@moonlight-mod/wp/discord/actions/UserProfileModalActionCreators";
 
 const logger = moonlight.getLogger("Resolver");
 

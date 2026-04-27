@@ -19,7 +19,8 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     dependencies: [
       { id: "react" },
       { id: "discord/packages/flux" },
-      { id: "discord/components/common/index" },
+      { id: "discord/design/components/Avatar/web/Avatar" },
+      { id: "discord/design/components/Avatar/web/AvatarConstants" },
       { ext: "common", id: "stores" }
     ]
   }

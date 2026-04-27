@@ -14,6 +14,10 @@ export const patches: Patch[] = [
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
   description: {
-    dependencies: [{ id: "react" }, { id: "discord/components/common/index" }, { ext: "spacepack", id: "spacepack" }]
+    dependencies: [
+      { id: "react" },
+      { id: "discord/design/components/Clickable/web/Clickable" },
+      { ext: "spacepack", id: "spacepack" }
+    ]
   }
 };

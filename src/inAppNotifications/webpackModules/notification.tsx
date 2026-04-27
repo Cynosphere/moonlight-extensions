@@ -6,15 +6,12 @@ import {
   UserStore
 } from "@moonlight-mod/wp/common_stores";
 import { ChannelTypes, Routes } from "@moonlight-mod/wp/discord/Constants";
-import {
-  Clickable,
-  createToast,
-  popToast,
-  showToast,
-  Text,
-  ToastType
-} from "@moonlight-mod/wp/discord/components/common/index";
 import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
+import Clickable from "@moonlight-mod/wp/discord/design/components/Clickable/web/Clickable";
+import Text from "@moonlight-mod/wp/discord/design/components/Text/Text";
+import { createToast } from "@moonlight-mod/wp/discord/design/components/Toast/web/Toast";
+import { popToast, showToast } from "@moonlight-mod/wp/discord/design/components/Toast/web/ToastAPI";
+import { ToastType } from "@moonlight-mod/wp/discord/design/components/Toast/web/ToastConstants";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";

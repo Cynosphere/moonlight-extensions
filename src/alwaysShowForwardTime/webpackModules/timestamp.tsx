@@ -1,12 +1,7 @@
-import { Text } from "@moonlight-mod/wp/discord/components/common/index";
+import Text from "@moonlight-mod/wp/discord/design/components/Text/Text";
+import { calendarFormatCompact } from "@moonlight-mod/wp/discord/utils/DateUtils";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-
-// TODO: mappings
-const DateUtils = spacepack.findByCode('("DateUtils")')[0].exports;
-const calendarFormatCompact = spacepack.findFunctionByStrings(DateUtils, '.calendar("lastDay",') as (
-  timestamp: Date
-) => string;
 
 export default function ForwardTimestamp({ classes, timestamp }: { classes: Record<string, string>; timestamp: Date }) {
   const wrapperClass = React.useMemo(

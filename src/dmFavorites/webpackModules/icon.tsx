@@ -1,6 +1,6 @@
 import { UserGuildSettingsStore } from "@moonlight-mod/wp/common_stores";
 import DMList from "@moonlight-mod/wp/componentEditor_dmList";
-import { StarIcon } from "@moonlight-mod/wp/discord/components/common/index";
+import StarIcon from "@moonlight-mod/wp/discord/modules/icons/web/StarIcon";
 import React from "@moonlight-mod/wp/react";
 
 function FavoritedIcon(props: any) {

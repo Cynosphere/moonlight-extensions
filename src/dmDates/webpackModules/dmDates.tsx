@@ -1,6 +1,6 @@
 import { ReadStateStore } from "@moonlight-mod/wp/common_stores";
 import DMList from "@moonlight-mod/wp/componentEditor_dmList";
-import { Text } from "@moonlight-mod/wp/discord/components/common/index";
+import Text from "@moonlight-mod/wp/discord/design/components/Text/Text";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";

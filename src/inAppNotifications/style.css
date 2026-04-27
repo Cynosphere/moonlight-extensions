@@ -11,7 +11,10 @@
 .inAppNotification-card {
   padding: 8px 4px;
   border-radius: 8px;
-  background-color: var(--background-base-low);
+  background-color: var(--background-surface-highest);
+  border: 1px solid var(--border-normal);
+  box-shadow: var(--shadow-high);
+  margin-bottom: 12px;
   max-width: 65vw;
   cursor: pointer;
   -webkit-user-select: none;
@@ -21,11 +24,17 @@
 }
 
 @keyframes inAppNotification-timer {
-  from {
-    width: calc(100% + 8px);
+  0% {
+    border-bottom-right-radius: 8px;
+    width: calc(100% + 10px);
   }
-  to {
+  0.01% {
+    width: calc(99.99% + 10px);
+    border-bottom-right-radius: 0px;
+  }
+  100% {
     width: 0;
+    border-bottom-right-radius: 0px;
   }
 }
 
@@ -33,9 +42,11 @@
   width: 0;
   height: 4px;
   position: relative;
-  bottom: -8px;
-  left: -4px;
-  background: var(--text-default);
+  bottom: -9px;
+  left: -5px;
+  background-color: var(--text-default);
+  border: 1px solid var(--text-default);
+  border-bottom-left-radius: 8px;
   animation: 10s ease-in 0s inAppNotification-timer;
 }
 

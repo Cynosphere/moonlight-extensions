@@ -1,10 +1,8 @@
 .customSounds-sound {
   display: grid;
   grid-template-columns: 0.6fr auto;
-  padding: 14px;
   align-items: center;
   font-weight: 500;
-  height: 80px;
   box-sizing: border-box;
 
   & > .customSounds-label {
@@ -23,7 +21,6 @@
       border-radius: 4px;
       font-size: 85%;
       font-family: var(--font-code);
-      text-indent: 0;
       text-indent: 0;
       white-space: pre-wrap;
       line-height: 1.125rem;

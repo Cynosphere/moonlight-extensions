@@ -18,7 +18,9 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "react" },
       { ext: "spacepack", id: "spacepack" },
       { ext: "contextMenu", id: "contextMenu" },
-      { id: "discord/components/common/index" },
+      { id: "discord/design/components/Toast/web/Toast" },
+      { id: "discord/design/components/Toast/web/ToastAPI" },
+      { id: "discord/design/components/Toast/web/ToastConstants" },
       { id: "discord/actions/UserActionCreators" },
       { id: "discord/actions/UserProfileModalActionCreators" }
     ],

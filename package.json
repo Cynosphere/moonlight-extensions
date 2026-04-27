@@ -22,7 +22,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@moonlight-mod/mappings": "^2026.2.0",
-    "@moonlight-mod/types": "^2026.2.0"
+    "@moonlight-mod/mappings": "^2026.4.0",
+    "@moonlight-mod/types": "^2026.4.0"
   }
 }

@@ -4,7 +4,7 @@ export const patches: Patch[] = [
   {
     find: '("SystemMessage").error("",',
     replace: {
-      match: /(?<=usernameHook:\i}\)),\(0,\i.jsx\)\(\i\.\i,{channel:\i,message:\i}\)/,
+      match: /(?<=usernameHook:\i}\)),\(0,\i.jsx\)\(\i,{channel:\i,message:\i}\)/,
       replacement: ""
     }
   }

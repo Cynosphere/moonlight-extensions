@@ -39,6 +39,14 @@ export const patches: Patch[] = [
         `=${createCarousel}((moonlight.getConfigOption("mediaTweaks","inlineMosaicPlayback")??true)?${attachments}.filter(x=>x.type!="VIDEO"):${attachments},${props},${analytics}),`
     }
   },
+  {
+    find: '??"zoomedMediaModalHelper"',
+    replace: {
+      match: /,(\i)]of \i\.entries\(\)\){/,
+      replacement: (orig, item) =>
+        `${orig}if((moonlight.getConfigOption("mediaTweaks","inlineMosaicPlayback")??true)&&${item}.type=="VIDEO")continue;`
+    }
+  },
 
   // Enlarge Video Button
   // TODO: Move this patch to a library
@@ -53,7 +61,7 @@ export const patches: Patch[] = [
 
       // Add button
       {
-        match: /(?<=showDownload:\i,isVisualMediaType:\i}=(\i),.+?,)(?=\i&&(\i)\.push\((\(0,\i\.jsx\)))/,
+        match: /(?<=showDownload:\i,isVisualMediaType:\i.*?}=(\i),.+?=\[];)(?=null!=\i&&(\i)\.push\((\(0,\i\.jsx\)))/,
         replacement: (_, props, buttons, createElement) =>
           `${buttons}.push(${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props},"mediaTweaks_enlargeVideoButton")),`
       }
@@ -64,7 +72,7 @@ export const patches: Patch[] = [
     replace: {
       match: ".proxyURL,placeholder:",
       replacement:
-        '.proxyURL,renderAdjacentContent:require("mediaTweaks_enlargeVideoButton").createButtonGroup(arguments[0]),placeholder:'
+        '.proxyURL,renderAdjacentContent:require("mediaTweaks_enlargeVideoButton")?.createButtonGroup?.(arguments[0]),placeholder:'
     }
   },
 
@@ -116,7 +124,14 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
   },
 
   enlargeVideoButton: {
-    dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/components/common/index" }]
+    dependencies: [
+      { id: "react" },
+      { id: "discord/design/components/Clickable/web/Clickable" },
+      { id: "discord/design/components/Tooltip/web/VoidTooltip" },
+      { id: "discord/modules/chat/web/ImageHoverButtons.css" },
+      { id: "discord/modules/icons/web/MaximizeIcon" },
+      { id: "discord/modules/media_viewer/web/components/openMediaModal" }
+    ]
   },
 
   imagePropsProcessor: {
@@ -126,9 +141,9 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
   voiceMessageDownload: {
     dependencies: [
       { id: "react" },
-      { id: "discord/components/common/index" },
-      { id: "discord/intl" },
-      { ext: "spacepack", id: "spacepack" }
+      { id: "discord/components/common/PanelButton" },
+      { id: "discord/modules/icons/web/DownloadIcon" },
+      { id: "discord/intl" }
     ]
   }
 };

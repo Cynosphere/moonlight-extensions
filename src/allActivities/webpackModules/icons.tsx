@@ -1,20 +1,19 @@
 import { ApplicationStore, GameStore, UserStore } from "@moonlight-mod/wp/common_stores";
 import MemberList from "@moonlight-mod/wp/componentEditor_memberList";
 import { ActivityTypes, PlatformTypes } from "@moonlight-mod/wp/discord/Constants";
-import { Tooltip } from "@moonlight-mod/wp/discord/components/common/index";
+import Tooltip from "@moonlight-mod/wp/discord/design/components/Tooltip/web/VoidTooltip";
 import { useStateFromStores } from "@moonlight-mod/wp/discord/packages/flux";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
-const useUserProfileActivity = spacepack.findByCode(/return{live:\i,recent:\i,stream:\i,outbox:\i}/)[0].exports.A;
-const ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get:", "isSupported:")[0].exports.A;
-const UserProfileActivityCard = spacepack.findByCode(`location:${JSON.stringify("UserProfileActivityCard")},`)[0]
-  .exports.A;
+let useUserProfileActivity: (id: string) => any;
+let ConnectionPlatforms: any;
+let UserProfileActivityCard: React.ComponentType<any>;
 
 const ActivityClasses = spacepack.findByCode('"applicationStreamingPreviewWrapper_')[0].exports;
 
-const SpotifyIcon = ConnectionPlatforms.get(PlatformTypes.SPOTIFY).icon.lightSVG;
-const TwitchIcon = ConnectionPlatforms.get(PlatformTypes.TWITCH).icon.lightSVG;
+let SpotifyIcon = "";
+let TwitchIcon = "";
 
 type ActivityIconsProps = {
   user: any;
@@ -29,6 +28,23 @@ type ActivityIconIconProps = {
   icon: string;
   subicon?: string | null;
 };
+
+function lazyLoad() {
+  if (!useUserProfileActivity) {
+    useUserProfileActivity = spacepack.findByCode(/return{live:\i,recent:\i,stream:\i,outbox:\i}/)?.[0]?.exports?.A;
+  }
+  if (!ConnectionPlatforms) {
+    ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get:", "isSupported:")?.[0]?.exports?.A;
+    if (ConnectionPlatforms != null) {
+      SpotifyIcon = ConnectionPlatforms.get(PlatformTypes.SPOTIFY).icon.lightSVG;
+      TwitchIcon = ConnectionPlatforms.get(PlatformTypes.TWITCH).icon.lightSVG;
+    }
+  }
+  if (!UserProfileActivityCard) {
+    UserProfileActivityCard = spacepack.findByCode(`location:${JSON.stringify("UserProfileActivityCard")},`)?.[0]
+      ?.exports?.A;
+  }
+}
 
 function ActivityIconIcon({ card, icon, subicon = null }: ActivityIconIconProps) {
   return (
@@ -89,6 +105,8 @@ function ActivityIcon({ user, currentUser, activity }: ActivityIconProps) {
 }
 
 function ActivityIcons({ user }: ActivityIconsProps) {
+  lazyLoad();
+
   const currentUser = useStateFromStores([UserStore], () => UserStore.getCurrentUser());
   const { live } = useUserProfileActivity(user.id);
 

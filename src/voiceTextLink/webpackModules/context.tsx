@@ -1,7 +1,9 @@
 import { ChannelListStore, GuildChannelStore, PermissionStore } from "@moonlight-mod/wp/common_stores";
 import { addItem, MenuItem, MenuSeparator } from "@moonlight-mod/wp/contextMenu_contextMenu";
 import { ChannelTypes, Permissions } from "@moonlight-mod/wp/discord/Constants";
-import { createToast, showToast, ToastType } from "@moonlight-mod/wp/discord/components/common/index";
+import { createToast } from "@moonlight-mod/wp/discord/design/components/Toast/web/Toast";
+import { showToast } from "@moonlight-mod/wp/discord/design/components/Toast/web/ToastAPI";
+import { ToastType } from "@moonlight-mod/wp/discord/design/components/Toast/web/ToastConstants";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
