@@ -5,11 +5,15 @@ import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 import type { CSSProperties } from "react";
 
 type GradientProps = {
-  primary: string;
-  secondary?: string;
-  tertiary?: string;
+  colorStrings?: {
+    primaryColor?: string;
+    secondaryColor?: string;
+    tertiartyColor?: string;
+  };
+  useReducedMotion?: boolean;
   roleStyle: string;
-  includeConvenienceGlow: boolean;
+  includeConvenienceGlow?: boolean;
+  animateGradient?: boolean;
 };
 type Gradient = {
   gradientClassname: string;
@@ -18,16 +22,15 @@ type Gradient = {
 
 type DisplayNameFontProps = {
   displayNameStyles: Record<string, any>; // FIXME
-  inProfile: boolean;
 };
 
 const useGradient = spacepack.findFunctionByStrings(
   spacepack.findByCode(`"--custom-gradient-color-2":`)?.[0]?.exports ?? {},
-  ".useMemo("
+  ".useMemo(",
 ) as (props: GradientProps, className?: string) => Gradient;
 const useDisplayNameStylesFont = spacepack.findFunctionByStrings(
   spacepack.findByCode('location:"useDisplayNameStylesFont"')?.[0]?.exports ?? {},
-  'location:"useDisplayNameStylesFont"'
+  'location:"useDisplayNameStylesFont"',
 ) as (props: DisplayNameFontProps) => string;
 
 const classnames = spacepack.require("classnames");
@@ -43,11 +46,11 @@ export default function ColorConsistencyWrapper({
   children,
   userId,
   guildId,
-  speaking
+  speaking,
 }: NameColorProps): React.ReactNode {
   const member = useStateFromStores([GuildMemberStore], () => GuildMemberStore.getMember(guildId, userId), [
     userId,
-    guildId
+    guildId,
   ]);
   const user = useStateFromStores([UserStore], () => UserStore.getUser(userId), [userId]);
 
@@ -56,13 +59,14 @@ export default function ColorConsistencyWrapper({
     gradientStyle: CSSProperties = {};
 
   const displayNameStyles = member?.displayNameStyles ?? user?.displayNameStyles;
-  const fontClass = useDisplayNameStylesFont?.({ displayNameStyles, inProfile: false });
+  const fontClass = useDisplayNameStylesFont?.({ displayNameStyles });
 
   try {
-    const gradientRole =
-      useGradient?.({ ...(colorStrings ?? {}), roleStyle: "username", includeConvenienceGlow: false }) ?? {};
-    gradientClassname = gradientRole.gradientClassname;
-    gradientStyle = gradientRole.gradientStyle;
+    if (colorStrings != null) {
+      const gradientRole = useGradient?.({ colorStrings, roleStyle: "username", includeConvenienceGlow: false }) ?? {};
+      gradientClassname = gradientRole.gradientClassname;
+      gradientStyle = gradientRole.gradientStyle;
+    }
   } catch {
     // noop
   }
@@ -74,7 +78,7 @@ export default function ColorConsistencyWrapper({
       style={{
         color: colorString,
         filter: speaking ? "brightness(1.75)" : undefined,
-        ...gradientStyle
+        ...gradientStyle,
       }}
       className={classnames("", gradientClassname, fontClass ?? "")}
     >

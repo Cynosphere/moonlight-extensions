@@ -1,0 +1,46 @@
+.volumeManipulator {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  align-items: center;
+}
+.volumeManipulator .volumeManipulator-suffix {
+  position: absolute;
+  margin-right: 12px;
+}
+.volumeManipulator div:not(.volumeManipulator-suffix) {
+  width: 100%;
+  height: 32px;
+}
+.volumeManipulator-input {
+  background-color: var(--input-background);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var(--text-default);
+  font-size: 12px;
+  height: 100%;
+  width: 100%;
+  padding-left: 10px;
+}
+
+input.volumeManipulator-input::-webkit-outer-spin-button,
+input.volumeManipulator-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.volumeManipulator.volumeManipulator-errorState .volumeManipulator-suffix {
+  color: var(--text-danger);
+}
+
+.volumeManipulator.volumeManipulator-errorState div div,
+.volumeManipulator.volumeManipulator-errorState input {
+  border: 1px solid var(--text-danger);
+  color: var(--text-danger);
+}
+.volumeManipulator.volumeManipulator-errorState div div:focus,
+.volumeManipulator.volumeManipulator-errorState div div:hover,
+.volumeManipulator.volumeManipulator-errorState input:focus,
+.volumeManipulator.volumeManipulator-errorState input:hover {
+  border: 2px solid var(--text-danger);
+}
