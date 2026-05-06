@@ -61,15 +61,14 @@ export default function ColorConsistencyWrapper({
   const displayNameStyles = member?.displayNameStyles ?? user?.displayNameStyles;
   const fontClass = useDisplayNameStylesFont?.({ displayNameStyles });
 
-  try {
-    if (colorStrings != null) {
-      const gradientRole = useGradient?.({ colorStrings, roleStyle: "username", includeConvenienceGlow: false }) ?? {};
-      gradientClassname = gradientRole.gradientClassname;
-      gradientStyle = gradientRole.gradientStyle;
-    }
-  } catch {
-    // noop
-  }
+  const gradientRole =
+    useGradient?.({
+      colorStrings: colorStrings ?? {},
+      roleStyle: "username",
+      includeConvenienceGlow: false,
+    }) ?? {};
+  gradientClassname = gradientRole.gradientClassname;
+  gradientStyle = gradientRole.gradientStyle;
 
   if ((!member || !colorString) && !fontClass) return children;
 
