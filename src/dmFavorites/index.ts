@@ -2,17 +2,17 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   // actually implement the sorting logic
-  {
+  /*{
     find: '"PrivateChannelSortStore"',
     replace: {
       match: "isFavorite:!1,",
       replacement: `isFavorite:((require("common_stores").UserGuildSettingsStore.getChannelOverrides("null")[arguments[0].id]??{}).flags&2048)!==0,`
     }
-  }
+  }*/
 ];
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
-  context: {
+  /*context: {
     entrypoint: true,
     dependencies: [
       { id: "react" },
@@ -32,5 +32,5 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "discord/modules/icons/web/StarIcon" },
       { ext: "componentEditor", id: "dmList" }
     ]
-  }
+  }*/
 };

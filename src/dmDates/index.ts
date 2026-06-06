@@ -9,8 +9,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "discord/packages/flux" },
       { ext: "spacepack", id: "spacepack" },
       { ext: "common", id: "stores" },
-      { ext: "componentEditor", id: "dmList" },
-      moonlight.enabledExtensions.has("dmFavorites") && { ext: "dmFavorites", id: "icon" }
-    ].filter((d) => !!d)
+      { ext: "componentEditor", id: "dmList" }
+    ]
   }
 };
