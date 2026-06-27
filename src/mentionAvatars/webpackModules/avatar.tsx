@@ -15,7 +15,11 @@ export default function MessageAvatar({ userId, parsedUserId, channelId }: Messa
   const channel = useStateFromStores([ChannelStore], () => ChannelStore.getChannel(channelId), [channelId]);
   const guildId = channel?.getGuildId();
 
-  return user == null ? null : (
+  return user == null ? (
+    moonlight.getConfigOption("mentionAvatars", "keepAt") ? null : (
+      "@"
+    )
+  ) : (
     <Avatar className="mentionAvatar" src={user.getAvatarURL(guildId, 16)} size={AvatarSizes.SIZE_16} />
   );
 }

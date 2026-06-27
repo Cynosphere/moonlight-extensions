@@ -4,10 +4,10 @@ export const patches: Patch[] = [
   {
     find: "discord/modules/messages/web/UserMention",
     replace: {
-      match: /children:`@\${(.+?)}`(?=}\);return \i\?(\(0,(\i)\.jsx\)))/,
-      replacement: (_, name, createElement, ReactJSX) =>
-        `children:[
-  ${createElement}(require("mentionAvatars_avatar")?.default??${ReactJSX}.Fragment,{...arguments[0], children:moonlight.getConfigOption("mentionAvatars","keepAt")?"":"@"}),
+      match: /(function \i\(\i\){return.+?\.\.\.\i,)children:`@\${(\i\?\?\i)}`(?=}\)}return \i\?(\(0,(\i)\.jsx\)))/,
+      replacement: (_, body, name, createElement, ReactJSX) =>
+        `let __mentionAvatars_props=arguments[0];${body}children:[
+  ${createElement}(require("mentionAvatars_avatar")?.default??${ReactJSX}.Fragment,{...__mentionAvatars_props, children:moonlight.getConfigOption("mentionAvatars","keepAt")?"":"@"}),
   \`\${moonlight.getConfigOption("mentionAvatars","keepAt")?"@":""}\${${name}}\`
 ]`
     }
