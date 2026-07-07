@@ -43,7 +43,7 @@ export const patches: Patch[] = [
     replace: {
       match: /children:(\(0,\i\.jsx\)\(\i,{text:\i\.content}\))/,
       replacement: (_, CopyButton) =>
-        `children:[require("betterCodeblocks_label").default(arguments[0].lang),${CopyButton}]`
+        `children:[require("betterCodeblocks_label")?.default?.(arguments[0].lang),${CopyButton}]`
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("betterCodeblocks", "label") ?? true
   },
@@ -84,7 +84,7 @@ export const patches: Patch[] = [
     find: FIND_FILE_PREVIEW,
     replace: [
       {
-        match: /Range:"bytes=0-".concat\(.+?\),/,
+        match: /Range:"bytes=0-50000",/,
         replacement: (orig) => `/*${orig}*/`
       },
       {
@@ -102,7 +102,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
     dependencies: [{ id: "react" }]
   },
   label: {
-    dependencies: [{ id: "react" }, { id: "highlight.js" }]
+    dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }]
   },
   previewCopy: {
     dependencies: [{ id: "react" }, { ext: "spacepack", id: "spacepack" }, { id: "discord/utils/ClipboardUtils" }]
