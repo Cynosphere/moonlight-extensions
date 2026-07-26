@@ -1,11 +1,11 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "jumpToBlocked",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "meta": {
     "name": "Jump To Blocked",
     "tagline": "Jump to blocked replies without unblocking",
-    "authors": ["Cynosphere"],
+    "authors": ["Cynosphere", {"name": "Rose", "id": "1397672456935833600"}],
     "tags": ["qol", "chat"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
