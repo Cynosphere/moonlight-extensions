@@ -2,10 +2,10 @@ import { Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   {
-    find: '("interactionAvatarProfile",',
+    find: ".author.username}),confirmText:",
     replace: {
-      match: /\(null==\i\|\|\(0,\i\.\i\)\(\i,\i\)\)&&(\i\(\))/,
-      replacement: (_, jumpToMessage) => jumpToMessage
-    }
-  }
+      match: /function \i\(\i,\i\){/,
+      replacement: "$&return !0;",
+    },
+  },
 ];
