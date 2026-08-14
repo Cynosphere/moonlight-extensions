@@ -12,7 +12,7 @@ export const patches: Patch[] = [
 
   // Do not de-duplicate entries in useUserProfileActivity
   {
-    find: /return{live:\i,recent:\i,stream:\i,outbox:\i}/,
+    find: /return{live:\i,recent:\i,stream:/,
     replace: {
       match: /\(0,\i\.uniqWith\)/,
       replacement: "((inp)=>inp)"

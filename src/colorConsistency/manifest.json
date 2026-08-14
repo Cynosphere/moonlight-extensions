@@ -1,23 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "colorConsistency",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "meta": {
     "name": "Color Consistency",
     "tagline": "Add role colors to places missing them",
-    "authors": [
-      "Cynosphere"
-    ],
-    "tags": [
-      "qol",
-      "chat",
-      "accessibility",
-      "appearance",
-      "voice"
-    ],
+    "authors": ["Cynosphere"],
+    "tags": ["qol", "chat", "accessibility", "appearance", "voice"],
     "source": "https://github.com/Cynosphere/moonlight-extensions",
     "donate": "https://ko-fi.com/Cynosphere",
-    "changelog": "Fix crash"
+    "changelog": "Add support for mentions"
   },
   "settings": {
     "voice": {
@@ -31,11 +23,14 @@
       "displayName": "Typing users",
       "default": true,
       "advice": "reload"
+    },
+    "mentions": {
+      "type": "boolean",
+      "displayName": "Mentions",
+      "default": true,
+      "advice": "none"
     }
   },
-  "dependencies": [
-    "common",
-    "spacepack"
-  ],
+  "dependencies": ["common", "spacepack"],
   "apiLevel": 2
 }

@@ -61,7 +61,7 @@ export const patches: Patch[] = [
 
       // Add button
       {
-        match: /(?<=showDownload:\i,isVisualMediaType:\i.*?}=(\i),.+?=\[];)(?=null!=\i&&(\i)\.push\((\(0,\i\.jsx\)))/,
+        match: /(?<=showDownload:\i,isVisualMediaType:\i.*?}=(\i),.+?=\[];)(?=null.+?(\i)\.push\((\(0,\i\.jsx\)))/,
         replacement: (_, props, buttons, createElement) =>
           `${buttons}.push(${createElement}(require("mediaTweaks_enlargeVideoButton").default,${props},"mediaTweaks_enlargeVideoButton")),`
       }

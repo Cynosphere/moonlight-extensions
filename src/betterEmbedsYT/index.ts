@@ -4,9 +4,9 @@ export const patches: Patch[] = [
   {
     find: ".VIDEO_EMBED_PLAYBACK_STARTED,",
     replace: {
-      match: /(case \i\.\i\.VIDEO:)(case \i\.\i\.GIFV:)break;(?=default:(\i)=)/,
-      replacement: (_, VIDEO, GIFV, description) =>
-        `${GIFV}break;${VIDEO}if(this.props.embed.provider?.name==="YouTube"){${description}=require("betterEmbedsYT_description").default(this.props);}break;`
+      match: /return (\i)\.type===(\i\.\i)\.RICH&&.+?,description:(\i),/,
+      replacement: (orig, embed, EmbedTypes, description) =>
+        `if(${embed}.type===${EmbedTypes}.VIDEO&&${embed}.provider?.name==="YouTube"){${description}=require("betterEmbedsYT_description").default(this.props);}${orig}`
     },
     prerequisite: () => moonlight.getConfigOption<boolean>("betterEmbedsYT", "description") ?? true
   }

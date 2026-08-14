@@ -3,7 +3,7 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 export const patches: Patch[] = [
   // codeblocks
   {
-    find: "/^(¯\\\\_\\(ツ\\)_\\/¯)/.exec",
+    find: "/^(\\xaf\\\\_\\(\\u30c4\\)_\\/\\xaf)/.exec",
     replace: {
       match: /=>\({lang:(.+?),content:(.+?),inQuote:/,
       replacement: (_, lang, content) => `=>({
@@ -17,11 +17,10 @@ export const patches: Patch[] = [
   {
     find: 'Accept:"text/plain"',
     replace: {
-      match: /(?<=let{text:(\i),language:(\i),wordWrap:\i}=\i),(?=\i=\(\)=>)/,
-      replacement: (_, text, language) => `;
+      match: /let{text:(\i),language:(\i),wordWrap:\i}=\i;/,
+      replacement: (orig, text, language) => `${orig}
 if(${language}.toLowerCase()!=="ansi")
-  ${text}=require("unindent_unindent").default(${text});
-let `
+  ${text}=require("unindent_unindent").default(${text});`
     }
   }
 ];

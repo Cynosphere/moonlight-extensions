@@ -31,7 +31,7 @@ type ActivityIconIconProps = {
 
 function lazyLoad() {
   if (!useUserProfileActivity) {
-    useUserProfileActivity = spacepack.findByCode(/return{live:\i,recent:\i,stream:\i,outbox:\i}/)?.[0]?.exports?.A;
+    useUserProfileActivity = spacepack.findByCode(/return{live:\i,recent:\i,stream:/)?.[0]?.exports?.A;
   }
   if (!ConnectionPlatforms) {
     ConnectionPlatforms = spacepack.findByCode("getByUrl(", "get:", "isSupported:")?.[0]?.exports?.A;
