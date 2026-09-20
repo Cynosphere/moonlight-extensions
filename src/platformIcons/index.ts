@@ -37,15 +37,15 @@ export const patches: Patch[] = [
     find: "getMaskId(): Unsupported type, size: ",
     replace: [
       {
-        match: /&&\i===\i\.\i\.ONLINE/,
+        match: /&&\i===\i\.\i\.ONLINE/g,
         replacement: ""
       },
       {
-        match: /\|\|\i===\i\.\i\.ONLINE&&/,
+        match: /\|\|\i===\i\.\i\.ONLINE&&/g,
         replacement: "&&"
       },
       {
-        match: /if\(\i===\i\.\i\.ONLINE&&/,
+        match: /if\(\i===\i\.\i\.ONLINE&&/g,
         replacement: "if("
       }
     ],
